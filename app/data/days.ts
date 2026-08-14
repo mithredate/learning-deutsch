@@ -148,7 +148,7 @@ export const DAYS: Day[] = [
     date: '2026-08-24', kind: 'class',
     headline: 'Wortschatz: Wohnen & Nachbarschaft',
     tagline: 'Neues Themenfeld, gleiche Methode.',
-    thema: { title: 'Nachbarn', cards: ['Streif, 24, Büroangestellte', 'Gebhardt, 21, Büroangestellter'] },
+    thema: { title: 'Nachbarn', cards: ['Streif, 24, Büroangestellte', 'Horst Gebhardt, 21, Büroangestellter'] },
     aufgabe: 'Sie planen ein Grillfest im Hof für die Nachbarn. Klären Sie Termin, Einladung, Essen und Unkostenbeitrag.',
     slots: [
       { place: 'gym', minutes: 15, what: 'Kartenrunde <b>Durchsagen &amp; Kollokationen</b>.' },
