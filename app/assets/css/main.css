@@ -1,0 +1,164 @@
+@import 'tailwindcss';
+
+/* ─────────────────────────────────────────────────────────────
+   Tokens. The bare :root carries the COMPLETE light palette.
+   The two blocks below only redefine tokens — never component
+   colours — so an un-stamped document (system theme) still
+   resolves every colour it needs.
+   ───────────────────────────────────────────────────────────── */
+:root {
+  --paper: #f6f7fa;
+  --surface: #ffffff;
+  --surface-2: #eef1f7;
+  --line: #d8dde8;
+  --line-soft: #e7ebf2;
+
+  --ink: #14161f;
+  --ink-2: #454c60;
+  --ink-3: #79819a;
+
+  --accent: #2b3a8f;
+  --accent-2: #5568c4;
+  --accent-wash: #e3e7f7;
+
+  --gym: #7a4a12;
+  --gym-wash: #f6ebda;
+  --sofa: #2b3a8f;
+  --sofa-wash: #e3e7f7;
+  --bed: #3f3560;
+  --bed-wash: #eae6f4;
+
+  --good: #2c6a4e;
+  --good-wash: #dfede5;
+  --crit: #97282b;
+  --crit-wash: #f6e0e0;
+
+  --shadow: 0 1px 2px rgb(20 22 31 / 0.05), 0 10px 28px -14px rgb(20 22 31 / 0.22);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) {
+    --paper: #0e1016;
+    --surface: #171a23;
+    --surface-2: #1f2430;
+    --line: #2c3341;
+    --line-soft: #232936;
+
+    --ink: #eceff6;
+    --ink-2: #aeb6c9;
+    --ink-3: #7c8499;
+
+    --accent: #93a4f2;
+    --accent-2: #7185dc;
+    --accent-wash: #1d2440;
+
+    --gym: #e0a868;
+    --gym-wash: #2a2013;
+    --sofa: #93a4f2;
+    --sofa-wash: #1d2440;
+    --bed: #b4a6e4;
+    --bed-wash: #211c33;
+
+    --good: #74c79c;
+    --good-wash: #14261d;
+    --crit: #e38c8c;
+    --crit-wash: #2b1717;
+
+    --shadow: 0 1px 2px rgb(0 0 0 / 0.4), 0 10px 28px -14px rgb(0 0 0 / 0.75);
+  }
+}
+
+:root[data-theme='dark'] {
+  --paper: #0e1016;
+  --surface: #171a23;
+  --surface-2: #1f2430;
+  --line: #2c3341;
+  --line-soft: #232936;
+  --ink: #eceff6;
+  --ink-2: #aeb6c9;
+  --ink-3: #7c8499;
+  --accent: #93a4f2;
+  --accent-2: #7185dc;
+  --accent-wash: #1d2440;
+  --gym: #e0a868;
+  --gym-wash: #2a2013;
+  --sofa: #93a4f2;
+  --sofa-wash: #1d2440;
+  --bed: #b4a6e4;
+  --bed-wash: #211c33;
+  --good: #74c79c;
+  --good-wash: #14261d;
+  --crit: #e38c8c;
+  --crit-wash: #2b1717;
+  --shadow: 0 1px 2px rgb(0 0 0 / 0.4), 0 10px 28px -14px rgb(0 0 0 / 0.75);
+}
+
+/* Expose the tokens to Tailwind so `bg-surface` / `text-ink-2` follow
+   the theme switch without a single dark: variant in the markup. */
+@theme inline {
+  --color-paper: var(--paper);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-line: var(--line);
+  --color-line-soft: var(--line-soft);
+  --color-ink: var(--ink);
+  --color-ink-2: var(--ink-2);
+  --color-ink-3: var(--ink-3);
+  --color-accent: var(--accent);
+  --color-accent-2: var(--accent-2);
+  --color-accent-wash: var(--accent-wash);
+  --color-good: var(--good);
+  --color-good-wash: var(--good-wash);
+  --color-crit: var(--crit);
+  --color-crit-wash: var(--crit-wash);
+
+  --font-serif: 'Iowan Old Style', 'Palatino Linotype', Palatino, 'Book Antiqua', Georgia, serif;
+  --font-sans: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  --font-mono: ui-monospace, 'SF Mono', SFMono-Regular, Menlo, Consolas, monospace;
+}
+
+html {
+  background: var(--paper);
+  /* Standalone PWA: keep content clear of the notch and the home indicator. */
+  padding-top: env(safe-area-inset-top);
+}
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  padding-bottom: calc(72px + env(safe-area-inset-bottom));
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-serif);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+/* Inline <b> / <i> inside plan copy — the data carries light markup. */
+.copy b { font-weight: 600; color: var(--ink); }
+.copy i { font-style: italic; }
+
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
