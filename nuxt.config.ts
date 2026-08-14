@@ -28,6 +28,7 @@ export default defineNuxtConfig({
         // Two colours so the iOS status bar matches whichever theme is active.
         { name: 'theme-color', content: '#F6F7FA', media: '(prefers-color-scheme: light)' },
         { name: 'theme-color', content: '#0E1016', media: '(prefers-color-scheme: dark)' },
+        { name: 'mobile-web-app-capable', content: 'yes' },
         { name: 'apple-mobile-web-app-capable', content: 'yes' },
         { name: 'apple-mobile-web-app-title', content: 'Deutsch' },
         { name: 'apple-mobile-web-app-status-bar-style', content: 'black-translucent' },

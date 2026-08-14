@@ -3,6 +3,15 @@ import type { Day } from '~/types'
 export const EXAM_DATE = '2026-09-25'
 
 /**
+ * Exam day is an entry in DAYS so you can navigate to it, but it is not a study
+ * day — counting it gives 35 and contradicts every other number we quote.
+ * A day with no slots is not a day of work.
+ */
+export function studyDays() {
+  return DAYS.filter(d => d.slots.length > 0)
+}
+
+/**
  * 34 study days. The Alps week (14.–21.09.) is absent on purpose — it is rest,
  * not a gap to be filled. Strategy and gates live in /kalender.
  */

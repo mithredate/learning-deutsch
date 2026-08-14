@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { DAYS, EXAM_DATE } from '~/data/days'
+import { DAYS, EXAM_DATE, studyDays } from '~/data/days'
 import { fromISO } from '~/composables/usePlan'
 
 useHead({ title: 'Lernkalender B1' })
@@ -43,6 +43,7 @@ const GATES = [
   { when: 'Sa 12.09', target: 'alle Teile ≥ 60 %, HV ≥ 70 %', miss: 'Taper wird Reparatur' },
 ]
 
+const STUDY = studyDays()
 const totalMinutes = DAYS.reduce((n, d) => n + d.slots.reduce((m, s) => m + s.minutes, 0), 0)
 const classDays = DAYS.filter(d => d.kind === 'class').length
 const examLeft = Math.round((fromISO(EXAM_DATE).getTime() - fromISO('2026-08-14').getTime()) / 86_400_000) + 1
@@ -52,14 +53,14 @@ const examLeft = Math.round((fromISO(EXAM_DATE).getTime() - fromISO('2026-08-14'
   <div class="mx-auto flex max-w-3xl flex-col gap-9 px-4 pb-16">
     <header class="flex flex-col gap-4 pt-8">
       <span class="eyebrow">Lernkalender · 14.08.2026 → 25.09.2026</span>
-      <h1 class="text-[clamp(1.9rem,5.5vw,2.9rem)] leading-tight">{{ DAYS.length }} Abende bis telc B1</h1>
+      <h1 class="text-[clamp(1.9rem,5.5vw,2.9rem)] leading-tight">{{ STUDY.length }} Abende bis telc B1</h1>
       <p class="max-w-prose text-ink-2">
         Teil für Teil, jeden Tag um 21:00. Nicht mehr Stoff — weniger Entscheidungen.
       </p>
 
       <div class="grid grid-cols-2 gap-px overflow-hidden rounded-xl border border-line bg-line-soft sm:grid-cols-4">
         <div v-for="stat in [
-          { n: String(DAYS.length), l: 'Lerntage' },
+          { n: String(STUDY.length), l: 'Lerntage' },
           { n: String(examLeft), l: 'Tage bis zur Prüfung' },
           { n: '8', l: 'Alpen — kein Studium' },
           { n: String(classDays), l: 'Kursabende' },

@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { usePlan, deckFor, formatDay, daysUntilExam } from '~/composables/usePlan'
+import { studyDays } from '~/data/days'
 import { useProgress } from '~/composables/useProgress'
 
 const { DAYS, index, day, isToday, minutes, jumpToToday, step } = usePlan()
@@ -14,7 +15,11 @@ onMounted(() => {
 
 const cards = computed(() => deckFor(day.value.deck, index.value))
 const left = computed(() => daysUntilExam(day.value.date))
-const ticked = computed(() => DAYS.filter(d => dayTouched(d.date)).length)
+
+const STUDY = studyDays()
+/** Position among study days — exam day returns 0 and is labelled instead. */
+const studyPos = computed(() => STUDY.findIndex(d => d.date === day.value.date) + 1)
+const ticked = computed(() => STUDY.filter(d => dayTouched(d.date)).length)
 
 const note = computed({
   get: () => state.notes[day.value.date] ?? '',
@@ -48,7 +53,7 @@ function go(delta: number) {
               <template v-if="isToday">Heute · </template>{{ formatDay(day.date) }}
             </span>
             <span class="block font-mono text-[0.66rem] tracking-wider text-ink-3">
-              Tag {{ index + 1 }} von {{ DAYS.length }}
+              {{ studyPos ? `Lerntag ${studyPos} von ${STUDY.length}` : 'Prüfungstag' }}
             </span>
           </span>
           <button
@@ -167,7 +172,7 @@ function go(delta: number) {
     <footer class="flex flex-col gap-2 border-t border-line pt-4 text-[0.8rem] text-ink-3">
       <ClientOnly>
         <span v-if="ticked" class="font-mono text-[0.74rem] text-ink-2">
-          {{ ticked }} von {{ DAYS.length }} Tagen abgehakt.
+          {{ ticked }} von {{ STUDY.length }} Lerntagen abgehakt.
         </span>
       </ClientOnly>
       <span>Fortschritt wird nur auf diesem Gerät gespeichert.</span>
