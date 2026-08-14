@@ -80,6 +80,36 @@ function go(delta: number) {
         </div>
       </header>
 
+      <!-- Quick access. On course evenings Sprechen is the primary action, since
+           that is the only place speaking actually gets practised. -->
+      <nav v-if="mounted" class="grid grid-cols-2 gap-2.5">
+        <NuxtLink
+          to="/hoeren"
+          class="flex flex-col gap-0.5 rounded-2xl border px-3.5 py-3 no-underline"
+          :class="day.kind === 'class' ? 'border-line bg-surface' : 'border-accent bg-accent-wash'"
+        >
+          <span class="text-lg leading-none" aria-hidden="true">🎧</span>
+          <span class="text-[0.9rem] font-semibold" :class="day.kind === 'class' ? 'text-ink' : 'text-accent'">
+            Hören
+          </span>
+          <span class="font-mono text-[0.68rem] text-ink-3">3 Teile · mit Auswertung</span>
+        </NuxtLink>
+
+        <NuxtLink
+          to="/sprechen"
+          class="flex flex-col gap-0.5 rounded-2xl border px-3.5 py-3 no-underline"
+          :class="day.kind === 'class' ? 'border-accent bg-accent-wash' : 'border-line bg-surface'"
+        >
+          <span class="text-lg leading-none" aria-hidden="true">🗣️</span>
+          <span class="text-[0.9rem] font-semibold" :class="day.kind === 'class' ? 'text-accent' : 'text-ink'">
+            Sprechen
+          </span>
+          <span class="font-mono text-[0.68rem] text-ink-3">
+            {{ day.kind === 'class' ? 'heute im Kurs · 20:30' : '3 Teile · Redemittel' }}
+          </span>
+        </NuxtLink>
+      </nav>
+
       <HowItWorks v-if="mounted" />
 
       <!-- One-time setup, dismissable forever -->
@@ -141,8 +171,6 @@ function go(delta: number) {
         </span>
       </ClientOnly>
       <span>Fortschritt wird nur auf diesem Gerät gespeichert.</span>
-      <NuxtLink to="/hoeren" class="text-accent">→ Hörverstehen: eigene Übungen mit Auswertung</NuxtLink>
-      <NuxtLink to="/sprechen" class="text-accent">→ Sprechen: die drei Teile + Redemittel (für den Kurs)</NuxtLink>
       <NuxtLink to="/kalender" class="text-accent">→ Der ganze Kalender: Wochen, Gates, Samstagsrampe</NuxtLink>
     </footer>
   </div>
