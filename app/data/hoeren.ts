@@ -1,5 +1,6 @@
 import type { Episode } from '~/types'
 import teil1 from './episodes/eigen-01-teil1.json'
+import teil2 from './episodes/eigen-01-teil2.json'
 import teil3 from './episodes/eigen-01-teil3.json'
 
 /**
@@ -14,9 +15,7 @@ import teil3 from './episodes/eigen-01-teil3.json'
  * learner's actual error profile (paraphrase, word-match, absolutizer,
  * negation, inference) rather than whatever a published test happens to contain.
  */
-// Teil 2 (Repair-Café, items 6–15) is written and synthesised; its items file
-// lands next and gets added here in one commit with its audio.
-export const EPISODES: Episode[] = [teil1, teil3] as Episode[]
+export const EPISODES: Episode[] = [teil1, teil2, teil3] as Episode[]
 
 export function episodeById(id: string): Episode | undefined {
   return EPISODES.find(e => e.id === id)

@@ -1,0 +1,82 @@
+{
+  "id": "eigen-01-teil2",
+  "title": "Repair-Café im Viertel",
+  "teil": "Übungstest E1 · Hörverstehen Teil 2",
+  "file": "eigen-01-teil2.mp3",
+  "seconds": 584,
+  "once": false,
+  "instructions": "Sie hören ein Gespräch, zweimal. Entscheiden Sie, ob die Aussage richtig oder falsch ist.",
+  "items": [
+    {
+      "n": 6,
+      "text": "Die Besucherinnen und Besucher legen bei der Reparatur selbst Hand an.",
+      "solution": "+",
+      "trap": "paraphrase",
+      "why": "Frau Brandes sagt, man repariere nicht für die Leute, sondern mit ihnen, und jeder schraube an seinem Gerät selber mit."
+    },
+    {
+      "n": 7,
+      "text": "Für jede Reparatur muss man einen festen Unkostenbeitrag von zehn Euro bezahlen.",
+      "solution": "−",
+      "trap": "wortgleichheit",
+      "why": "Das Wort Unkostenbeitrag fällt zwar, aber er ist freiwillig und geht in die Kaffeekasse; für die Reparatur nehmen sie kein Geld und es gibt keine feste Summe."
+    },
+    {
+      "n": 8,
+      "text": "Das Repair-Café findet jeden Samstag statt.",
+      "solution": "−",
+      "trap": "absolutizer",
+      "why": "Es findet nur am zweiten Samstag im Monat statt, und in den Sommerferien fällt es ganz aus."
+    },
+    {
+      "n": 9,
+      "text": "Große Haushaltsgeräte wie Waschmaschinen nimmt das Repair-Café nicht an.",
+      "solution": "+",
+      "trap": "negation",
+      "why": "Auf die Frage nach der Waschmaschine antwortet sie klar: Nein, die leider nicht; Waschmaschine, Kühlschrank und Herd nehmen sie aus Platzgründen nicht an."
+    },
+    {
+      "n": 10,
+      "text": "Inzwischen gibt es in allen Stadtteilen Bremens ein Repair-Café.",
+      "solution": "−",
+      "trap": "inferenz",
+      "why": "Sie widerspricht ausdrücklich mit Nein, das stimmt so nicht: Es sind nur zwei Stadtteile, Findorff und seit dem Frühjahr Walle."
+    },
+    {
+      "n": 11,
+      "text": "Wer auf den Anrufbeantworter spricht, bekommt später eine Antwort.",
+      "solution": "+",
+      "trap": "paraphrase",
+      "why": "Sie sagt, man solle einfach draufsprechen, man melde sich so bald wie möglich zurück."
+    },
+    {
+      "n": 12,
+      "text": "Alle Geräte, die mitgebracht werden, sind am Ende wieder in Ordnung.",
+      "solution": "−",
+      "trap": "absolutizer",
+      "why": "Nur ungefähr zwei von drei Sachen bekommt das Team wieder hin; mal fehlt ein Ersatzteil, mal lohnt sich die Reparatur nicht mehr."
+    },
+    {
+      "n": 13,
+      "text": "Wer mithelfen möchte, braucht keine handwerkliche Ausbildung.",
+      "solution": "+",
+      "trap": "paraphrase",
+      "why": "Auf die Frage nach dem gelernten Elektriker sagt sie Um Himmels willen, nein; die meisten hätten sich alles selbst beigebracht, und man könne auch Kuchen backen oder die Gäste begrüßen."
+    },
+    {
+      "n": 14,
+      "text": "Die Telefonleitung ist oft besetzt, weil so viele Leute anrufen.",
+      "solution": "−",
+      "trap": "wortgleichheit",
+      "why": "Besetzt heißt hier, dass dienstagnachmittags jemand im Büro sitzt; von einer belegten Leitung oder vielen Anrufen ist nie die Rede."
+    },
+    {
+      "n": 15,
+      "text": "Zurzeit fehlen dem Repair-Café vor allem Helferinnen und Helfer für Textilien.",
+      "solution": "+",
+      "trap": "inferenz",
+      "why": "Es fehlt an Leuten für die Nähmaschinen, Hosen und Jacken stapeln sich, während es bei den Elektrogeräten genug Hände gibt."
+    }
+  ],
+  "transcript": "Moderator: Guten Nachmittag, liebe Hörerinnen und Hörer. Bei uns im Studio sitzt heute Kerstin Brandes. Sie arbeitet ehrenamtlich im Repair-Café Findorff, hier bei uns in Bremen. Frau Brandes, schön, dass Sie da sind. Erklären Sie unseren Hörerinnen und Hörern doch bitte einmal: Was passiert bei Ihnen an so einem Nachmittag?\nKerstin Brandes: Ja, also, ganz einfach gesagt: Die Leute bringen ihre kaputten Sachen mit. Toaster, Lampen, Fahrräder, eine Hose mit einem Loch, was eben so kaputtgeht. Und bei uns sitzen dann Ehrenamtliche, die sich damit auskennen. Aber, und das ist uns wirklich wichtig: Wir reparieren das nicht für die Leute, sondern mit ihnen. Jeder schraubt an seinem Gerät selber mit, wir zeigen nur, wie es geht.\nModerator: Das heißt, ich gebe meinen Toaster nicht einfach ab und hole ihn eine Stunde später wieder?\nKerstin Brandes: Nee, nee. So läuft das nicht. Wer nur abgeben und zuschauen möchte, der ist bei uns eigentlich falsch. Die Idee ist ja, dass die Leute hinterher wissen, wie so ein Ding von innen aussieht.\nModerator: Und was kostet mich das dann?\nKerstin Brandes: Nichts. Für die Reparatur nehmen wir wirklich kein Geld. Wer möchte, kann einen kleinen Unkostenbeitrag in unsere Kaffeekasse werfen, davon bezahlen wir den Kaffee, den Kuchen und mal ein Ersatzteil. Aber das ist völlig freiwillig. Wir haben keine feste Summe, und es fragt auch keiner nach, wenn jemand nichts hineinlegt.\nModerator: Und wann findet das Ganze statt?\nKerstin Brandes: Am zweiten Samstag im Monat, von zehn bis vierzehn Uhr, im Gemeindehaus. Nur einmal im Monat also. In den Sommerferien machen wir Pause, da findet gar nichts statt, weil dann die halbe Mannschaft verreist ist.\nModerator: Kann ich denn alles mitbringen? Ich hätte da zum Beispiel eine Waschmaschine, die seit Wochen komische Geräusche macht.\nKerstin Brandes: Nein, die leider nicht. Große Geräte, also Waschmaschine, Kühlschrank, Herd, die nehmen wir nicht an. Das schaffen wir vom Platz her gar nicht, und tragen müsste man die ja auch noch. Aber alles, was man selbst schleppen kann, ist willkommen.\nModerator: Und klappt das dann auch? Geht am Ende des Nachmittags jedes Gerät wieder?\nKerstin Brandes: Ach, das wäre schön. Nein, ungefähr zwei von drei Sachen kriegen wir wieder hin, mehr nicht. Mal fehlt ein Ersatzteil, mal lohnt sich die Reparatur wirklich nicht mehr. Aber die Leute gehen wenigstens nach Hause und wissen, woran es gelegen hat.\nModerator: Ihr Repair-Café ist ja inzwischen ziemlich bekannt. Gibt es das mittlerweile in der ganzen Stadt?\nKerstin Brandes: Nein, das stimmt so nicht. Wir sind hier in Findorff, und seit dem Frühjahr gibt es noch eine zweite Gruppe in Walle. Zwei Stadtteile, mehr sind es nicht. Es melden sich aber ständig Leute aus anderen Vierteln, die so etwas aufbauen möchten. Wir haben sogar schon Anfragen von überregionalen Zeitungen bekommen, das hätten wir am Anfang nie gedacht.\nModerator: Und wenn sich jetzt jemand nach Ihrem Café erkundigen möchte, an wen wendet man sich da?\nKerstin Brandes: Unser Ansprechpartner ist Herr Öztürk. Er ist erreichbar unter unserer Nummer, die teilen wir Ihnen gleich noch mit. Allerdings, unser Telefon ist nur dienstagnachmittags besetzt, da sitzt dann jemand im Büro. Sonst läuft der Anrufbeantworter. Aber keine Sorge: einfach draufsprechen, wir melden uns so bald wie möglich zurück.\nModerator: Die Telefonnummer und die Adresse finden Sie, liebe Hörerinnen und Hörer, natürlich auch bei uns in der Redaktion. Frau Brandes, Sie suchen ja sicher immer neue Leute. Muss man denn gelernter Elektriker sein, um bei Ihnen mitzumachen?\nKerstin Brandes: Um Himmels willen, nein. Die meisten bei uns haben das nie gelernt, die haben sich das über die Jahre selbst beigebracht. Und schrauben muss man auch nicht unbedingt. Wer Kuchen backt oder die Leute an der Tür begrüßt und ihnen erklärt, wo sie sich anstellen, der hilft uns genauso.\nModerator: Woran fehlt es Ihnen denn im Moment am meisten?\nKerstin Brandes: An den Nähmaschinen. Bei den Elektrogeräten haben wir wirklich genug Hände, aber die Hosen und die Jacken stapeln sich bei uns. Wer also mit Nadel und Faden umgehen kann, der ist uns herzlich willkommen.\nModerator: Ein schöner Schlusssatz. Frau Brandes, vielen Dank, dass Sie bei uns waren.\nKerstin Brandes: Ich danke Ihnen. Und kommen Sie doch mal vorbei, mit Ihrem Toaster."
+}

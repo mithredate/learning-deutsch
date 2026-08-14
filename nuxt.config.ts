@@ -19,6 +19,12 @@ export default defineNuxtConfig({
         { charset: 'utf-8' },
         { name: 'viewport', content: 'width=device-width, initial-scale=1, viewport-fit=cover' },
         { name: 'description', content: 'Täglicher Lernplan für die telc-B1-Prüfung am 25.09.2026.' },
+        // Keep it out of search results. Deliberately NOT a robots.txt Disallow:
+        // a project site's robots.txt is ignored (only the domain root counts),
+        // and blocking the crawl would stop it ever reading this tag — a blocked
+        // URL can still be indexed from an inbound link, just without a snippet.
+        { name: 'robots', content: 'noindex, nofollow' },
+        { name: 'googlebot', content: 'noindex, nofollow' },
         // Two colours so the iOS status bar matches whichever theme is active.
         { name: 'theme-color', content: '#F6F7FA', media: '(prefers-color-scheme: light)' },
         { name: 'theme-color', content: '#0E1016', media: '(prefers-color-scheme: dark)' },
@@ -91,6 +97,7 @@ export default defineNuxtConfig({
         '/kalender',
         '/hoeren',
         '/hoeren/eigen-01-teil1',
+        '/hoeren/eigen-01-teil2',
         '/hoeren/eigen-01-teil3',
       ],
       failOnError: false,
