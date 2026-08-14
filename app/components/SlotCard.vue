@@ -1,13 +1,17 @@
 <script setup lang="ts">
-import type { Place, Slot } from '~/types'
+import type { Card, Place, Slot } from '~/types'
+import { episodeById } from '~/data/hoeren'
+import { useUebung } from '~/composables/useUebung'
 
 const props = defineProps<{
   slot: Slot
   needs?: string[]
   ticked: boolean
+  /** Already resolved by the page, so the rotation stays a page-level concern. */
+  cards?: Card[]
 }>()
 
-const emit = defineEmits<{ toggle: [] }>()
+const emit = defineEmits<{ toggle: []; miss: [cue: string] }>()
 
 const META: Record<Place, { icon: string; where: string; when: string }> = {
   gym: { icon: '🎧', where: 'Unterwegs', when: 'Gym · Weg · Warten' },
@@ -16,6 +20,15 @@ const META: Record<Place, { icon: string; where: string; when: string }> = {
 }
 
 const meta = computed(() => META[props.slot.place])
+
+const { hydrate, history, best } = useUebung()
+onMounted(hydrate)
+
+const episodes = computed(() =>
+  (props.slot.hoeren ?? []).map(id => episodeById(id)).filter(Boolean),
+)
+
+const mmss = (s: number) => `${Math.floor(s / 60)}:${String(s % 60).padStart(2, '0')}`
 </script>
 
 <template>
@@ -56,6 +69,39 @@ const meta = computed(() => META[props.slot.place])
           class="rounded-md border border-line-soft bg-surface-2 px-2 py-0.5 text-[0.76rem] text-ink-2"
         >{{ n }}</span>
       </div>
+
+      <!-- The listening this block is actually asking for. Tapping it opens the
+           sheet with the audio, the items and the solutions — no hunting. -->
+      <NuxtLink
+        v-for="ep in episodes"
+        :key="ep!.id"
+        :to="`/hoeren/${ep!.id}`"
+        class="flex flex-col gap-1.5 rounded-xl border border-accent bg-accent-wash px-3 py-3 no-underline"
+      >
+        <span class="flex items-baseline justify-between gap-2">
+          <span class="text-[0.9rem] font-semibold" style="color: var(--accent)">🎧 {{ ep!.title }}</span>
+          <ClientOnly>
+            <span
+              v-if="best(ep!.id)"
+              class="rounded-full bg-surface px-2 py-0.5 font-mono text-[0.68rem] tabular-nums"
+              :class="best(ep!.id)!.correct / best(ep!.id)!.total >= 0.6 ? 'text-good' : 'text-crit'"
+            >{{ best(ep!.id)!.correct }}/{{ best(ep!.id)!.total }}</span>
+          </ClientOnly>
+        </span>
+        <span class="font-mono text-[0.68rem] text-ink-3">
+          {{ ep!.teil }} · {{ mmss(ep!.seconds) }} · {{ ep!.items.length }} Aufgaben ·
+          {{ ep!.once ? 'einmal hören' : 'zweimal hören' }}
+        </span>
+        <ClientOnly>
+          <span v-if="history(ep!.id).length" class="font-mono text-[0.68rem] text-ink-3">
+            {{ history(ep!.id).length }}× gemacht — noch einmal zählt als neuer Versuch
+          </span>
+        </ClientOnly>
+      </NuxtLink>
+
+      <LocalAudio v-if="slot.dateien" />
+
+      <CardDrill v-if="cards?.length" :cards="cards" @miss="emit('miss', $event)" />
 
       <button
         type="button"

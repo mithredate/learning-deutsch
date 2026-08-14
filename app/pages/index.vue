@@ -2,6 +2,7 @@
 import { usePlan, deckFor, formatDay, daysUntilExam } from '~/composables/usePlan'
 import { studyDays } from '~/data/days'
 import { useProgress } from '~/composables/useProgress'
+import type { Slot } from '~/types'
 
 const { DAYS, index, day, isToday, minutes, jumpToToday, step } = usePlan()
 const { state, hydrate, isTicked, toggleSlot, dayTouched, setNote, missCard, dismissSetup } = useProgress()
@@ -13,7 +14,21 @@ onMounted(() => {
   mounted.value = true
 })
 
-const cards = computed(() => deckFor(day.value.deck, index.value))
+/**
+ * Cards belong to the block that asks for them. `karten: true` means „the day's
+ * own deck"; an explicit tag list overrides it (the Wortschatz evenings drill
+ * their own Themenfeld, not yesterday's leftovers).
+ */
+function cardsFor(slot: Slot) {
+  if (!slot.karten) return undefined
+  return deckFor(slot.karten === true ? day.value.deck : slot.karten, index.value)
+}
+
+/** Safety net: a day that has a deck but no block claiming it still gets drilled. */
+const orphanDeck = computed(() =>
+  day.value.slots.some(s => s.karten) ? [] : deckFor(day.value.deck, index.value),
+)
+
 const left = computed(() => daysUntilExam(day.value.date))
 
 const STUDY = studyDays()
@@ -169,7 +184,7 @@ function go(delta: number) {
         <h3 class="text-base text-crit">Zuerst: 5 Minuten Einrichtung, einmalig</h3>
         <ol class="flex list-decimal flex-col gap-1.5 pl-5 text-[0.89rem] text-ink-2">
           <li>Diese Seite auf den Home-Bildschirm legen — Teilen → „Zum Home-Bildschirm".</li>
-          <li>Die MP3 aus <code class="rounded bg-surface px-1 font-mono text-[0.8em]">audio/</code> per AirDrop aufs Handy, dann unten unter „Hören" hinzufügen.</li>
+          <li>Die MP3 aus <code class="rounded bg-surface px-1 font-mono text-[0.8em]">audio/</code> per AirDrop aufs Handy, dann im Sofa-Block unter „Deine Dateien" hinzufügen.</li>
           <li>Das Aufgabenblatt (ÜT4, S. 14–16) in „Dateien" ablegen.</li>
         </ol>
         <button
@@ -193,23 +208,28 @@ function go(delta: number) {
           :slot="slot"
           :needs="i === 0 ? day.needs : undefined"
           :ticked="isTicked(day.date, i)"
+          :cards="cardsFor(slot)"
           @toggle="toggleSlot(day.date, i)"
+          @miss="missCard"
         />
       </div>
 
+      <CardDrill v-if="mounted && orphanDeck.length" :cards="orphanDeck" @miss="missCard" />
+
       <section v-if="mounted && day.slots.length" class="flex flex-col gap-2 rounded-2xl border border-line bg-surface px-4 py-3.5">
-        <label class="eyebrow" for="note">Ergebnis oder Notiz</label>
-        <input
+        <label class="eyebrow" for="note">Notizen für heute</label>
+        <textarea
           id="note"
           v-model="note"
-          type="text"
-          placeholder="z. B. HV Teil 2: 7/10 — Absolutizer wieder übersehen"
-          class="w-full rounded-lg border border-line bg-surface-2 px-3 py-2.5 font-mono text-[0.88rem] text-ink"
-        >
+          rows="4"
+          placeholder="Ergebnisse, Wörter, Fragen an mich — alles, was du mir sagen willst.&#10;z. B. HV Teil 2: 7/10 — Absolutizer wieder übersehen&#10;„entwerten“ nie gehört&#10;Frage: wann damit, wann um … zu?"
+          class="w-full resize-y rounded-lg border border-line bg-surface-2 px-3 py-2.5 font-mono text-[0.85rem] leading-relaxed text-ink"
+        />
+        <p class="text-[0.75rem] leading-relaxed text-ink-3">
+          Bleibt stehen und kommt in den Bericht — pro Tag ein eigenes Feld.
+        </p>
       </section>
 
-      <CardDrill v-if="mounted" :cards="cards" @miss="missCard" />
-      <AudioShelf v-if="mounted" />
       <ReportPanel v-if="mounted" />
     </ClientOnly>
 

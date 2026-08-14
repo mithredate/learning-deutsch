@@ -81,14 +81,22 @@ function missed() {
       <button
         type="button"
         class="flex min-h-[11rem] w-full cursor-pointer flex-col items-center justify-center gap-3 px-4 py-6 text-center select-none"
-        :aria-label="flipped ? 'Antwort' : 'Antwort aufdecken'"
-        @click="flipped = true"
+        :aria-label="flipped ? 'Karte umdrehen' : 'Antwort aufdecken'"
+        @click="flipped = !flipped"
       >
         <span class="eyebrow">{{ TAG_NAMES[current.tag] }}</span>
         <template v-if="flipped">
+          <!-- The German word stays on top: that is what has to survive into the
+               exam. The English sits under it as the check that you actually
+               know it, not just that it looks familiar. -->
           <span class="copy text-[1.02rem] leading-snug font-semibold" v-html="current.answer" />
+          <span class="flex w-full items-start gap-2 rounded-xl bg-surface-2 px-3 py-2.5 text-left">
+            <span class="mt-0.5 rounded border border-line px-1 font-mono text-[0.6rem] tracking-wider text-ink-3">EN</span>
+            <span class="copy flex-1 text-[0.88rem] leading-relaxed text-ink-2" v-html="current.meaning" />
+          </span>
           <span v-if="current.example" class="copy text-[0.87rem] leading-relaxed text-ink-2 italic" v-html="current.example" />
           <span v-if="current.hint" class="text-[0.8rem] text-ink-3">{{ current.hint }}</span>
+          <span class="font-mono text-[0.68rem] text-ink-3">↺ {{ current.cue }}</span>
         </template>
         <template v-else>
           <span class="font-serif text-[1.45rem] leading-snug">{{ current.cue }}</span>

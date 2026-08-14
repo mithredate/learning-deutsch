@@ -7,8 +7,13 @@ import { EPISODES } from '~/data/hoeren'
 import { toISO, fromISO } from '~/composables/usePlan'
 
 const { state, dayTouched } = useProgress()
-const { attempts, hydrate } = useUebung()
+const { history, hydrate } = useUebung()
 onMounted(hydrate)
+
+/** Multi-line notes have to stay readable once they are pasted into chat. */
+function indent(text: string) {
+  return text.split('\n').map(l => `        → ${l}`).join('\n')
+}
 
 const open = ref(false)
 const copied = ref(false)
@@ -16,7 +21,8 @@ const box = ref<HTMLTextAreaElement | null>(null)
 
 const report = computed(() => {
   const today = toISO(new Date())
-  const past = DAYS.filter(d => d.date <= today)
+  // A note written ahead of a day still belongs in the report.
+  const past = DAYS.filter(d => d.date <= today || state.notes[d.date])
   const done = past.filter(d => dayTouched(d.date)).length
   const left = Math.round((fromISO(EXAM_DATE).getTime() - fromISO(today).getTime()) / 86_400_000)
 
@@ -28,21 +34,27 @@ const report = computed(() => {
     ...past.map(d => {
       const tick = dayTouched(d.date) ? '[x]' : '[ ]'
       const note = state.notes[d.date]
-      return `${tick} ${d.date}  ${d.headline}${note ? `\n        → ${note}` : ''}`
+      return `${tick} ${d.date}  ${d.headline}${note ? `\n${indent(note)}` : ''}`
     }),
   ]
 
-  const sittings = EPISODES.map(e => ({ e, a: attempts[e.id] })).filter(x => x.a)
-  if (sittings.length) {
+  // Every sitting, not just the last one. A 2/5 followed by a 5/5 on the same
+  // material is a different message than a single 5/5 — and the first number is
+  // the one that says which words were actually missing.
+  const worked = EPISODES.map(e => ({ e, runs: history(e.id) })).filter(x => x.runs.length)
+  if (worked.length) {
     lines.push('', '## Hörverstehen-Sitzungen')
-    for (const { e, a } of sittings) {
-      const wrong = e.items
-        .filter(i => a!.answers[i.n] !== i.solution)
-        .map(i => `${i.n} (${i.trap})`)
-      lines.push(
-        `${a!.at}  ${e.teil} — ${a!.correct}/${a!.total}` +
-        (wrong.length ? `\n        falsch: ${wrong.join(', ')}` : ''),
-      )
+    for (const { e, runs } of worked) {
+      lines.push(`${e.teil} — ${e.title}  (${runs.length}× gemacht)`)
+      runs.forEach((a, i) => {
+        const wrong = e.items
+          .filter(item => a.answers[item.n] !== item.solution)
+          .map(item => `${item.n} (${item.trap})`)
+        lines.push(
+          `    Versuch ${i + 1}  ${a.at.replace('T', ' ')}  ${a.correct}/${a.total}` +
+          (wrong.length ? `\n        falsch: ${wrong.join(', ')}` : '  — alles richtig'),
+        )
+      })
     }
   }
 
@@ -107,8 +119,8 @@ async function copy() {
         {{ copied ? 'kopiert ✓' : 'kopieren' }}
       </button>
       <p class="text-[0.78rem] leading-relaxed text-ink-3">
-        Kopieren und mir in den Chat einfügen. Dann sehe ich, welche Karten hängen
-        und welche Tage gefallen sind — ohne dass du es erzählen musst.
+        Kopieren und mir in den Chat einfügen. Enthält <b>jeden</b> Versuch, deine Notizen
+        und die Karten, die immer wieder zurückkommen — ohne dass du es erzählen musst.
       </p>
     </div>
   </section>

@@ -2,6 +2,9 @@ export type CardTag =
   | 'v-arbeit'
   | 'v-buero'
   | 'v-ansage'
+  | 'v-wohnen'
+  | 'v-gesund'
+  | 'v-reise'
   | 'koll'
   | 'gramm'
   | 'falle'
@@ -11,7 +14,14 @@ export interface Card {
   tag: CardTag
   /** Front of the card. Never the answer in disguise — see NOTES.md on difficulty. */
   cue: string
+  /** The German side: the word, the correction, the rule. */
   answer: string
+  /**
+   * Plain English. The German answer alone is useless on a word you have never
+   * met — you cannot check yourself against an explanation you also don't
+   * understand. Every card carries one, including the grammar cards.
+   */
+  meaning: string
   example?: string
   /** Where this came from: a ledger number, an exam item. Keeps drills honest. */
   hint?: string
@@ -25,6 +35,17 @@ export interface Slot {
   what: string
   note?: string
   minutes: number
+  /**
+   * The work itself, carried by the block that asks for it. A block that says
+   * „Teil 2, mit Uhr" and then makes you hunt for the audio at the bottom of the
+   * page is a block you skip — so the material lives here, not in a footer.
+   */
+  /** Card round: the tags to drill, or `true` for the day's own deck. */
+  karten?: CardTag[] | true
+  /** Episode ids from `data/hoeren` to sit and do in this block. */
+  hoeren?: string[]
+  /** Show the device's own imported MP3s here (licensed audio, never in the repo). */
+  dateien?: boolean
 }
 
 export type DayKind = 'class' | 'day' | 'big' | 'exam' | 'rest'

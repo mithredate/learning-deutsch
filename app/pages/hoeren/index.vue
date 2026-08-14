@@ -4,7 +4,7 @@ import { useUebung } from '~/composables/useUebung'
 
 useHead({ title: 'Hörverstehen' })
 
-const { attempts, hydrate } = useUebung()
+const { hydrate, history, best } = useUebung()
 onMounted(hydrate)
 
 const totalItems = EPISODES.reduce((n, e) => n + e.items.length, 0)
@@ -36,13 +36,17 @@ const totalItems = EPISODES.reduce((n, e) => n + e.items.length, 0)
       <span class="flex items-baseline justify-between gap-3">
         <span class="font-serif text-[1.08rem] font-semibold text-ink">{{ ep.title }}</span>
         <ClientOnly>
-          <span
-            v-if="attempts[ep.id]"
-            class="rounded-full px-2 py-0.5 font-mono text-[0.7rem] tabular-nums"
-            :class="attempts[ep.id]!.correct / attempts[ep.id]!.total >= 0.6
-              ? 'bg-good-wash text-good'
-              : 'bg-crit-wash text-crit'"
-          >{{ attempts[ep.id]!.correct }}/{{ attempts[ep.id]!.total }}</span>
+          <span v-if="best(ep.id)" class="flex items-baseline gap-1.5">
+            <span v-if="history(ep.id).length > 1" class="font-mono text-[0.66rem] tabular-nums text-ink-3">
+              {{ history(ep.id).length }} Versuche
+            </span>
+            <span
+              class="rounded-full px-2 py-0.5 font-mono text-[0.7rem] tabular-nums"
+              :class="best(ep.id)!.correct / best(ep.id)!.total >= 0.6
+                ? 'bg-good-wash text-good'
+                : 'bg-crit-wash text-crit'"
+            >{{ best(ep.id)!.correct }}/{{ best(ep.id)!.total }}</span>
+          </span>
         </ClientOnly>
       </span>
       <span class="font-mono text-[0.7rem] text-ink-3">{{ ep.teil }}</span>

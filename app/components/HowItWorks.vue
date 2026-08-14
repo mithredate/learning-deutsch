@@ -34,12 +34,12 @@ const STEPS = [
   {
     icon: '🎧',
     title: 'Unterwegs — 10–15 min',
-    body: 'At the gym, on the way, waiting anywhere. Do the flashcard deck further down this page: read the front, tap to flip, then mark <b>saß ✓</b> or <b>nochmal</b>. Anything you mark <b>nochmal</b> comes back before the round ends.',
+    body: 'At the gym, on the way, waiting anywhere. The flashcards sit <b>inside</b> this block — read the German front, tap to flip. The back gives you the German explanation <i>and</i> the English meaning, then you mark <b>saß ✓</b> or <b>nochmal</b>. Anything marked <b>nochmal</b> comes back before the round ends.',
   },
   {
     icon: '🛋️',
     title: 'Sofa, 21:00 — 25–35 min',
-    body: 'The one block that never moves. Do whatever the card says: a listening sitting, vocabulary, grammar, or a letter. When it says <i>schreib mir</i>, that means message me in chat — from your phone is fine.',
+    body: 'The one block that never moves, and it carries its own material: if tonight is a listening sitting, the exercise and the audio are right there in the block — nothing to go hunting for. When it says <i>schreib mir</i>, that means message me in chat — from your phone is fine.',
   },
   {
     icon: '🌙',
@@ -86,15 +86,20 @@ const STEPS = [
       </ol>
 
       <div class="flex flex-col gap-2 rounded-xl bg-surface-2 px-3.5 py-3">
-        <span class="eyebrow">The other two things on this page</span>
+        <span class="eyebrow">The rest of the page</span>
         <p class="text-[0.85rem] leading-relaxed text-ink-2">
-          <b>🎧 Hören</b> opens the listening exercises: play the audio, answer
-          <i>richtig</i> / <i>falsch</i>, then tap <b>Auswerten</b> to score yourself
-          against the 60 % pass mark. It tells you which trap each miss was.
+          <b>Doing an exercise twice is the point.</b> Tap <b>noch einmal versuchen</b> and the
+          old score is kept, not replaced — you see 2/5 → 5/5 as a list, which is the only
+          real evidence the material stuck.
         </p>
         <p class="text-[0.85rem] leading-relaxed text-ink-2">
-          <b>📤 Bericht für Claude</b> copies your progress as text. Paste it into chat and
-          I can see what's sticking without you having to describe it.
+          <b>Notizen für heute</b> is a free field per day: results, words you didn't know,
+          questions for me. It stays on that day and goes into the report.
+        </p>
+        <p class="text-[0.85rem] leading-relaxed text-ink-2">
+          <b>📤 Bericht für Claude</b> copies all of it as text — every attempt, every note,
+          every card that keeps coming back. Paste it into chat and I can see what's
+          sticking without you having to describe it.
         </p>
       </div>
 

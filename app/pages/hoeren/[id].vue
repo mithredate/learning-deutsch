@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { episodeById } from '~/data/hoeren'
-import { useUebung } from '~/composables/useUebung'
+import { useUebung, attemptDate, attemptTime } from '~/composables/useUebung'
 import { usePlaybackMemory } from '~/composables/useLocalAudio'
 import { TRAP_NAMES } from '~/types'
 
@@ -10,7 +10,7 @@ if (!episode) throw createError({ statusCode: 404, statusMessage: 'Übung nicht 
 
 useHead({ title: `${episode.title} — Hörverstehen` })
 
-const { attempts, hydrate, save, clear } = useUebung()
+const { hydrate, save, history, best, forget } = useUebung()
 const memory = usePlaybackMemory()
 const base = useRuntimeConfig().app.baseURL
 
@@ -19,9 +19,12 @@ const answers = reactive<Record<number, '+' | '−'>>({})
 const evaluated = ref(false)
 const showTranscript = ref(false)
 
+const sittings = computed(() => history(episode.id))
+const bestRun = computed(() => best(episode.id))
+
 onMounted(() => {
   hydrate()
-  const prior = attempts[episode.id]
+  const prior = sittings.value.at(-1)
   if (prior) {
     Object.assign(answers, prior.answers)
     evaluated.value = true
@@ -44,15 +47,18 @@ function evaluate() {
     answers: { ...answers },
     correct: correct.value,
     total: episode.items.length,
-    at: new Date().toISOString().slice(0, 10),
   })
 }
 
+/**
+ * Clears the sheet, not the record. The previous sitting stays in the history —
+ * a second run is only worth anything next to the first one.
+ */
 function retry() {
   for (const k of Object.keys(answers)) delete answers[Number(k)]
   evaluated.value = false
   showTranscript.value = false
-  clear(episode.id)
+  window.scrollTo({ top: 0 })
 }
 
 function remember() {
@@ -79,6 +85,15 @@ function nudge(seconds: number) {
         </span>
       </span>
     </header>
+
+    <ClientOnly>
+      <p
+        v-if="!evaluated && sittings.length"
+        class="rounded-xl border border-line bg-surface-2 px-3 py-2.5 font-mono text-[0.75rem] tabular-nums text-ink-2"
+      >
+        Versuch {{ sittings.length + 1 }} · zuletzt {{ sittings.at(-1)!.correct }}/{{ sittings.at(-1)!.total }}
+      </p>
+    </ClientOnly>
 
     <section class="flex flex-col gap-2 rounded-2xl border border-line bg-surface p-4" :style="{ boxShadow: 'var(--shadow)' }">
       <audio
@@ -179,6 +194,41 @@ function nudge(seconds: number) {
           {{ percent }} % · Bestehensgrenze 60 %
         </span>
       </div>
+
+      <!-- Every sitting, oldest first. The shape of the column is the point:
+           2/5 → 5/5 is progress, 5/5 → 5/5 on the same day is recall. -->
+      <section v-if="sittings.length" class="flex flex-col gap-2 rounded-2xl border border-line bg-surface px-4 py-3.5">
+        <span class="flex items-baseline justify-between gap-2">
+          <span class="eyebrow">Versuche</span>
+          <button type="button" class="font-mono text-[0.68rem] text-ink-3" @click="forget(episode.id)">
+            Verlauf löschen
+          </button>
+        </span>
+        <ol class="flex list-none flex-col gap-1.5 p-0">
+          <li
+            v-for="(a, i) in sittings"
+            :key="a.at + i"
+            class="flex items-baseline gap-2.5 rounded-lg bg-surface-2 px-3 py-2"
+          >
+            <span class="font-mono text-[0.72rem] tabular-nums text-ink-3">{{ i + 1 }}.</span>
+            <span class="flex-1 font-mono text-[0.72rem] tabular-nums text-ink-3">
+              {{ attemptDate(a.at) }}<template v-if="attemptTime(a.at)"> · {{ attemptTime(a.at) }}</template>
+            </span>
+            <span
+              v-if="i > 0 && a.correct !== sittings[i - 1]!.correct"
+              class="font-mono text-[0.7rem] tabular-nums"
+              :class="a.correct > sittings[i - 1]!.correct ? 'text-good' : 'text-crit'"
+            >{{ a.correct > sittings[i - 1]!.correct ? '+' : '' }}{{ a.correct - sittings[i - 1]!.correct }}</span>
+            <span
+              class="font-mono text-[0.78rem] font-semibold tabular-nums"
+              :class="a.correct / a.total >= 0.6 ? 'text-good' : 'text-crit'"
+            >{{ a.correct }}/{{ a.total }}</span>
+          </li>
+        </ol>
+        <p v-if="sittings.length > 1 && bestRun" class="font-mono text-[0.7rem] text-ink-3">
+          bestes Ergebnis: {{ bestRun.correct }}/{{ bestRun.total }} am {{ attemptDate(bestRun.at) }}
+        </p>
+      </section>
 
       <button
         type="button"
