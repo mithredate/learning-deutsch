@@ -1,0 +1,47 @@
+{
+  "id": "eigen-01-teil1",
+  "title": "Arbeit & Beruf",
+  "teil": "Übungstest E1 · Hörverstehen Teil 1",
+  "file": "eigen-01-teil1.mp3",
+  "seconds": 185,
+  "once": true,
+  "instructions": "Sie hören fünf kurze Texte, jeden nur einmal. Entscheiden Sie, ob die Aussage richtig oder falsch ist.",
+  "items": [
+    {
+      "n": 1,
+      "text": "Die Frau hat kaum Einfluss darauf, wann sie frei hat.",
+      "solution": "+",
+      "trap": "paraphrase",
+      "why": "Kein Wort aus der Aussage kommt im Text vor; entscheidend ist der Sinn von „das entscheidet der Dienstplan, nicht ich“ und „alles andere richtet sich eben danach“."
+    },
+    {
+      "n": 2,
+      "text": "Der Mann hat die feste Arbeitszeit abgeschafft, weil er Geld sparen wollte.",
+      "solution": "−",
+      "trap": "wortgleichheit",
+      "why": "„Abgeschafft“ und „Geld sparen“ stehen zwar beide im Text, aber er sagt „Manche dachten, ich will damit Geld sparen. Aber mir ging es um etwas anderes“ – der Grund waren die Kinder."
+    },
+    {
+      "n": 3,
+      "text": "Fast alle Kunden sind am Telefon frech zu ihr.",
+      "solution": "−",
+      "trap": "absolutizer",
+      "why": "Sie schränkt selbst ein: „vielleicht zwei oder drei am Tag – bei sechzig Gesprächen“ und „die meisten sind völlig normal“."
+    },
+    {
+      "n": 4,
+      "text": "Er wurde in seinem Praktikum als billige Arbeitskraft ausgenutzt.",
+      "solution": "−",
+      "trap": "negation",
+      "why": "Er nennt das Vorurteil nur, um es zu verneinen: „Nein, so war das bei mir überhaupt nicht“ – er hatte einen Ansprechpartner und eigene Aufgaben."
+    },
+    {
+      "n": 5,
+      "text": "Die Frau arbeitet in einem Betrieb, in dem produziert wird.",
+      "solution": "+",
+      "trap": "inferenz",
+      "why": "Das Wort „Fabrik“ fällt nie; man muss aus „die Halle steht still“ und „die Maschinen sind aus“ auf einen Produktionsbetrieb schließen."
+    }
+  ],
+  "transcript": "Nummer eins (Pflegekraft, w):\nMein Mann sagt manchmal, ich lebe im Kalender der Klinik. Na ja, er hat recht. Wann ich schlafe, wann wir Freunde einladen, wann wir in den Urlaub fahren – das entscheidet der Dienstplan, nicht ich. Ähm, sogar Geburtstage verschieben wir manchmal. Der Ablauf auf der Station ist festgelegt, und alles andere richtet sich eben danach.\n\nNummer zwei (Betriebsinhaber, m):\nAlso, wir haben letztes Jahr die Kernarbeitszeit abgeschafft. Jeder kommt jetzt, wann er will – Hauptsache, die Arbeit wird fertig. Manche dachten, ich will damit Geld sparen. Aber mir ging es um etwas anderes: Die Leute sollen morgens ihre Kinder in die Kita bringen können. An der Stundenzahl hat sich nichts geändert, die ist genau gleich geblieben.\n\nNummer drei (Kundenservice, w):\nÄhm, ja, manche Kunden werden am Telefon richtig frech, das gebe ich zu. Aber das sind vielleicht zwei oder drei am Tag – bei sechzig Gesprächen. Die meisten sind völlig normal. Schlimmer finde ich ehrlich gesagt, wenn die Leitung lange besetzt war und die Leute schon wütend sind, bevor ich überhaupt guten Tag sagen kann.\n\nNummer vier (Berufseinsteiger, m):\nPraktikum? Na ja, viele sagen ja, Praktikanten werden nur ausgenutzt – Kaffee kochen, kopieren, sonst nichts. Nein, so war das bei mir überhaupt nicht. Ich hatte vom ersten Tag an einen festen Ansprechpartner, und ab der zweiten Woche habe ich meine eigenen Kundenmails beantwortet. Ich würde es sofort wieder machen.\n\nNummer fünf (Produktion, w):\nAlso, am Donnerstag ist bei uns nichts wie sonst: Die Halle steht still, die Maschinen sind aus, und alle sitzen in der Kantine. Die Versammlung findet nur zweimal im Jahr statt, und da erfahren wir endlich, was die Geschäftsführung wirklich plant. Danach beschäftigt uns das noch wochenlang in den Pausen."
+}

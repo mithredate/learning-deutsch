@@ -2,9 +2,13 @@
 import { DAYS, EXAM_DATE } from '~/data/days'
 import { CARDS, TAG_NAMES } from '~/data/cards'
 import { useProgress } from '~/composables/useProgress'
+import { useUebung } from '~/composables/useUebung'
+import { EPISODES } from '~/data/hoeren'
 import { toISO, fromISO } from '~/composables/usePlan'
 
 const { state, dayTouched } = useProgress()
+const { attempts, hydrate } = useUebung()
+onMounted(hydrate)
 
 const open = ref(false)
 const copied = ref(false)
@@ -27,6 +31,20 @@ const report = computed(() => {
       return `${tick} ${d.date}  ${d.headline}${note ? `\n        → ${note}` : ''}`
     }),
   ]
+
+  const sittings = EPISODES.map(e => ({ e, a: attempts[e.id] })).filter(x => x.a)
+  if (sittings.length) {
+    lines.push('', '## Hörverstehen-Sitzungen')
+    for (const { e, a } of sittings) {
+      const wrong = e.items
+        .filter(i => a!.answers[i.n] !== i.solution)
+        .map(i => `${i.n} (${i.trap})`)
+      lines.push(
+        `${a!.at}  ${e.teil} — ${a!.correct}/${a!.total}` +
+        (wrong.length ? `\n        falsch: ${wrong.join(', ')}` : ''),
+      )
+    }
+  }
 
   const stuck = CARDS
     .map(c => ({ card: c, n: state.misses[c.cue] ?? 0 }))

@@ -27,12 +27,28 @@ starts at the "what should I do tonight?" moment.
 app/
   data/days.ts        34 study days — the plan itself
   data/cards.ts       the card bank: every entry is a real Übungstest 4 miss
-  data/episodes.ts    original Hörverstehen material (see Audio below)
-  composables/        progress (localStorage), plan navigation, offline audio
+  data/hoeren.ts      the listening exercises
+  data/episodes/      one JSON per exercise: items, solutions, traps, transcript
+  composables/        progress · plan navigation · offline audio · sittings
   components/         SlotCard · CardDrill · AudioShelf · ReportPanel
-  pages/              index (Tageskarte) · kalender (weeks, gates, ramp)
+  pages/              index (Tageskarte) · kalender · hoeren/[id] (exercise)
+public/audio/         original MP3s, runtime-cached by the service worker
 scripts/icons.ts      PNG icon generator — no image dependency, just zlib
 ```
+
+## Hörverstehen
+
+`/hoeren` carries full listening exercises: audio, the printed richtig/falsch
+statements, scoring against the 60 % pass bar, and per-item feedback naming
+*which distractor* the item was built on — paraphrase, Wortgleichheit,
+Absolutizer, Verneinung, Inferenz. The transcript unlocks after scoring.
+
+Writing our own material rather than using a published test is the point: the
+distractors are engineered against this learner's measured error profile instead
+of whatever a Verlag happened to include.
+
+Audio is **not** precached — the shell is, but MP3s are `CacheFirst` at runtime.
+Play a file once while online and it stays available offline.
 
 ## Audio
 

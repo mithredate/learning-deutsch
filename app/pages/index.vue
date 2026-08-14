@@ -80,6 +80,8 @@ function go(delta: number) {
         </div>
       </header>
 
+      <HowItWorks v-if="mounted" />
+
       <!-- One-time setup, dismissable forever -->
       <section
         v-if="mounted && day.setup && !state.setupDone"
@@ -139,6 +141,7 @@ function go(delta: number) {
         </span>
       </ClientOnly>
       <span>Fortschritt wird nur auf diesem Gerät gespeichert.</span>
+      <NuxtLink to="/hoeren" class="text-accent">→ Hörverstehen: eigene Übungen mit Auswertung</NuxtLink>
       <NuxtLink to="/kalender" class="text-accent">→ Der ganze Kalender: Wochen, Gates, Samstagsrampe</NuxtLink>
     </footer>
   </div>

@@ -82,6 +82,18 @@ export default defineNuxtConfig({
   },
 
   nitro: {
-    prerender: { crawlLinks: true, routes: ['/', '/kalender'], failOnError: false },
+    prerender: {
+      crawlLinks: true,
+      // Dynamic /hoeren/[id] routes are listed explicitly so a broken link in the
+      // index page can never silently drop an exercise from the build.
+      routes: [
+        '/',
+        '/kalender',
+        '/hoeren',
+        '/hoeren/eigen-01-teil1',
+        '/hoeren/eigen-01-teil3',
+      ],
+      failOnError: false,
+    },
   },
 })

@@ -1,0 +1,47 @@
+{
+  "id": "eigen-01-teil3",
+  "title": "Fünf Durchsagen",
+  "teil": "Übungstest E1 · Hörverstehen Teil 3",
+  "file": "eigen-01-teil3.mp3",
+  "seconds": 390,
+  "once": false,
+  "instructions": "Sie hören fünf Durchsagen, jede zweimal. Entscheiden Sie, ob die Aussage richtig oder falsch ist.",
+  "items": [
+    {
+      "n": 16,
+      "text": "Kunden des Kaufhauses parken im Parkhaus immer kostenlos.",
+      "solution": "−",
+      "trap": "absolutizer",
+      "why": "Die Durchsage sagt „die ersten zwei Stunden kostenlos“ und danach „einen Euro fünfzig“ pro Stunde – „immer“ macht die Aussage falsch."
+    },
+    {
+      "n": 17,
+      "text": "Ab Sonntagabend soll die Strecke wieder befahrbar sein.",
+      "solution": "+",
+      "trap": "detail",
+      "why": "Die Zeitangabe kommt nur einmal: „am Sonntag gegen zweiundzwanzig Uhr wieder aufgehoben“ – aufgehobene Sperrung heißt wieder befahrbar."
+    },
+    {
+      "n": 18,
+      "text": "Wer einen Sitzplatz im Wagen zwei reserviert hat, muss sich einen anderen Platz suchen.",
+      "solution": "+",
+      "trap": "inferenz",
+      "why": "Wagen zwei wird nicht genannt; man muss aus „die Wagen eins bis drei fehlen“ und „Reservierungen in diesen Wagen gelten nicht“ schließen."
+    },
+    {
+      "n": 19,
+      "text": "Den gefundenen Schlüsselbund kann man an der Kasse abholen.",
+      "solution": "−",
+      "trap": "negation",
+      "why": "Die Verneinung entscheidet: „Er liegt nicht an der Kasse, sondern im Büro im ersten Stock.“"
+    },
+    {
+      "n": 20,
+      "text": "Bei den warmen Gerichten gibt es heute Abend noch eine große Auswahl.",
+      "solution": "−",
+      "trap": "wortgleichheit",
+      "why": "„Eine große Auswahl“ hört man wörtlich, aber nur zum Salatbüfett; von den drei Tagesgerichten ist „nur noch das vegetarische Gericht zu haben“."
+    }
+  ],
+  "transcript": "16 · Kaufhaus\nSehr geehrte Kundinnen und Kunden, eine wichtige Durchsage: Der Fahrer eines silbernen Kombis mit dem Kennzeichen K, V, B, drei vier sieben versperrt mit seinem Wagen die Einfahrt zu unserem Lieferhof. Wir bitten ihn, das Fahrzeug umgehend zu entfernen. Für alle anderen ein Hinweis: In unserem Parkhaus im Untergeschoss parken Sie als Kunde die ersten zwei Stunden kostenlos. Danach kostet jede angefangene Stunde einen Euro fünfzig.\n\n17 · Verkehrsmeldung im Radio\nUnd nun die Verkehrslage. Auf der Autobahn A sechs zwischen Sinsheim und Wiesloch ist die Fahrbahn in Richtung Heidelberg wegen Brückenarbeiten voll gesperrt. Die Umleitung über die Landstraße ist ausgeschildert; ausgenommen sind nur die Anwohner. Nach Auskunft der Straßenmeisterei soll die Sperrung am Sonntag gegen zweiundzwanzig Uhr wieder aufgehoben werden. Rechnen Sie bis dahin mit Wartezeiten von bis zu vierzig Minuten.\n\n18 · Bahnhof, Bahnsteigansage\nInformation zum ICE 592 nach Hamburg-Altona, planmäßige Abfahrt vierzehn Uhr zwölf: Der Zug hat heute etwa fünfundzwanzig Minuten Verspätung. Außerdem fehlen die Wagen eins bis drei; Reservierungen in diesen Wagen gelten nicht. Der Zug ist bereits stark besetzt. Reisende mit Anschluss nach Kassel erkundigen sich bitte am Serviceschalter nach einer späteren Verbindung.\n\n19 · Schwimmbad, Schließungsansage\nLiebe Gäste, wir schließen heute um einundzwanzig Uhr. Bitte verlassen Sie jetzt das Wasser und benutzen Sie anschließend die Duschen. Die Umkleiden werden um Viertel vor neun abgeschlossen. Und noch ein Hinweis: Am Beckenrand wurde ein Schlüsselbund gefunden. Er liegt nicht an der Kasse, sondern im Büro im ersten Stock. Der Besitzer meldet sich bitte noch heute dort.\n\n20 · Restaurant\nLiebe Gäste, ein Hinweis aus der Küche: Unsere warme Küche endet heute bereits um neunzehn Uhr, weil im Nebensaal ab zwanzig Uhr eine private Feier stattfindet. Von den drei Tagesgerichten ist leider nur noch das vegetarische Gericht zu haben. An unserem Salatbüfett erwartet Sie aber weiterhin eine große Auswahl. Die Tische am Fenster sind heute Abend alle besetzt."
+}

@@ -42,12 +42,37 @@ export interface Day {
   setup?: boolean
 }
 
+/** The distractor a statement is built on — named so a miss teaches a category. */
+export type Trap = 'paraphrase' | 'wortgleichheit' | 'absolutizer' | 'negation' | 'inferenz' | 'detail'
+
+export interface EpisodeItem {
+  n: number
+  text: string
+  /** '+' = richtig, '−' = falsch (U+2212). */
+  solution: '+' | '−'
+  trap: Trap
+  why: string
+}
+
 export interface Episode {
   id: string
   title: string
   teil: string
-  /** Path under public/audio. Original material only — nothing licensed. */
+  /** Filename under public/audio. Original material only — nothing licensed. */
   file: string
   seconds: number
-  note?: string
+  /** telc Teil 1 is heard once; Teil 2 and 3 twice. */
+  once: boolean
+  instructions: string
+  items: EpisodeItem[]
+  transcript: string
+}
+
+export const TRAP_NAMES: Record<Trap, string> = {
+  paraphrase: 'Paraphrase',
+  wortgleichheit: 'Wortgleichheit',
+  absolutizer: 'Absolutizer',
+  negation: 'Verneinung',
+  inferenz: 'Inferenz',
+  detail: 'Detail',
 }
