@@ -142,6 +142,7 @@ function go(delta: number) {
       </ClientOnly>
       <span>Fortschritt wird nur auf diesem Gerät gespeichert.</span>
       <NuxtLink to="/hoeren" class="text-accent">→ Hörverstehen: eigene Übungen mit Auswertung</NuxtLink>
+      <NuxtLink to="/sprechen" class="text-accent">→ Sprechen: die drei Teile + Redemittel (für den Kurs)</NuxtLink>
       <NuxtLink to="/kalender" class="text-accent">→ Der ganze Kalender: Wochen, Gates, Samstagsrampe</NuxtLink>
     </footer>
   </div>

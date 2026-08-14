@@ -95,6 +95,7 @@ export default defineNuxtConfig({
       routes: [
         '/',
         '/kalender',
+        '/sprechen',
         '/hoeren',
         '/hoeren/eigen-01-teil1',
         '/hoeren/eigen-01-teil2',
