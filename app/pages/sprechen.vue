@@ -78,9 +78,14 @@ const toggle = (key: string) => (openBlocks.value[key] = !openBlocks.value[key])
             v-if="openBlocks[`${teil.n}-${block.label}`]"
             class="flex list-none flex-col gap-1.5 border-t border-line-soft px-3.5 py-3"
           >
-            <li v-for="line in block.lines" :key="line" class="text-[0.89rem] leading-relaxed text-ink-2">
-              {{ line }}
-            </li>
+            <!-- v-html: Redemittel carry inline <b>/<i> to mark the part that has
+                 to be right (case, verb position). Static authored data, no input. -->
+            <li
+              v-for="line in block.lines"
+              :key="line"
+              class="copy text-[0.89rem] leading-relaxed text-ink-2"
+              v-html="line"
+            />
           </ul>
         </div>
 

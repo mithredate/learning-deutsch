@@ -53,6 +53,12 @@ export interface Day {
   deck: CardTag[]
   /** Course evenings only: tonight's Sprechen Teil 2 topic. */
   thema?: Thema
+  /**
+   * Course evenings only: tonight's Teil 3 planning task, phrased as the exam
+   * phrases it. Chosen to sit next to the same evening's Teil 2 topic, so one
+   * word field carries both halves of the speaking hour.
+   */
+  aufgabe?: string
   /** Shows the one-time setup banner. */
   setup?: boolean
 }

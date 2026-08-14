@@ -108,11 +108,37 @@ export const TEILE: Teil[] = [
     ],
     blocks: [
       {
+        label: 'Das Gerüst — diese Reihenfolge, jedes Mal',
+        lines: [
+          '① Auf dem Bild sehe ich <b>einen</b> Mann / <b>eine</b> Frau. Er/Sie heißt …',
+          '① Er/Sie ist … Jahre alt und arbeitet als … Er/Sie trägt …',
+          '① Das Foto wurde wahrscheinlich in/im … aufgenommen. Er/Sie sieht … aus.',
+          '② <b>Es geht um das Thema</b> „…" — <i>nicht</i> „Das Bild berichtet uns vom Thema".',
+          '② Ich habe einen kurzen Text gelesen, der <b>die Meinung von</b> … enthält.',
+          '② Darin <b>sagt er/sie, dass</b> … <i>(Verb ans Ende!)</i>. Außerdem erwähnt er/sie, dass …',
+          '③ Ich sehe das ähnlich / anders, denn … · Meiner Meinung nach …',
+          '③ <b>Aus eigener Erfahrung kann ich sagen:</b> … <i>(ein konkretes Beispiel)</i>',
+          '④ Was denkst du darüber? Ich würde gerne deine Meinung hören.',
+        ],
+      },
+      {
         label: 'Die Karte beschreiben',
         lines: [
           'Auf meiner Karte geht es um …',
           'Hier steht, dass …',
           'In meinem Text wird gesagt, dass …',
+        ],
+      },
+      {
+        label: 'Nicht sagen — verbrauchte Hüllen',
+        lines: [
+          '✗ „Ich denke, das ist eine persönliche Angelegenheit" — im Kursmaterial 10×.',
+          '✗ „Natürlich ist dieses Thema von Person zu Person unterschiedlich" — 8×.',
+          '✗ „Das Bild berichtet uns vom Thema …" — falsch <i>und</i> 50×.',
+          '✓ Ich finde das nachvollziehbar, aber …',
+          '✓ Da bin ich ganz anderer Meinung, weil …',
+          '✓ Das kommt für mich darauf an, ob …',
+          '✓ Bei diesem Thema gibt es zwei Seiten: einerseits … andererseits …',
         ],
       },
       {
@@ -147,6 +173,10 @@ export const TEILE: Teil[] = [
       '„dass" schickt das Verb ans Ende: <b>… dass er im Büro besser arbeitet</b>.',
       'Trennbare Verben: <b>Ich teile mir die Zeit frei ein</b> — die Vorsilbe ans Satzende.',
       'Nicht „Ich bin agree" — sag <b>Ich stimme Ihnen zu</b> oder <b>Da bin ich Ihrer Meinung</b>.',
+      '<b>sehen + Akkusativ</b>: ich sehe <b>einen</b> Mann — „ein Mann" ist der häufigste Fehler im Kursmaterial.',
+      'Nach einem Vorfeld kommt das Verb an Position 2: <b>In diesem Text hat er</b> gesagt … — nicht „er hat".',
+      'Besitz mit <b>von</b> + Dativ: die Meinung <b>von</b> Anton Majer — nicht „die Meinungen Anton Majer".',
+      'Zahlen: vierund<b>dreißig</b> · <b>ein</b>undzwanzig · <b>sieb</b>zehn. Geschenkte Punkte, wenn sie sitzen.',
     ],
   },
   {
