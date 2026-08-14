@@ -29,6 +29,19 @@ export interface Slot {
 
 export type DayKind = 'class' | 'day' | 'big' | 'exam' | 'rest'
 
+/**
+ * The Sprechen Teil 2 topic spoken in class that evening. A topic is always a
+ * *pair* of person-cards — that is the exam shape: two candidates get the same
+ * theme from different sides, then discuss it.
+ *
+ * Labels only (name, age, role) — enough to tell the two cards apart in class.
+ * The handout's photos and quotes stay out of this public repo.
+ */
+export interface Thema {
+  title: string
+  cards: [string, string]
+}
+
 export interface Day {
   /** ISO date, and the identity of the day everywhere in storage. */
   date: string
@@ -38,6 +51,8 @@ export interface Day {
   needs?: string[]
   slots: Slot[]
   deck: CardTag[]
+  /** Course evenings only: tonight's Sprechen Teil 2 topic. */
+  thema?: Thema
   /** Shows the one-time setup banner. */
   setup?: boolean
 }

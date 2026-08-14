@@ -22,6 +22,7 @@ export const DAYS: Day[] = [
     headline: 'ÜT4 Hörverstehen, ganz durch',
     tagline: 'Zweiter Durchgang. Ziel 20 von 25 — beim ersten Mal waren es 14.',
     needs: ['MP3 auf dem Handy', 'ÜT4 PDF S. 14–16'],
+    thema: { title: 'Reise', cards: ['Stefanie Berger, 24, Studentin', 'Klaus Schmidt, 31, Kundenberater'] },
     slots: [
       { place: 'gym', minutes: 15, what: 'Kopfhörer auf, ÜT4 <b>Teil 1</b> (die ersten 8 Minuten) einmal laufen lassen. Nichts ankreuzen — nur hören.', note: 'Du kennst den Text schon. Achte diesmal nur auf <b>immer / nur / alle</b>.' },
       { place: 'sofa', minutes: 35, what: 'Das ganze Hörverstehen, <b>22 Minuten am Stück</b>, mit dem Aufgabenblatt. Nicht pausieren, nicht zurückspulen.', note: 'Danach mit dem Lösungsschlüssel vergleichen und nur die Zahl notieren — die Analyse machen wir zusammen.' },
@@ -58,6 +59,7 @@ export const DAYS: Day[] = [
     date: '2026-08-17', kind: 'class',
     headline: 'Wortschatz: Arbeit & Beruf',
     tagline: 'Die Wörter, an denen Teil 1 gescheitert ist.',
+    thema: { title: 'Arbeiten in der Gastronomie', cards: ['Alexander, 29, Hotelrestaurant', 'Angelika, 46, Tochter in der Ausbildung'] },
     slots: [
       { place: 'gym', minutes: 15, what: 'Kartenrunde <b>Arbeit &amp; Büro</b> — alle 11 Karten, zweimal durch.', note: 'Genau dafür ist die Zeit zwischen den Sätzen da.' },
       { place: 'sofa', minutes: 35, what: 'Schreib mir — ich drille die Wörter hart, mit Sätzen statt Übersetzungen. Danach 15 neue aus dem Themenfeld.' },
@@ -81,6 +83,7 @@ export const DAYS: Day[] = [
     date: '2026-08-19', kind: 'class',
     headline: 'Fallen-Taxonomie',
     tagline: 'Paraphrase gegen Wortgleichheit — deine zwei häufigsten Fehler.',
+    thema: { title: 'Stress', cards: ['Claudia Gärtner, 42, Sekretärin', 'Andreas Elbert, 35, Verkaufsleiter'] },
     slots: [
       { place: 'gym', minutes: 12, what: 'Kartenrunde <b>Fallen</b>. Diese sieben Karten sind die ganze Theorie.' },
       { place: 'sofa', minutes: 35, what: 'Jeder Fehler von gestern wird eingeordnet: Paraphrase, Wortgleichheit, Absolutizer, Verneinung, Schluss. Dann 20 Aussagen im Chat, ✓ oder ✗.' },
@@ -105,6 +108,7 @@ export const DAYS: Day[] = [
     headline: 'Brief #1 — 30 Minuten, handschriftlich',
     tagline: 'telc wird mit der Hand geschrieben. Üb es auch so.',
     needs: ['Papier + Stift'],
+    thema: { title: 'Zukunftspläne', cards: ['Jana, 16, Schülerin', 'Max, 17, Schüler'] },
     slots: [
       { place: 'gym', minutes: 12, what: 'Kartenrunde <b>Brief-Mechanik</b> + Grammatik.' },
       { place: 'sofa', minutes: 35, what: 'Ein Brief, <b>30 Minuten, auf Papier, mit Uhr</b>. Dann abfotografieren und mir schicken.', note: 'Checkliste vorher lesen: Betreff · Anrede + Gruß · alle 4 Leitpunkte · Schluss mit einer Frage.' },
@@ -140,6 +144,7 @@ export const DAYS: Day[] = [
     date: '2026-08-24', kind: 'class',
     headline: 'Wortschatz: Wohnen & Nachbarschaft',
     tagline: 'Neues Themenfeld, gleiche Methode.',
+    thema: { title: 'Nachbarn', cards: ['Streif, 24, Büroangestellte', 'Gebhardt, 21, Büroangestellter'] },
     slots: [
       { place: 'gym', minutes: 15, what: 'Kartenrunde <b>Durchsagen &amp; Kollokationen</b>.' },
       { place: 'sofa', minutes: 35, what: '20 neue Wörter im Chat — Wohnen, Miete, Nachbarn, Hausordnung.' },
@@ -163,6 +168,7 @@ export const DAYS: Day[] = [
     date: '2026-08-26', kind: 'class',
     headline: 'Absolutizer-Radar',
     tagline: 'immer · ganz · nur · alle · nie — zwei Fehler allein daran.',
+    thema: { title: 'Ausziehen und alleine wohnen', cards: ['Carsten Daubner, 18, Auszubildender', 'Jenny Groh, 21, Studentin'] },
     slots: [
       { place: 'gym', minutes: 12, what: 'Kartenrunde <b>Fallen</b>, bis alle sitzen.' },
       { place: 'sofa', minutes: 35, what: '20 Aussagen im Chat: ✓ oder ✗, jedes Mal mit Begründung.' },
@@ -187,6 +193,7 @@ export const DAYS: Day[] = [
     headline: 'Brief #2 + Sprechen-Format',
     tagline: 'Letzte 15 Minuten: die drei Sprechen-Teile.',
     needs: ['Papier'],
+    thema: { title: 'Schöner Wohnen', cards: ['Stefan Heeg, 38, Lehrer', 'Mara Weiß, 39, Teamleiterin'] },
     slots: [
       { place: 'gym', minutes: 10, what: 'Kartenrunde <b>Brief</b>.' },
       { place: 'sofa', minutes: 40, what: 'Brief auf Zeit, handschriftlich. Danach zeige ich dir den Aufbau der mündlichen Prüfung — geübt wird sie im Kurs.' },
@@ -222,6 +229,7 @@ export const DAYS: Day[] = [
     date: '2026-08-31', kind: 'class',
     headline: 'Wortschatz: Gesundheit + Briefbausteine',
     tagline: 'Woche 4 gehört dem Schreiben — 10 billige Punkte.',
+    thema: { title: 'Gesundheit', cards: ['Silke Bauer, 21, Studentin', 'Karsten Martens, 23, Angestellter'] },
     slots: [
       { place: 'gym', minutes: 15, what: 'Kartenrunde <b>Brief + Grammatik</b>.' },
       { place: 'sofa', minutes: 35, what: '20 Wörter Gesundheit/Alltag, dann eine Phrasenbank für den halbformellen Ton.' },
@@ -245,6 +253,7 @@ export const DAYS: Day[] = [
     date: '2026-09-02', kind: 'class',
     headline: 'Sprachbausteine Teil 1 — Grammatik',
     tagline: 'Futur I · geteiltes Hilfsverb · Artikel vs. Pronomen.',
+    thema: { title: 'Einkäufe', cards: ['Paul Krügel, 27', 'Juliane Teubert, 18'] },
     slots: [
       { place: 'gym', minutes: 15, what: 'Kartenrunde <b>Grammatik</b>, alle 11.' },
       { place: 'sofa', minutes: 35, what: 'Die drei Ledger-Punkte 10–12, dann 20 Lückensätze im Chat.' },
@@ -268,6 +277,7 @@ export const DAYS: Day[] = [
     headline: 'Brief #4 — Reparatur + frisch',
     tagline: 'Ziel: null Mechanikfehler.',
     needs: ['Papier'],
+    thema: { title: 'Online Lebensmittel kaufen', cards: ['Tobias Krämer, 27, Student', 'Irina Kovalcik, 25, Webdesignerin'] },
     slots: [
       { place: 'gym', minutes: 12, what: 'Kartenrunde <b>Grammatik</b>.' },
       { place: 'sofa', minutes: 40, what: 'Erst den schwächsten Absatz von #3 neu schreiben, dann ein frisches Thema.' },
@@ -303,6 +313,7 @@ export const DAYS: Day[] = [
     date: '2026-09-07', kind: 'class',
     headline: 'Wortschatz: Reisen, Verkehr & Behörden',
     tagline: 'Doppelt nützlich — das ist auch dein Alpen-Wortschatz.',
+    thema: { title: 'Verkehrsmittel', cards: ['Bernd Kleinefeld, 45, Elektrotechniker', 'Carola Ahrenholz, 25, Sekretärin'] },
     slots: [
       { place: 'gym', minutes: 15, what: 'Kartenrunde <b>Durchsagen</b> — Einfahrt, Kennzeichen, umgehend.' },
       { place: 'sofa', minutes: 35, what: '20 Wörter Reisen/Verkehr/Behörden im Chat.' },
@@ -326,6 +337,7 @@ export const DAYS: Day[] = [
     date: '2026-09-09', kind: 'class',
     headline: 'Ledger-Sweep',
     tagline: 'Jeder noch offene Eintrag bekommt eine eigene Übung.',
+    thema: { title: 'Gruppenreisen', cards: ['Sabine Klostermann, 33, Bürokauffrau', 'Jens Mühle, 39, Physiker'] },
     slots: [
       { place: 'gym', minutes: 15, what: 'Kartenrunde, alles gemischt.' },
       { place: 'sofa', minutes: 35, what: 'Wir gehen das Ledger von oben nach unten durch. Was bleibt, kommt auf den Alpen-Zettel.' },
@@ -350,6 +362,7 @@ export const DAYS: Day[] = [
     headline: 'Brief #5 + Redemittel fürs Planen',
     tagline: 'Die Sprechen-Teil-3-Phrasen brauchst du nächste Woche im Bus.',
     needs: ['Papier'],
+    thema: { title: 'Urlaub mit Freunden', cards: ['N.N., 29, Ingenieur', 'Tamara Rößner, 31, Lehrerin'] },
     slots: [
       { place: 'gym', minutes: 10, what: 'Kartenrunde <b>Brief</b>.' },
       { place: 'sofa', minutes: 40, what: 'Brief auf Zeit. Danach: Redemittel für <i>gemeinsam planen</i> — Vorschlag, Zustimmung, Einwand, Kompromiss.' },
@@ -398,6 +411,7 @@ export const DAYS: Day[] = [
     headline: 'Ein Brief + ein bekanntes Hörstück',
     tagline: 'Bewusst etwas, das du kannst. Selbstvertrauen, keine Herausforderung.',
     needs: ['Papier'],
+    thema: { title: 'Familie', cards: ['Anton Majer, 34, Manager', 'Nadja Bergmann, 36, Angestellte'] },
     slots: [
       { place: 'gym', minutes: 10, what: 'Kartenrunde <b>Brief</b>.' },
       { place: 'sofa', minutes: 35, what: 'Brief auf Zeit, dann ein Hörteil, den du schon zweimal gehört hast.' },

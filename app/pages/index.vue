@@ -110,10 +110,38 @@ function go(delta: number) {
             Sprechen
           </span>
           <span class="font-mono text-[0.68rem] text-ink-3">
-            {{ day.kind === 'class' ? 'heute im Kurs · 20:30' : '3 Teile · Redemittel' }}
+            {{ day.thema ? day.thema.title : day.kind === 'class' ? 'heute im Kurs · 20:30' : '3 Teile · Redemittel' }}
           </span>
         </NuxtLink>
       </nav>
+
+      <!-- Tonight's Teil-2 topic. Read both cards aloud before class, speak one,
+           give your partner the other — that is the exam shape. -->
+      <section
+        v-if="mounted && day.thema"
+        class="flex flex-col gap-2.5 rounded-2xl border border-line bg-surface px-4 py-3.5"
+        :style="{ boxShadow: 'var(--shadow)' }"
+      >
+        <span class="flex items-baseline justify-between gap-3">
+          <span class="eyebrow">Thema heute im Kurs · Teil 2</span>
+          <span class="font-mono text-[0.68rem] text-ink-3">20:30</span>
+        </span>
+        <h3 class="text-[1.05rem] leading-tight">{{ day.thema.title }}</h3>
+        <ul class="flex list-none flex-col gap-1.5">
+          <li
+            v-for="(card, i) in day.thema.cards"
+            :key="card"
+            class="flex items-baseline gap-2 rounded-xl bg-surface-2 px-3 py-2 text-[0.85rem] text-ink-2"
+          >
+            <span class="font-mono text-[0.7rem] text-ink-3">{{ i === 0 ? 'A' : 'B' }}</span>
+            <span>{{ card }}</span>
+          </li>
+        </ul>
+        <p class="text-[0.8rem] leading-relaxed text-ink-3">
+          Eine Karte für dich, eine für deinen Partner. Beschreiben → Meinung wiedergeben →
+          eigene Meinung <b class="text-ink-2">mit einem Beispiel aus deinem Leben</b> → zurückfragen.
+        </p>
+      </section>
 
       <HowItWorks v-if="mounted" />
 
