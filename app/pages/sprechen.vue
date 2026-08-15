@@ -1,11 +1,33 @@
 <script setup lang="ts">
-import { TEILE, SURVIVAL } from '~/data/sprechen'
+import { TEILE, SURVIVAL, ALLEIN } from '~/data/sprechen'
+import { usePlan } from '~/composables/usePlan'
 
 useHead({ title: 'Sprechen — die drei Teile' })
 
 /** Collapsed by default: in class you want the task first, phrases on demand. */
 const openBlocks = ref<Record<string, boolean>>({})
 const toggle = (key: string) => (openBlocks.value[key] = !openBlocks.value[key])
+
+/**
+ * The solo prompt ends in „Das Thema ist: " — so it carries today's planning
+ * task where the calendar has one, and the day's Teil 2 topic otherwise. A
+ * prompt you still have to finish by hand is a prompt you don't use.
+ */
+const { day } = usePlan()
+const prompt = computed(() =>
+  ALLEIN.prompt + (day.value.aufgabe ?? day.value.thema?.title ?? 'Sie planen zusammen ein Wochenende in einer anderen Stadt.'),
+)
+
+const copied = ref(false)
+async function copy() {
+  try {
+    await navigator.clipboard.writeText(prompt.value)
+    copied.value = true
+    setTimeout(() => (copied.value = false), 2000)
+  } catch {
+    /* no clipboard permission — the text is on screen to read out anyway */
+  }
+}
 </script>
 
 <template>
@@ -100,6 +122,37 @@ const toggle = (key: string) => (openBlocks.value[key] = !openBlocks.value[key])
         </div>
       </div>
     </article>
+
+    <!-- Sprechen on a day with no course. Until 15.08. this page assumed a
+         partner in class three evenings a week; a voice AI is a partner on the
+         other four. -->
+    <section
+      class="flex flex-col gap-3 rounded-2xl border px-4 py-4"
+      style="border-color: var(--accent)"
+    >
+      <span class="eyebrow" style="color: var(--accent)">{{ ALLEIN.label }}</span>
+      <p class="text-[0.88rem] leading-relaxed text-ink-2">{{ ALLEIN.intro }}</p>
+
+      <div class="flex flex-col gap-2 rounded-xl bg-surface-2 px-3.5 py-3">
+        <p class="text-[0.85rem] leading-relaxed text-ink-2">{{ prompt }}</p>
+        <button
+          type="button"
+          class="self-start rounded-lg border border-line bg-surface px-3 py-1.5 text-[0.8rem] text-ink-2"
+          @click="copy"
+        >{{ copied ? '✓ kopiert' : 'kopieren' }}</button>
+      </div>
+
+      <div class="flex flex-col gap-2">
+        <p
+          v-for="r in ALLEIN.rules"
+          :key="r"
+          class="copy text-[0.85rem] leading-relaxed text-ink-2"
+          v-html="r"
+        />
+      </div>
+
+      <p class="text-[0.83rem] leading-relaxed text-ink-3">{{ ALLEIN.danach }}</p>
+    </section>
 
     <section class="flex flex-col gap-2 rounded-2xl border border-line bg-surface px-4 py-4">
       <span class="eyebrow">{{ SURVIVAL.label }}</span>

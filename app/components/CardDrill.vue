@@ -16,7 +16,7 @@ const finished = ref(false)
 // played through one reused <audio> element, so a deck run survives the screen
 // locking. What each card says, and the silences between, live in
 // `utils/speakable.ts` — shared with the synthesizer so the two cannot drift.
-const { play, stop, warm, playing } = useWortAudio()
+const { play, stop, skip, warm, playing } = useWortAudio()
 
 /** True while a whole-deck run is walking the cards on its own. */
 const running = ref(false)
@@ -124,15 +124,36 @@ function missed() {
 
       <ClientOnly>
         <span v-if="!finished && current" class="-my-1 flex items-center gap-1">
-          <!-- One control while anything is playing: at that moment the only
-               thing you ever want is to make it stop. -->
-          <button
-            v-if="playing"
-            type="button"
-            class="rounded-lg border border-accent bg-accent-wash px-2.5 py-1.5 text-[0.78rem] font-semibold whitespace-nowrap text-accent"
-            aria-label="Vorlesen stoppen"
-            @click="halt"
-          >■ stopp</button>
+          <!-- While a run is playing you need to move *inside* it: back to the
+               word you didn't catch, again on the one you want twice, forward
+               past the one you already own. Stop-only turns every one of those
+               into „start the deck over". -->
+          <template v-if="playing">
+            <button
+              type="button"
+              class="rounded-lg border border-line bg-surface-2 px-2 py-1.5 text-[0.78rem] text-ink-2"
+              aria-label="Vorherige Karte"
+              @click="skip(-1)"
+            >⏮</button>
+            <button
+              type="button"
+              class="rounded-lg border border-line bg-surface-2 px-2 py-1.5 text-[0.78rem] text-ink-2"
+              aria-label="Diese Karte noch einmal"
+              @click="skip(0)"
+            >↻</button>
+            <button
+              type="button"
+              class="rounded-lg border border-accent bg-accent-wash px-2 py-1.5 text-[0.78rem] font-semibold text-accent"
+              aria-label="Vorlesen stoppen"
+              @click="halt"
+            >■</button>
+            <button
+              type="button"
+              class="rounded-lg border border-line bg-surface-2 px-2 py-1.5 text-[0.78rem] text-ink-2"
+              aria-label="Nächste Karte"
+              @click="skip(1)"
+            >⏭</button>
+          </template>
           <template v-else>
             <button
               type="button"

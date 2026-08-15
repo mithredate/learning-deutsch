@@ -2,6 +2,7 @@
 import type { Card, Place, Slot } from '~/types'
 import { episodeById } from '~/data/hoeren'
 import { useUebung } from '~/composables/useUebung'
+import { useEnglish } from '~/composables/useEnglish'
 
 const props = defineProps<{
   slot: Slot
@@ -22,6 +23,7 @@ const META: Record<Place, { icon: string; where: string; when: string }> = {
 const meta = computed(() => META[props.slot.place])
 
 const { hydrate, history, best } = useUebung()
+const { on: english } = useEnglish()
 onMounted(hydrate)
 
 const episodes = computed(() =>
@@ -60,6 +62,18 @@ const mmss = (s: number) => `${Math.floor(s / 60)}:${String(s % 60).padStart(2, 
 
     <div class="flex flex-col gap-3 px-4 pt-4 pb-4">
       <p class="copy text-[0.96rem] leading-relaxed" v-html="slot.what" />
+      <!-- Under the German, never instead of it: the German line is still the
+           one you read first, and the English is there to stop a misread task
+           from costing you the exercise. -->
+      <ClientOnly>
+        <p
+          v-if="english && slot.en"
+          class="flex items-start gap-2 border-l-2 border-line pl-2.5 text-[0.86rem] leading-relaxed text-ink-3"
+        >
+          <span class="mt-0.5 rounded border border-line px-1 font-mono text-[0.6rem] tracking-wider">EN</span>
+          <span class="flex-1">{{ slot.en }}</span>
+        </p>
+      </ClientOnly>
       <p v-if="slot.note" class="copy text-[0.85rem] leading-relaxed text-ink-3" v-html="slot.note" />
 
       <div v-if="needs?.length" class="flex flex-wrap gap-1.5">

@@ -115,8 +115,9 @@ export function useSpeech() {
       // German a little under natural, English at natural pace. Not slower:
       // Apple's compact voices are concatenative, so dragging the rate down
       // stretches the joins between recorded fragments and makes them sound
-      // *more* robotic, not clearer.
-      await say(line, opts.rate ?? (line.lang === 'de' ? 0.92 : 1))
+      // *more* robotic, not clearer. A German *sentence* runs at full rate —
+      // a Redemittel dragged out word by word is not the phrase you'll hear.
+      await say(line, opts.rate ?? (line.lang === 'de' && line.as === 'wort' ? 0.92 : 1))
     }
 
     if (token === mine) speaking.value = false

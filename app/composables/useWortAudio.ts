@@ -47,8 +47,22 @@ export function useWortAudio() {
    */
   let token = 0
 
+  /**
+   * Ending the *current card* without ending the run. `stop()` bumps the token,
+   * which means „everything you were doing is void"; a skip must not, because
+   * the loop is supposed to survive it and carry on at another index.
+   */
+  let interrupt: (() => void) | null = null
+
+  /** The run in progress, so ⏮ / ↻ / ⏭ have something to move through. */
+  let list: Card[] = []
+  let index = 0
+  let pending: number | null = null
+
   function stop() {
     token++
+    interrupt = null
+    pending = null
     playing.value = false
     currentKey.value = null
     speech.stop()
@@ -63,7 +77,10 @@ export function useWortAudio() {
     currentKey.value = cardKey(card)
 
     // No recording yet — let the phone read it rather than skip the card.
-    if (!file) return speech.speak(linesFor(card))
+    if (!file) {
+      interrupt = () => speech.stop()
+      return speech.speak(linesFor(card))
+    }
 
     const a = element()
     if (!a) return Promise.resolve()
@@ -71,8 +88,10 @@ export function useWortAudio() {
       const done = () => {
         a.removeEventListener('ended', done)
         a.removeEventListener('error', done)
+        interrupt = null
         resolve()
       }
+      interrupt = () => { a.pause(); done() }
       a.addEventListener('ended', done)
       a.addEventListener('error', done)   // a missing file must not hang the deck
       a.src = src(file)
@@ -86,20 +105,49 @@ export function useWortAudio() {
     stop()
     const mine = ++token
     playing.value = true
+    list = cards
+    index = 0
 
-    for (const [i, card] of cards.entries()) {
+    while (index < cards.length) {
       if (token !== mine) return
-      onCard?.(card, i)
-      await playOne(card, mine)
+      onCard?.(cards[index]!, index)
+      await playOne(cards[index]!, mine)
       if (token !== mine) return
+
+      // A skip lands here: go straight to the chosen card, no beat, no advance.
+      if (pending !== null) {
+        index = pending
+        pending = null
+        continue
+      }
       // A beat between cards, or the deck arrives as one undifferentiated block.
       await new Promise(r => setTimeout(r, 700))
+      if (token !== mine) return
+      if (pending !== null) { index = pending; pending = null; continue }
+      index++
     }
 
     if (token === mine) {
       playing.value = false
       currentKey.value = null
     }
+  }
+
+  /**
+   * Move inside a running deck. Hearing a word you don't know is the moment you
+   * need it *again*, and hearing one you do know is the moment you need the next
+   * one — a run you can only stop turns both into „start over from here".
+   *
+   * `delta: 0` replays the card you are on. Past either end, the run stops
+   * rather than wrapping: at the last card ⏭ means „I'm done".
+   */
+  function skip(delta: number) {
+    if (!playing.value || !list.length) return
+    const next = index + delta
+    if (next < 0) return void interrupt?.()   // already at the first card: restart it
+    if (next >= list.length) return stop()
+    pending = next
+    interrupt?.()
   }
 
   /**
@@ -121,5 +169,5 @@ export function useWortAudio() {
     }
   }
 
-  return { play, stop, warm, playing: readonly(playing), currentKey: readonly(currentKey), isBaked }
+  return { play, stop, skip, warm, playing: readonly(playing), currentKey: readonly(currentKey), isBaked }
 }

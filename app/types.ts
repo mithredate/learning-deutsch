@@ -17,6 +17,13 @@ export interface Card {
   /** The German side: the word, the correction, the rule. */
   answer: string
   /**
+   * Cloze cards only: the cue with the hole filled in. Exists for the ear, not
+   * the eye — heard, `Ich erkundige mich ___ dem Preis` is a sentence with a
+   * stumble in it and no solution ever arrives. The screen doesn't need this
+   * (the answer is right there); the audio can't work without it.
+   */
+  loesung?: string
+  /**
    * Plain English. The German answer alone is useless on a word you have never
    * met — you cannot check yourself against an explanation you also don't
    * understand. Every card carries one, including the grammar cards.
@@ -42,6 +49,11 @@ export type Place = 'gym' | 'sofa' | 'bed'
 export interface Slot {
   place: Place
   what: string
+  /**
+   * The same instruction in English, shown when the reader asks for it (see
+   * `useEnglish`). A gloss, not a translation: what to do, in one line.
+   */
+  en?: string
   note?: string
   minutes: number
   /**
@@ -98,6 +110,8 @@ export interface Day {
    * word field carries both halves of the speaking hour.
    */
   aufgabe?: string
+  /** The planning task in English — the exam wording is dense even in German. */
+  aufgabeEn?: string
   /** Shows the one-time setup banner. */
   setup?: boolean
 }

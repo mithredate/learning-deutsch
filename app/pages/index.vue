@@ -2,14 +2,17 @@
 import { usePlan, deckFor, formatDay, daysUntilExam } from '~/composables/usePlan'
 import { studyDays } from '~/data/days'
 import { useProgress } from '~/composables/useProgress'
+import { useEnglish } from '~/composables/useEnglish'
 import type { Slot } from '~/types'
 
 const { DAYS, index, day, isToday, minutes, jumpToToday, step } = usePlan()
 const { state, hydrate, isTicked, toggleSlot, dayTouched, setNote, missCard, dismissSetup } = useProgress()
+const { on: english, hydrate: hydrateEnglish, toggle: toggleEnglish } = useEnglish()
 
 const mounted = ref(false)
 onMounted(() => {
   hydrate()
+  hydrateEnglish()
   jumpToToday()
   mounted.value = true
 })
@@ -97,6 +100,17 @@ function go(delta: number) {
           <span v-if="!day.needs?.length && day.slots.length" class="rounded-full bg-good-wash px-2.5 py-1 font-mono text-[0.7rem] text-good">
             nichts mitbringen
           </span>
+          <!-- One switch for the whole day. Guessing what a block is asking is
+               how an exercise gets done wrong for a reason that has nothing to
+               do with the exercise. -->
+          <button
+            v-if="day.slots.length"
+            type="button"
+            class="rounded-full px-2.5 py-1 font-mono text-[0.7rem] transition-colors"
+            :class="english ? 'bg-accent-wash text-accent' : 'bg-surface-2 text-ink-3'"
+            :aria-pressed="english"
+            @click="toggleEnglish"
+          >{{ english ? 'EN an' : 'EN' }}</button>
         </div>
       </header>
 
@@ -124,8 +138,12 @@ function go(delta: number) {
           <span class="text-[0.9rem] font-semibold" :class="day.kind === 'class' ? 'text-accent' : 'text-ink'">
             Sprechen
           </span>
+          <!-- The course runs Mo/Mi/Fr. On the other four evenings this used to
+               read „3 Teile · Redemittel", which looks like an assignment you
+               have forgotten — so it now says plainly that there is no class,
+               and what to do instead. -->
           <span class="font-mono text-[0.68rem] text-ink-3">
-            {{ day.thema ? day.thema.title : day.kind === 'class' ? 'heute im Kurs · 20:30' : '3 Teile · Redemittel' }}
+            {{ day.kind === 'class' ? (day.thema?.title ?? 'heute im Kurs · 20:30') : 'kein Kurs · allein mit KI' }}
           </span>
         </NuxtLink>
       </nav>
@@ -139,7 +157,10 @@ function go(delta: number) {
         :style="{ boxShadow: 'var(--shadow)' }"
       >
         <span class="flex items-baseline justify-between gap-3">
-          <span class="eyebrow">Sprechen heute im Kurs</span>
+          <!-- Since 15.08. a planning task also lands on Tue/Thu, where there is
+               no class and the partner is a voice AI. Calling that „im Kurs"
+               would be the confusing half of the old design all over again. -->
+          <span class="eyebrow">{{ day.kind === 'class' ? 'Sprechen heute im Kurs' : 'Sprechen heute — allein mit KI' }}</span>
           <NuxtLink to="/sprechen" class="font-mono text-[0.68rem] no-underline" style="color: var(--accent)">
             Redemittel ›
           </NuxtLink>
@@ -164,9 +185,15 @@ function go(delta: number) {
           </p>
         </div>
 
-        <div v-if="day.aufgabe" class="flex flex-col gap-1.5 border-t border-line-soft pt-3">
+        <!-- The rule sits above only when a Teil 2 topic precedes it; on a KI
+             evening the planning task is the whole section. -->
+        <div v-if="day.aufgabe" class="flex flex-col gap-1.5" :class="day.thema ? 'border-t border-line-soft pt-3' : ''">
           <span class="font-mono text-[0.68rem] tracking-widest uppercase text-ink-3">Teil 3 · gemeinsam planen</span>
           <p class="text-[0.88rem] leading-relaxed text-ink-2">{{ day.aufgabe }}</p>
+          <p v-if="english && day.aufgabeEn" class="flex items-start gap-2 border-l-2 border-line pl-2.5 text-[0.84rem] leading-relaxed text-ink-3">
+            <span class="mt-0.5 rounded border border-line px-1 font-mono text-[0.6rem] tracking-wider">EN</span>
+            <span class="flex-1">{{ day.aufgabeEn }}</span>
+          </p>
           <p class="text-[0.8rem] leading-relaxed text-ink-3">
             <b class="text-ink-2">Vorschlagen, nicht nur zustimmen</b> — einmal höflich widersprechen,
             am Ende laut zusammenfassen.

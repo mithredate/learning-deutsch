@@ -241,6 +241,43 @@ export const TEILE: Teil[] = [
   },
 ]
 
+/**
+ * Speaking practice without a partner and without a course evening.
+ *
+ * Written after the session of 2026-08-15, where two rounds of Teil 3 were run
+ * against a voice AI and it worked: the machine proposes, objects and asks the
+ * next question, which is the pressure the exam actually applies. That removes
+ * the reason the calendar only ever scheduled Sprechen three times a week.
+ *
+ * The prompt is the whole trick. Left to itself the model corrects every
+ * sentence as you say it, and the conversation — the thing being examined —
+ * never gets going. So: partner first, examiner strictly afterwards.
+ */
+export const ALLEIN = {
+  label: 'Allein üben — die KI als Partner',
+  intro:
+    'Kein Kurs heute? Sprechen geht trotzdem. Öffne eine Sprach-KI (Gemini Live, ChatGPT Voice, '
+    + 'Claude), gib ihr den Text unten und sprich zehn Minuten. Danach lässt du dir das Transkript '
+    + 'geben und schickst es mir.',
+  prompt:
+    'Wir üben die mündliche telc-B1-Prüfung, Teil 3 (gemeinsam etwas planen). '
+    + 'Du bist mein Prüfungspartner, nicht mein Lehrer: sprich nur Deutsch auf B1-Niveau, '
+    + 'antworte kurz, mach eigene Vorschläge, widersprich mir einmal höflich und stell mir am Ende '
+    + 'eine Frage. Korrigiere mich NICHT während des Gesprächs. '
+    + 'Erst wenn ich „Feedback" sage, wirst du Prüfer und sagst mir: was war gut, welche Fehler in '
+    + 'Kasus, Wortstellung und Wortschatz, und wie hätte ich es sagen sollen. '
+    + 'Danach gibst du mir das vollständige Transkript, nur auf Deutsch. Das Thema ist: ',
+  rules: [
+    '<b>Pausen sind erlaubt.</b> Kurz nachdenken kostet keine Punkte — losreden und mittendrin steckenbleiben schon.',
+    '<b>Korrigier dich einmal, dann weiter.</b> Fällt dir der Fehler sofort auf („für du" → „für dich"), sag die richtige Form und sprich weiter. Zweimal zurückgehen zerstört den Redefluss, und der zählt mehr.',
+    '<b>Ein fehlendes Wort ist kein Stopp.</b> „Ich weiß das Wort gerade nicht — ich meine so etwas wie …" ist ein B1-Satz und bringt Punkte. Schweigen bringt keine.',
+    '<b>Sag „Feedback" erst am Ende</b> — sonst wird aus der Prüfung ein Grammatikkurs.',
+  ],
+  danach:
+    'Transkript an mich. Jeder Fehler, den du zweimal machst, wird eine Karte — genau so sind die '
+    + 'ersten Sprechen-Einträge im Ledger entstanden.',
+}
+
 export const SURVIVAL: Block = {
   label: 'Wenn du stecken bleibst',
   lines: [
