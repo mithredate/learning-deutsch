@@ -46,6 +46,15 @@ export interface Slot {
   hoeren?: string[]
   /** Show the device's own imported MP3s here (licensed audio, never in the repo). */
   dateien?: boolean
+  /**
+   * The exact file this block wants, e.g. `telc-ut1-hv.mp3`. Once a file of that
+   * name is on the device the block plays it straight away instead of asking for
+   * an import again — the panel is not a to-do, it is this evening's audio.
+   *
+   * Only ever a *filename*. The recording itself is a TTS rendering of a
+   * copyrighted telc transcript and lives in the private repo.
+   */
+  datei?: string
 }
 
 export type DayKind = 'class' | 'day' | 'big' | 'exam' | 'rest'

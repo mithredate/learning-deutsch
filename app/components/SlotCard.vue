@@ -99,7 +99,7 @@ const mmss = (s: number) => `${Math.floor(s / 60)}:${String(s % 60).padStart(2, 
         </ClientOnly>
       </NuxtLink>
 
-      <LocalAudio v-if="slot.dateien" />
+      <LocalAudio v-if="slot.dateien || slot.datei" :want="slot.datei" />
 
       <CardDrill v-if="cards?.length" :cards="cards" @miss="emit('miss', $event)" />
 

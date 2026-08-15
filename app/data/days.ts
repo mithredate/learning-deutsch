@@ -25,8 +25,8 @@ export const DAYS: Day[] = [
     thema: { title: 'Reise', cards: ['Stefanie Berger, 24, Studentin', 'Klaus Schmidt, 31, Kundenberater'] },
     aufgabe: 'Ihr Kurs macht am Samstag einen Ausflug in die Berge. Planen Sie ihn gemeinsam.',
     slots: [
-      { place: 'gym', minutes: 15, dateien: true, what: 'Kopfhörer auf, ÜT4 <b>Teil 1</b> (die ersten 8 Minuten) einmal laufen lassen. Nichts ankreuzen — nur hören.', note: 'Du kennst den Text schon. Achte diesmal nur auf <b>immer / nur / alle</b>.' },
-      { place: 'sofa', minutes: 35, dateien: true, what: 'Das ganze Hörverstehen, <b>22 Minuten am Stück</b>, mit dem Aufgabenblatt. Nicht pausieren, nicht zurückspulen.', note: 'Danach mit dem Lösungsschlüssel vergleichen und nur die Zahl notieren — die Analyse machen wir zusammen.' },
+      { place: 'gym', minutes: 15, datei: 'telc-b1-uebungstest-4-hoerverstehen.mp3', what: 'Kopfhörer auf, ÜT4 <b>Teil 1</b> (die ersten 8 Minuten) einmal laufen lassen. Nichts ankreuzen — nur hören.', note: 'Du kennst den Text schon. Achte diesmal nur auf <b>immer / nur / alle</b>.' },
+      { place: 'sofa', minutes: 35, datei: 'telc-b1-uebungstest-4-hoerverstehen.mp3', what: 'Das ganze Hörverstehen, <b>22 Minuten am Stück</b>, mit dem Aufgabenblatt. Nicht pausieren, nicht zurückspulen.', note: 'Danach mit dem Lösungsschlüssel vergleichen und nur die Zahl notieren — die Analyse machen wir zusammen.' },
       { place: 'bed', minutes: 5, what: 'Drei Sätze auf Deutsch: Was war schwerer als erwartet?', note: 'Egal wie holprig. Es geht ums Schreiben, nicht ums Richtigsein.' },
     ],
     deck: ['falle'],
@@ -39,7 +39,7 @@ export const DAYS: Day[] = [
     slots: [
       { place: 'sofa', minutes: 15, karten: ['v-reise', 'falle'], what: 'Kartenrunde <b>Reisen</b> + <b>Fallen</b> — laut, auf Deutsch. Das ist das Aufwärmen, nicht der Test.', note: 'Absichtlich <i>nicht</i> die Wörter aus ÜT4 (Arbeit, Büro, Durchsagen). Sonst misst der Test die letzten zehn Minuten statt der letzten zwei Wochen.' },
       { place: 'sofa', minutes: 10, karten: ['falle'], what: 'Die <b>30-Sekunden-Routine</b>: sechs neue Karten. Danach deine fünf Zeichen oben auf S. 14 schreiben — eins pro Scharnier.', note: 'Teil 1 kalt war 2/5. Nicht das Ohr, sondern die Lesezeit: 30 Sekunden für fünf Aussagen sind 6 Sekunden pro Satz.' },
-      { place: 'sofa', minutes: 35, dateien: true, what: 'Das ganze Hörverstehen am Stück, mit Aufgabenblatt. <b>Nicht pausieren, nicht zurückspulen.</b>', note: 'Ziel <b>16 von 20</b> (80 %). Erst wenn die Zahl steht, gibt es den nächsten frischen Übungstest.' },
+      { place: 'sofa', minutes: 35, datei: 'telc-b1-uebungstest-4-hoerverstehen.mp3', what: 'Das ganze Hörverstehen am Stück, mit Aufgabenblatt. <b>Nicht pausieren, nicht zurückspulen.</b>', note: 'Ziel <b>16 von 20</b> (80 %). Erst wenn die Zahl steht, gibt es den nächsten frischen Übungstest.' },
       { place: 'sofa', minutes: 50, what: 'Zahlen abschicken, dann Zeile für Zeile gegen das Transkript. Jeder Fehler bekommt einen Fallentyp.', note: 'Nicht „was war die richtige Antwort", sondern „welche Falle war das". Ein Fehler ohne Kategorie kommt wieder.' },
       { place: 'bed', minutes: 5, what: 'Drei Sätze: ein Wort, das du heute zum ersten Mal wirklich verstanden hast.' },
     ],
@@ -126,7 +126,7 @@ export const DAYS: Day[] = [
     tagline: 'Küchentisch. Zweieinhalb Stunden am Stück.',
     needs: ['neuer Test', 'Audio', 'Papier'],
     slots: [
-      { place: 'sofa', minutes: 150, dateien: true, what: 'Drei Teile hintereinander, mit Uhr, ohne Pause dazwischen.', note: 'Die Rampe: letzte Woche 2 Teile, heute 3.' },
+      { place: 'sofa', minutes: 150, datei: 'telc-b1-uebungstest-4-hoerverstehen.mp3', what: 'Drei Teile hintereinander, mit Uhr, ohne Pause dazwischen.', note: 'Die Rampe: letzte Woche 2 Teile, heute 3.' },
       { place: 'bed', minutes: 5, what: 'Drei Sätze: an welcher Stelle ist die Konzentration weggebrochen?' },
     ],
     deck: ['v-arbeit', 'falle'],
@@ -165,7 +165,7 @@ export const DAYS: Day[] = [
     needs: ['Audio'],
     slots: [
       { place: 'gym', minutes: 10, karten: true, what: 'Nur Karten.' },
-      { place: 'sofa', minutes: 35, dateien: true, what: 'Teil 2 kalt, mit Uhr → Antworten an mich.' },
+      { place: 'sofa', minutes: 35, datei: 'telc-b1-schule-1-hoerverstehen.mp3', what: 'Teil 2 kalt, mit Uhr → Antworten an mich.' },
       { place: 'bed', minutes: 5, what: 'Drei Sätze zum Thema des Gesprächs.' },
     ],
     deck: ['falle'],
@@ -189,8 +189,8 @@ export const DAYS: Day[] = [
     tagline: 'Die Sprachbausteine-Lücken sind Wortschatz, keine Grammatik.',
     needs: ['Audio von Dienstag'],
     slots: [
-      { place: 'gym', minutes: 15, dateien: true, what: 'Teil 2 noch einmal, ohne Papier.' },
-      { place: 'sofa', minutes: 35, dateien: true, karten: ['koll'], what: 'Wiederholung mit Blatt, dann Kollokationen aus dem Ledger.' },
+      { place: 'gym', minutes: 15, datei: 'telc-b1-schule-1-hoerverstehen.mp3', what: 'Teil 2 noch einmal, ohne Papier.' },
+      { place: 'sofa', minutes: 35, datei: 'telc-b1-schule-1-hoerverstehen.mp3', karten: ['koll'], what: 'Wiederholung mit Blatt, dann Kollokationen aus dem Ledger.' },
       { place: 'bed', minutes: 5, what: 'Drei Sätze mit <i>sich erkundigen nach</i>, <i>mitteilen</i>, <i>stattfinden</i>.' },
     ],
     deck: ['koll'],
@@ -214,7 +214,7 @@ export const DAYS: Day[] = [
     tagline: 'Zum ersten Mal Lesen und Hören in einer Sitzung.',
     needs: ['Test', 'Audio', 'Papier'],
     slots: [
-      { place: 'sofa', minutes: 150, dateien: true, what: 'Vier Teile hintereinander, mit Uhr.' },
+      { place: 'sofa', minutes: 150, datei: 'telc-b1-uebungstest-4-hoerverstehen.mp3', what: 'Vier Teile hintereinander, mit Uhr.' },
       { place: 'bed', minutes: 5, what: 'Drei Sätze: welcher Teil hat am meisten Kraft gekostet?' },
     ],
     deck: ['v-arbeit', 'v-buero'],
@@ -253,7 +253,7 @@ export const DAYS: Day[] = [
     needs: ['Audio'],
     slots: [
       { place: 'gym', minutes: 10, karten: true, what: 'Nur Karten.' },
-      { place: 'sofa', minutes: 35, dateien: true, what: 'Beide Teile mit Uhr → Antworten an mich.' },
+      { place: 'sofa', minutes: 35, datei: 'telc-b1-schule-1-hoerverstehen.mp3', what: 'Beide Teile mit Uhr → Antworten an mich.' },
       { place: 'bed', minutes: 5, what: 'Drei Sätze.' },
     ],
     deck: ['v-ansage'],
@@ -299,9 +299,9 @@ export const DAYS: Day[] = [
     date: '2026-09-05', kind: 'big',
     headline: 'Stapel (5 + Brief)',
     tagline: 'Die schriftliche Hälfte läuft zum ersten Mal ganz durch.',
-    needs: ['Test', 'Audio', 'Papier'],
+    needs: ['Test', 'Papier'],
     slots: [
-      { place: 'sofa', minutes: 180, dateien: true, what: 'LV 1–3, SB 1–2 und ein 30-Minuten-Brief. Drei Stunden, mit Uhr.' },
+      { place: 'sofa', minutes: 180, what: 'LV 1–3, SB 1–2 und ein 30-Minuten-Brief. Drei Stunden, mit Uhr.' },
       { place: 'bed', minutes: 5, what: 'Drei Sätze: wie fühlten sich die letzten 30 Minuten an?' },
     ],
     deck: ['falle', 'koll'],
@@ -389,7 +389,7 @@ export const DAYS: Day[] = [
     tagline: 'LV+SB 90 min · Hören · Schreiben 30 min. Keine Pause, kein Nachschlagen.',
     needs: ['ganzer Test', 'Audio', 'Papier', 'Uhr'],
     slots: [
-      { place: 'sofa', minutes: 210, dateien: true, what: 'Dreieinhalb Stunden unter echten Bedingungen. Handy weg.', note: 'Ziel: alle Teile ≥ 60 %, Hören ≥ 70 %.' },
+      { place: 'sofa', minutes: 210, datei: 'telc-b1-uebungstest-1-hoerverstehen.mp3', what: 'Dreieinhalb Stunden unter echten Bedingungen. Handy weg.', note: 'Ziel: alle Teile ≥ 60 %, Hören ≥ 70 %.' },
       { place: 'bed', minutes: 0, what: 'Nichts. Ausruhen.' },
     ],
     deck: [],
@@ -415,7 +415,7 @@ export const DAYS: Day[] = [
     needs: ['letzter unbenutzter Test'],
     slots: [
       { place: 'gym', minutes: 15, karten: true, what: 'Kartenrunde vom Alpen-Zettel.' },
-      { place: 'sofa', minutes: 40, dateien: true, what: 'Ein Hörverstehen komplett, aus dem letzten unbenutzten Test. Danach Zettel durchgehen.' },
+      { place: 'sofa', minutes: 40, datei: 'goethe-b1-modellsatz-hoeren.mp3', what: 'Ein Hörverstehen komplett, aus dem letzten unbenutzten Test. Danach Zettel durchgehen.' },
       { place: 'bed', minutes: 5, what: 'Drei Sätze über die Reise — auf Deutsch, du hast eine Woche geübt.' },
     ],
     deck: ['falle', 'v-ansage'],
