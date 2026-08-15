@@ -22,7 +22,16 @@ export interface Card {
    * understand. Every card carries one, including the grammar cards.
    */
   meaning: string
-  example?: string
+  /**
+   * Worked examples, ordered easiest first: a bare phrase or collocation, then
+   * full sentences. The order is the teaching — you meet the word in the
+   * smallest unit that still carries it (`jemanden ausnutzen`) before you meet
+   * it inside a sentence whose word order you also have to hold.
+   *
+   * The renderer styles by position, so index 0 must always be the short one.
+   * May carry `<b>` around the target word; the speech layer strips it.
+   */
+  examples?: string[]
   /** Where this came from: a ledger number, an exam item. Keeps drills honest. */
   hint?: string
 }
