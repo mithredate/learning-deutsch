@@ -4,16 +4,19 @@ import { groupByKind } from '~/data/cards'
 import { studyDays } from '~/data/days'
 import { useProgress } from '~/composables/useProgress'
 import { useEnglish } from '~/composables/useEnglish'
+import { useUnklar } from '~/composables/useUnklar'
 import type { Slot } from '~/types'
 
 const { DAYS, index, day, isToday, minutes, jumpToToday, step } = usePlan()
 const { state, hydrate, isTicked, toggleSlot, dayTouched, setNote, missCard, dismissSetup } = useProgress()
 const { on: english, hydrate: hydrateEnglish, toggle: toggleEnglish } = useEnglish()
+const { items: unklar, hydrate: hydrateUnklar, remove: unklarRemove } = useUnklar()
 
 const mounted = ref(false)
 onMounted(() => {
   hydrate()
   hydrateEnglish()
+  hydrateUnklar()
   jumpToToday()
   mounted.value = true
 })
@@ -254,6 +257,40 @@ function go(delta: number) {
         @miss="missCard"
       />
 
+      <!-- Everything marked with 🔖 while reading, anywhere in the app. It sits
+           above the note field because it is the part of the note you would
+           otherwise have had to remember — and it is already written. -->
+      <section
+        v-if="mounted && unklar.length"
+        class="flex flex-col gap-2.5 rounded-2xl border border-line bg-surface px-4 py-3.5"
+      >
+        <span class="flex items-baseline justify-between gap-3">
+          <span class="eyebrow">Nicht verstanden</span>
+          <span class="font-mono text-[0.7rem] text-ink-3">{{ unklar.length }} markiert</span>
+        </span>
+        <ul class="flex list-none flex-col gap-1.5 p-0">
+          <li
+            v-for="u in unklar"
+            :key="u.text"
+            class="flex items-start gap-2 rounded-xl bg-surface-2 px-3 py-2"
+          >
+            <span class="flex min-w-0 flex-1 flex-col">
+              <span class="text-[0.9rem] leading-snug text-ink">{{ u.text }}</span>
+              <span class="font-mono text-[0.66rem] text-ink-3">{{ u.quelle }} · {{ u.at.slice(5, 10) }}</span>
+            </span>
+            <button
+              type="button"
+              class="rounded-lg px-2 py-1 text-[0.8rem] text-ink-3"
+              :aria-label="`${u.text} — von der Liste nehmen`"
+              @click="unklarRemove(u.text)"
+            >✕</button>
+          </li>
+        </ul>
+        <p class="text-[0.75rem] leading-relaxed text-ink-3">
+          Kommt automatisch in den Bericht. Text markieren → 🔖 tippen, überall in der App.
+        </p>
+      </section>
+
       <section v-if="mounted && day.slots.length" class="flex flex-col gap-2 rounded-2xl border border-line bg-surface px-4 py-3.5">
         <label class="eyebrow" for="note">Notizen für heute</label>
         <textarea
@@ -261,7 +298,7 @@ function go(delta: number) {
           v-model="note"
           rows="4"
           placeholder="Ergebnisse, Wörter, Fragen an mich — alles, was du mir sagen willst.&#10;z. B. HV Teil 2: 7/10 — Absolutizer wieder übersehen&#10;„entwerten“ nie gehört&#10;Frage: wann damit, wann um … zu?"
-          class="w-full resize-y rounded-lg border border-line bg-surface-2 px-3 py-2.5 font-mono text-[0.85rem] leading-relaxed text-ink"
+          class="w-full resize-y rounded-lg border border-line bg-surface-2 px-3 py-2.5 font-mono text-[1rem] leading-relaxed text-ink"
         />
         <p class="text-[0.75rem] leading-relaxed text-ink-3">
           Bleibt stehen und kommt in den Bericht — pro Tag ein eigenes Feld.

@@ -5,10 +5,15 @@ import { useProgress } from '~/composables/useProgress'
 import { useUebung } from '~/composables/useUebung'
 import { EPISODES } from '~/data/hoeren'
 import { toISO, fromISO } from '~/composables/usePlan'
+import { useUnklar } from '~/composables/useUnklar'
 
 const { state, dayTouched } = useProgress()
 const { history, hydrate } = useUebung()
-onMounted(hydrate)
+const { items: unklar, hydrate: hydrateUnklar } = useUnklar()
+onMounted(() => {
+  hydrate()
+  hydrateUnklar()
+})
 
 /** Multi-line notes have to stay readable once they are pasted into chat. */
 function indent(text: string) {
@@ -73,6 +78,16 @@ const report = computed(() => {
   } else {
     lines.push('## Karten: noch keine Daten')
   }
+
+  // The whole point of marking a word is that it arrives here without anyone
+  // having to remember it a second time.
+  if (unklar.length) {
+    lines.push('', '## Nicht verstanden (markiert)')
+    for (const u of unklar) {
+      lines.push(`- „${u.text}"  — ${u.quelle}, ${u.at.replace('T', ' ')}`)
+    }
+  }
+
   return lines.join('\n')
 })
 
@@ -109,7 +124,7 @@ async function copy() {
         ref="box"
         readonly
         :value="report"
-        class="h-48 w-full resize-y rounded-lg border border-line bg-surface-2 p-3 font-mono text-[0.72rem] leading-relaxed whitespace-pre text-ink-2"
+        class="h-48 w-full resize-y rounded-lg border border-line bg-surface-2 p-3 font-mono text-[1rem] leading-relaxed whitespace-pre text-ink-2"
       />
       <button
         type="button"

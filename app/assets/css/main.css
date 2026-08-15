@@ -156,6 +156,19 @@ h1, h2, h3, h4 {
   color: var(--ink-3);
 }
 
+/*
+ * iOS Safari zooms the whole page when a field whose text is under 16px takes
+ * focus — and it does not zoom back out afterwards, which is why tapping the
+ * note box left the page enlarged. 16px is a threshold, not a taste: each field
+ * sets it through its own utility class, and this is the backstop for any field
+ * added later without one.
+ */
+textarea,
+input,
+select {
+  font-size: max(16px, 1em);
+}
+
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.01ms !important;

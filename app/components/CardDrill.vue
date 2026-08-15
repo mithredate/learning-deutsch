@@ -132,6 +132,16 @@ function advance() {
 }
 
 /**
+ * Flip — unless you were selecting text. Without this guard, lifting your
+ * finger at the end of a selection also flips the card, which makes copying a
+ * word off the back of a card impossible: the answer disappears as you release.
+ */
+function flip() {
+  if ((window.getSelection()?.toString() ?? '').trim().length) return
+  flipped.value = !flipped.value
+}
+
+/**
  * Move through the round *without grading anything*.
  *
  * Distinct from ⏮/⏭ on the player, which only move what is being read aloud
@@ -254,11 +264,20 @@ function missed() {
         (visibility: hidden) is what makes the hidden face still take up its
         space — `hidden` or `v-show` would bring the jump straight back.
       -->
-      <button
-        type="button"
-        class="grid w-full cursor-pointer text-center select-none"
+      <!--
+        A div, not a button, and without `select-none`: inside a <button> iOS
+        refuses to let you select text at all, and selecting a word to look it
+        up or mark it is something this deck is *for*. `flip()` ignores the tap
+        that ends a selection, so the two gestures do not fight.
+      -->
+      <div
+        role="button"
+        tabindex="0"
+        class="grid w-full cursor-pointer text-center"
         :aria-label="flipped ? 'Karte umdrehen' : 'Antwort aufdecken'"
-        @click="flipped = !flipped"
+        @click="flip"
+        @keydown.enter.prevent="flipped = !flipped"
+        @keydown.space.prevent="flipped = !flipped"
       >
         <span
           class="col-start-1 row-start-1 flex flex-col items-center justify-center gap-3 px-4 py-6"
@@ -303,7 +322,7 @@ function missed() {
           <span v-if="current.hint" class="text-[0.8rem] text-ink-3">{{ current.hint }}</span>
           <span class="font-mono text-[0.68rem] text-ink-3">↺ {{ current.cue }}</span>
         </span>
-      </button>
+      </div>
 
       <div class="flex gap-px border-t border-line-soft bg-line-soft">
         <template v-if="flipped">
