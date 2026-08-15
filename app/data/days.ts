@@ -364,7 +364,7 @@ export const DAYS: Day[] = [
     tagline: 'Noch einmal, gezielt.',
     needs: ['altes Audio'],
     slots: [
-      { place: 'gym', minutes: 15, dateien: true, hoeren: ['eigen-01-teil2'], what: 'Genau diesen Teil hören.', note: 'Falls es ein E1-Teil war: die Versuchsliste zeigt dir, welcher der schwächste ist.' },
+      { place: 'gym', minutes: 15, hoeren: ['eigen-01-teil2'], what: 'Genau diesen Teil hören.', note: 'Falls es ein E1-Teil war: die Versuchsliste zeigt dir, welcher der schwächste ist.' },
       { place: 'sofa', minutes: 35, dateien: true, karten: true, what: 'Mit Blatt, dann Wortschatz-Rettung für alles, was daran gescheitert ist.' },
       { place: 'bed', minutes: 5, what: 'Drei Sätze.' },
     ],

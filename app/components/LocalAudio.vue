@@ -77,8 +77,16 @@ const mb = (bytes: number) => `${(bytes / 1_048_576).toFixed(1)} MB`
       <button type="button" class="px-2 text-[0.78rem] text-crit" @click="remove(t.url)">entfernen</button>
     </div>
 
-    <label class="cursor-pointer rounded-lg border border-dashed border-line bg-surface px-3 py-2.5 text-center text-[0.82rem] text-ink-2">
-      {{ busy ? 'wird gespeichert …' : tracks.length ? '+ weitere MP3 hinzufügen' : '+ MP3 vom Gerät hinzufügen' }}
+    <!-- Once a file is in, the import is done — so the dashed „bring me a file"
+         box stops being an instruction and becomes noise. It shrinks to a quiet
+         link instead of asking again for something that already happened. -->
+    <label
+      class="cursor-pointer"
+      :class="tracks.length
+        ? 'self-start px-1 py-0.5 text-[0.78rem] text-ink-3 underline underline-offset-2'
+        : 'rounded-lg border border-dashed border-line bg-surface px-3 py-2.5 text-center text-[0.82rem] text-ink-2'"
+    >
+      {{ busy ? 'wird gespeichert …' : tracks.length ? '+ weitere Datei' : '+ MP3 vom Gerät hinzufügen' }}
       <input type="file" accept="audio/*" class="sr-only" :disabled="busy" @change="onPick">
     </label>
 
