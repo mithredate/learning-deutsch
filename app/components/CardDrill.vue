@@ -2,15 +2,28 @@
 import { TAG_NAMES } from '~/data/cards'
 import type { Card } from '~/types'
 import { useWortAudio } from '~/composables/useWortAudio'
+import { useProgress } from '~/composables/useProgress'
+import { cardKey } from '~/utils/speakable'
 
-const props = defineProps<{ cards: Card[] }>()
+/**
+ * `id` is the block this round belongs to — `${date}:${slotIndex}`, the same key
+ * the tick marks use. It is what makes „saß ✓" survive closing the app.
+ */
+const props = defineProps<{ cards: Card[]; id: string }>()
 const emit = defineEmits<{ miss: [cue: string] }>()
+
+const { hydrate, clearedCards, clearCard, resetDrill } = useProgress()
+// Synchronously, not in onMounted: the first `reset()` runs during setup, and a
+// round built before storage is read would show every cleared card again.
+hydrate()
 
 const queue = ref<Card[]>([])
 const again = ref<Card[]>([])
 const pos = ref(0)
 const flipped = ref(false)
 const finished = ref(false)
+/** How many of this block's cards were already sitting before today's round. */
+const carried = ref(0)
 
 // The recordings are baked by the private repo's synthesizer (Gemini-TTS) and
 // played through one reused <audio> element, so a deck run survives the screen
@@ -28,15 +41,33 @@ function halt() {
 }
 onUnmounted(halt)
 
+/**
+ * Rebuild the round from what is *not* yet cleared.
+ *
+ * Resuming is expressed as a filter rather than a stored cursor on purpose: a
+ * cursor goes stale the moment the deck changes underneath it (a card edited,
+ * the rotation moved on), and a stale cursor either repeats work or skips cards
+ * silently. „Which cards are still open" cannot go stale.
+ */
 function reset() {
   halt()
-  queue.value = [...props.cards]
+  const done = clearedCards(props.id)
+  const open = props.cards.filter(c => !done.has(cardKey(c)))
+  carried.value = props.cards.length - open.length
+  queue.value = open
   again.value = []
   pos.value = 0
   flipped.value = false
-  finished.value = props.cards.length === 0
+  finished.value = open.length === 0 && props.cards.length > 0
 }
-watch(() => props.cards, reset, { immediate: true })
+
+/** „Noch einmal" — deliberate, by hand: the whole deck comes back. */
+function startOver() {
+  resetDrill(props.id)
+  reset()
+}
+
+watch(() => [props.cards, props.id], reset, { immediate: true })
 // Fetch the deck's recordings while there is still signal — see `warm()`.
 onMounted(() => warm(props.cards))
 
@@ -101,6 +132,9 @@ function advance() {
 }
 
 function knew() {
+  // Persist before advancing: a card that sat is done for this block, today and
+  // after the next app restart. This is the whole fix for „it always starts over".
+  if (current.value) clearCard(props.id, cardKey(current.value))
   advance()
 }
 
@@ -171,20 +205,22 @@ function missed() {
         </span>
       </ClientOnly>
 
+      <!-- The count includes what was already sitting from an earlier sitting of
+           the same block, so the number matches the deck you were promised. -->
       <span class="font-mono text-[0.72rem] tabular-nums text-ink-3">
         <template v-if="!finished">
-          {{ pos + 1 }} / {{ queue.length }}<template v-if="again.length"> ↺{{ again.length }}</template>
+          {{ carried + pos + 1 }} / {{ carried + queue.length }}<template v-if="again.length"> ↺{{ again.length }}</template>
         </template>
       </span>
     </header>
 
     <div v-if="finished" class="flex flex-col items-center gap-3 px-4 py-7 text-center">
       <span class="font-serif text-2xl">Durch.</span>
-      <p class="text-[0.87rem] text-ink-2">Alle Karten einmal richtig.</p>
+      <p class="text-[0.87rem] text-ink-2">Alle {{ cards.length }} Karten einmal richtig.</p>
       <button
         type="button"
         class="rounded-lg border border-line bg-surface-2 px-4 py-2 text-[0.85rem] text-ink-2"
-        @click="reset"
+        @click="startOver"
       >Noch einmal</button>
     </div>
 

@@ -232,6 +232,7 @@ function go(delta: number) {
         <SlotCard
           v-for="(slot, i) in day.slots"
           :key="`${day.date}:${i}`"
+          :id="`${day.date}:${i}`"
           :slot="slot"
           :needs="i === 0 ? day.needs : undefined"
           :ticked="isTicked(day.date, i)"
@@ -241,7 +242,7 @@ function go(delta: number) {
         />
       </div>
 
-      <CardDrill v-if="mounted && orphanDeck.length" :cards="orphanDeck" @miss="missCard" />
+      <CardDrill v-if="mounted && orphanDeck.length" :id="`${day.date}:deck`" :cards="orphanDeck" @miss="missCard" />
 
       <section v-if="mounted && day.slots.length" class="flex flex-col gap-2 rounded-2xl border border-line bg-surface px-4 py-3.5">
         <label class="eyebrow" for="note">Notizen für heute</label>

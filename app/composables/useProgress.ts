@@ -9,10 +9,20 @@ interface ProgressState {
   notes: Record<string, string>
   /** card cue → how often it came back as „nochmal" */
   misses: Record<string, number>
+  /**
+   * Block id → the cards already answered „saß ✓" in it.
+   *
+   * Until 2026-08-15 a card round kept its position in component state only, so
+   * closing the app put a 25-card deck back on card 1 — and a deck you only ever
+   * see the first four cards of teaches you four words. The set is *per block*,
+   * not per card: two blocks on the same day can drill the same tag (15.08. does),
+   * and a card cleared in the warm-up must not empty the block after it.
+   */
+  drills: Record<string, string[]>
   setupDone: boolean
 }
 
-const state = reactive<ProgressState>({ slots: {}, notes: {}, misses: {}, setupDone: false })
+const state = reactive<ProgressState>({ slots: {}, notes: {}, misses: {}, drills: {}, setupDone: false })
 const ready = ref(false)
 
 function read<T>(key: string, fallback: T): T {
@@ -42,8 +52,26 @@ export function useProgress() {
     state.slots = read('slots', {})
     state.notes = read('notes', {})
     state.misses = read('misses', {})
+    state.drills = read('drills', {})
     state.setupDone = read('setupDone', false)
     ready.value = true
+  }
+
+  /** Cards already cleared in this block, as a Set for the drill to skip. */
+  function clearedCards(id: string) {
+    return new Set(state.drills[id] ?? [])
+  }
+
+  function clearCard(id: string, key: string) {
+    const list = state.drills[id] ?? (state.drills[id] = [])
+    if (!list.includes(key)) list.push(key)
+    write('drills', state.drills)
+  }
+
+  /** „Noch einmal" — the whole deck comes back, on purpose and by hand. */
+  function resetDrill(id: string) {
+    delete state.drills[id]
+    write('drills', state.drills)
   }
 
   function isTicked(date: string, index: number) {
@@ -77,5 +105,8 @@ export function useProgress() {
     write('setupDone', true)
   }
 
-  return { state, ready, hydrate, isTicked, toggleSlot, dayTouched, setNote, missCard, dismissSetup }
+  return {
+    state, ready, hydrate, isTicked, toggleSlot, dayTouched, setNote, missCard,
+    clearedCards, clearCard, resetDrill, dismissSetup,
+  }
 }

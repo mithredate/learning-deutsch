@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { TEILE, SURVIVAL, ALLEIN } from '~/data/sprechen'
-import { usePlan } from '~/composables/usePlan'
+import { todayIndex } from '~/composables/usePlan'
+import { DAYS } from '~/data/days'
 
 useHead({ title: 'Sprechen — die drei Teile' })
 
@@ -13,9 +14,15 @@ const toggle = (key: string) => (openBlocks.value[key] = !openBlocks.value[key])
  * task where the calendar has one, and the day's Teil 2 topic otherwise. A
  * prompt you still have to finish by hand is a prompt you don't use.
  */
-const { day } = usePlan()
+// `todayIndex()` rather than `usePlan()`: this page has no day navigation, and
+// usePlan's index starts at 0 — which would hand the AI the *first day of the
+// plan's* topic. Resolved on mount, because on the server there is no „today"
+// worth committing to in a prerendered page.
+const today = ref(DAYS[0]!)
+onMounted(() => (today.value = DAYS[todayIndex()]!))
+
 const prompt = computed(() =>
-  ALLEIN.prompt + (day.value.aufgabe ?? day.value.thema?.title ?? 'Sie planen zusammen ein Wochenende in einer anderen Stadt.'),
+  ALLEIN.prompt + (today.value.aufgabe ?? today.value.thema?.title ?? 'Sie planen zusammen ein Wochenende in einer anderen Stadt.'),
 )
 
 const copied = ref(false)

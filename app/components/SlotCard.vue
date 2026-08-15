@@ -10,6 +10,8 @@ const props = defineProps<{
   ticked: boolean
   /** Already resolved by the page, so the rotation stays a page-level concern. */
   cards?: Card[]
+  /** `${date}:${slotIndex}` — the identity this block's card progress is filed under. */
+  id: string
 }>()
 
 const emit = defineEmits<{ toggle: []; miss: [cue: string] }>()
@@ -115,7 +117,7 @@ const mmss = (s: number) => `${Math.floor(s / 60)}:${String(s % 60).padStart(2, 
 
       <LocalAudio v-if="slot.dateien || slot.datei" :want="slot.datei" />
 
-      <CardDrill v-if="cards?.length" :cards="cards" @miss="emit('miss', $event)" />
+      <CardDrill v-if="cards?.length" :id="id" :cards="cards" @miss="emit('miss', $event)" />
 
       <button
         type="button"
