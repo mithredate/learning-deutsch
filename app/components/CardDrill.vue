@@ -14,8 +14,20 @@ const finished = ref(false)
 
 const { speak, stop, speaking, supported } = useSpeech()
 
-function reset() {
+/** True while a whole-deck run is walking the cards on its own. */
+const running = ref(false)
+/** Either kind of playback. The only thing the button has to care about. */
+const playing = computed(() => running.value || speaking.value)
+
+/** Silence everything, including a run in progress. */
+function halt() {
+  running.value = false
   stop()
+}
+onUnmounted(halt)
+
+function reset() {
+  halt()
   queue.value = [...props.cards]
   again.value = []
   pos.value = 0
@@ -52,14 +64,50 @@ function linesFor(card: Card): Line[] {
 
 function listen() {
   if (!current.value) return
-  if (speaking.value) return stop()
+  if (playing.value) return halt()
   // Hearing the card is a form of revealing it — keep the screen honest.
   flipped.value = true
   speak(linesFor(current.value))
 }
 
+/**
+ * The whole deck, hands-free, starting from the card you are on.
+ *
+ * A run deliberately grades nothing and puts the drill back where it found it.
+ * Listening on the way to the gym must not quietly consume tonight's session —
+ * otherwise you sit down at 21:00, open the block, and the deck is already at
+ * „Durch." without a single card having been answered.
+ *
+ * Stopping by hand is the opposite case: you stopped because you want to be on
+ * *that* card, so a manual stop leaves you standing there.
+ */
+async function listenAll() {
+  if (playing.value) return halt()
+  if (!queue.value.length) return
+
+  const from = pos.value
+  const wasFlipped = flipped.value
+  running.value = true
+
+  for (let i = from; i < queue.value.length; i++) {
+    pos.value = i
+    flipped.value = true
+    await speak(linesFor(queue.value[i]!))
+    if (!running.value) return
+    // A beat between cards. Without it the deck arrives as one long block and
+    // you lose track of where one word ends and the next begins.
+    await new Promise(r => setTimeout(r, 900))
+    if (!running.value) return
+  }
+
+  running.value = false
+  pos.value = from
+  flipped.value = wasFlipped
+}
+
 function advance() {
-  stop()
+  // Grading a card by hand ends the run — you have taken the wheel back.
+  halt()
   pos.value++
   flipped.value = false
   if (pos.value < queue.value.length) return
@@ -93,19 +141,34 @@ function missed() {
     :style="{ boxShadow: 'var(--shadow)' }"
   >
     <header class="flex items-center justify-between gap-2.5 border-b border-line-soft px-4 py-3">
-      <h3 class="flex-1 text-base">{{ label }}</h3>
+      <h3 class="min-w-0 flex-1 text-base">{{ label }}</h3>
 
       <ClientOnly>
-        <button
-          v-if="supported && !finished && current"
-          type="button"
-          class="-my-1 rounded-lg border px-2.5 py-1.5 text-[0.8rem] whitespace-nowrap transition-colors"
-          :class="speaking
-            ? 'border-accent bg-accent-wash font-semibold text-accent'
-            : 'border-line bg-surface-2 text-ink-2'"
-          :aria-label="speaking ? 'Vorlesen stoppen' : 'Karte vorlesen'"
-          @click="listen"
-        >{{ speaking ? '■ stopp' : '🔊 hören' }}</button>
+        <span v-if="supported && !finished && current" class="-my-1 flex items-center gap-1">
+          <!-- One control while anything is playing: at that moment the only
+               thing you ever want is to make it stop. -->
+          <button
+            v-if="playing"
+            type="button"
+            class="rounded-lg border border-accent bg-accent-wash px-2.5 py-1.5 text-[0.78rem] font-semibold whitespace-nowrap text-accent"
+            aria-label="Vorlesen stoppen"
+            @click="halt"
+          >■ stopp</button>
+          <template v-else>
+            <button
+              type="button"
+              class="rounded-lg border border-line bg-surface-2 px-2 py-1.5 text-[0.78rem] text-ink-2"
+              aria-label="Diese Karte vorlesen"
+              @click="listen"
+            >🔊</button>
+            <button
+              type="button"
+              class="rounded-lg border border-line bg-surface-2 px-2 py-1.5 text-[0.78rem] whitespace-nowrap text-ink-2"
+              aria-label="Alle Karten nacheinander vorlesen"
+              @click="listenAll"
+            >▶︎ alle</button>
+          </template>
+        </span>
       </ClientOnly>
 
       <span class="font-mono text-[0.72rem] tabular-nums text-ink-3">
