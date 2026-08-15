@@ -73,6 +73,21 @@ export default defineNuxtConfig({
       // Audio is large and immutable — cache on first play, never revalidate.
       runtimeCaching: [
         {
+          // Wortschatz cards get their own bucket. Sharing one with the exam
+          // recordings would be a trap: 130 small card files evict the handful
+          // of big Hörverstehen ones under any sane entry cap, and the exam
+          // audio is the expensive thing to lose. Each card filename carries a
+          // content hash, so an edited card is a *new* URL — nothing in here
+          // ever needs revalidating, only evicting.
+          urlPattern: ({ url }) => url.pathname.startsWith(`${BASE}audio/wort/`),
+          handler: 'CacheFirst',
+          options: {
+            cacheName: 'wortschatz-audio',
+            expiration: { maxEntries: 400, maxAgeSeconds: 60 * 60 * 24 * 365 },
+            cacheableResponse: { statuses: [0, 200] },
+          },
+        },
+        {
           urlPattern: ({ url }) => url.pathname.startsWith(`${BASE}audio/`),
           handler: 'CacheFirst',
           options: {

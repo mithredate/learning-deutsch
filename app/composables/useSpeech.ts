@@ -1,68 +1,19 @@
 import { onScopeDispose, readonly, ref } from 'vue'
+import { LANGS, speakable, type Line } from '~/utils/speakable'
 
 /**
- * Spoken Wortschatz, straight out of the browser.
+ * Browser speech for the Wortschatz — the fallback, now that the deck is baked
+ * to Gemini MP3s by the private repo's synthesizer.
  *
- * Deliberately *not* pre-rendered MP3s like the Hörverstehen material. The deck
- * is rewritten every week from the gap ledger, and a baked file is one more
- * thing to re-synthesize, commit and ship before a card is usable. The Web
- * Speech API costs nothing, weighs nothing in the repo, works offline in the
- * installed PWA, and is never out of sync with the card in front of you.
- *
- * The Hörverstehen recordings stay on the TTS pipeline — there the *voice* is
- * the exercise. Here it is only a carrier for the word.
+ * It still earns its place: a card added to the deck today has no MP3 until the
+ * next synth run, and a card that never speaks is a card that silently drops
+ * out of the listening pass. So an unbaked card falls back to the phone's own
+ * voice rather than to nothing. See `useWortAudio.ts` for the real player.
  */
 
-/** One thing to say, in one language. */
-export interface Line {
-  text: string
-  lang: 'de' | 'en'
-  /** Silence *before* this line, in ms. Where the self-test gap goes. */
-  gap?: number
-}
+export type { Line }
 
-const LANGS = { de: 'de-DE', en: 'en-US' } as const
 
-/**
- * Card text is written to be read with the *eyes*. The meaning field is a
- * dictionary entry, not a sentence — `to employ · sich ~ mit = to occupy
- * oneself with` — and a synthesizer reads that literally: "tilde", "equals",
- * and a run of German words in an American accent. Notation has to become
- * words, or punctuation, before it reaches the voice.
- */
-function plain(html: string) {
-  return html
-    .replace(/<[^>]+>/g, '')
-    .replace(/&nbsp;/g, ' ')
-    // Only ever appears in an English gloss here (`A&E`), so "and", not "und".
-    .replace(/&amp;|&/g, ' and ')
-    // Grammar shorthand, spelled out. Longest first — `Akk.` before a bare `+`.
-    .replace(/\(\s*\+\s*Akk\.?\s*\)/gi, '(plus accusative)')
-    .replace(/\(\s*\+\s*Dat\.?\s*\)/gi, '(plus dative)')
-    .replace(/\+\s*Akk\.?/gi, 'plus accusative')
-    .replace(/\+\s*Dat\.?/gi, 'plus dative')
-    // Symbols that mean something to a reader and nothing to a voice.
-    .replace(/\s*↔\s*/g, ', versus ')
-    .replace(/\s*→\s*/g, ', ')
-    .replace(/\s*=\s*/g, ' means ')
-    .replace(/\s*·\s*/g, '. ')   // sense separator — a full stop is the pause it wants
-    .replace(/\s*—\s*/g, ', ')
-    .replace(/\s*\/\s*/g, ' or ')
-    .replace(/\s*…\s*/g, ', ')
-    .replace(/~/g, '')           // stands in for the headword; the ear already has it
-    .replace(/[„“”"]/g, '')      // quote glyphs get announced by some voices
-    .replace(/\s+([.,])/g, '$1')
-    .replace(/([.,])\1+/g, '$1')
-    .replace(/\s+/g, ' ')
-    .trim()
-}
-
-/**
- * macOS and iOS ship a row of novelty voices — Bahh is a sheep, Bells is a
- * chime — and they sit in `getVoices()` next to the real ones. Picking "the
- * first local match" is luck, not a choice: on this machine the en-US list runs
- * Samantha, Albert, Bad News, Bahh, Bells, Boing.
- */
 const NOVELTY = /^(albert|bad news|bahh|bells|boing|bubbles|cellos|deranged|good news|hysterical|jester|junior|kathy|organ|ralph|superstar|trinoids|whisper|wobble|zarvox)/i
 
 /**
@@ -132,7 +83,7 @@ export function useSpeech() {
 
   function say(line: Line, rate: number) {
     return new Promise<void>((resolve) => {
-      const u = new SpeechSynthesisUtterance(plain(line.text))
+      const u = new SpeechSynthesisUtterance(speakable(line.text, line.lang))
       u.lang = LANGS[line.lang]
       u.voice = pickVoice(voices.value, LANGS[line.lang]) ?? null
       u.rate = rate
@@ -171,5 +122,5 @@ export function useSpeech() {
     if (token === mine) speaking.value = false
   }
 
-  return { speak, stop, speaking: readonly(speaking), supported: readonly(supported), plain }
+  return { speak, stop, speaking: readonly(speaking), supported: readonly(supported) }
 }

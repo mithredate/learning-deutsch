@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { TAG_NAMES } from '~/data/cards'
 import type { Card } from '~/types'
-import { useSpeech, type Line } from '~/composables/useSpeech'
+import { useWortAudio } from '~/composables/useWortAudio'
 
 const props = defineProps<{ cards: Card[] }>()
 const emit = defineEmits<{ miss: [cue: string] }>()
@@ -12,12 +12,14 @@ const pos = ref(0)
 const flipped = ref(false)
 const finished = ref(false)
 
-const { speak, stop, speaking, supported } = useSpeech()
+// The recordings are baked by the private repo's synthesizer (Gemini-TTS) and
+// played through one reused <audio> element, so a deck run survives the screen
+// locking. What each card says, and the silences between, live in
+// `utils/speakable.ts` — shared with the synthesizer so the two cannot drift.
+const { play, stop, warm, playing } = useWortAudio()
 
 /** True while a whole-deck run is walking the cards on its own. */
 const running = ref(false)
-/** Either kind of playback. The only thing the button has to care about. */
-const playing = computed(() => running.value || speaking.value)
 
 /** Silence everything, including a run in progress. */
 function halt() {
@@ -35,39 +37,20 @@ function reset() {
   finished.value = props.cards.length === 0
 }
 watch(() => props.cards, reset, { immediate: true })
+// Fetch the deck's recordings while there is still signal — see `warm()`.
+onMounted(() => warm(props.cards))
 
 const current = computed(() => queue.value[pos.value])
 const label = computed(() =>
   [...new Set(props.cards.map(c => TAG_NAMES[c.tag]))].join(' · '),
 )
 
-/**
- * ── The pacing policy ────────────────────────────────────────────────────────
- * What the ear gets, in what order, and how much silence sits between.
- *
- * The gaps are the design. Word → (silence) → meaning is a self-test you can
- * run with your hands on a dumbbell: the silence is where you answer. Set the
- * gap to 0 and the same audio becomes passive listening — faster, but you never
- * find out what you don't know. The examples come last and in German only, so
- * the pass ends in the language instead of in English.
- *
- * These numbers are the knob. Tune them to how you actually study.
- */
-function linesFor(card: Card): Line[] {
-  return [
-    { text: card.cue, lang: 'de' },
-    { text: card.cue, lang: 'de', gap: 700 },     // twice: once to hear, once to hold
-    { text: card.meaning, lang: 'en', gap: 1400 }, // the answer, after the self-test gap
-    ...(card.examples ?? []).map(e => ({ text: e, lang: 'de' as const, gap: 600 })),
-  ]
-}
-
 function listen() {
   if (!current.value) return
   if (playing.value) return halt()
   // Hearing the card is a form of revealing it — keep the screen honest.
   flipped.value = true
-  speak(linesFor(current.value))
+  play([current.value])
 }
 
 /**
@@ -89,17 +72,13 @@ async function listenAll() {
   const wasFlipped = flipped.value
   running.value = true
 
-  for (let i = from; i < queue.value.length; i++) {
-    pos.value = i
+  // The player walks the cards; the screen follows it card by card.
+  await play(queue.value.slice(from), (_card, i) => {
+    pos.value = from + i
     flipped.value = true
-    await speak(linesFor(queue.value[i]!))
-    if (!running.value) return
-    // A beat between cards. Without it the deck arrives as one long block and
-    // you lose track of where one word ends and the next begins.
-    await new Promise(r => setTimeout(r, 900))
-    if (!running.value) return
-  }
+  })
 
+  if (!running.value) return   // stopped by hand, or graded away — stay put
   running.value = false
   pos.value = from
   flipped.value = wasFlipped
@@ -144,7 +123,7 @@ function missed() {
       <h3 class="min-w-0 flex-1 text-base">{{ label }}</h3>
 
       <ClientOnly>
-        <span v-if="supported && !finished && current" class="-my-1 flex items-center gap-1">
+        <span v-if="!finished && current" class="-my-1 flex items-center gap-1">
           <!-- One control while anything is playing: at that moment the only
                thing you ever want is to make it stop. -->
           <button
