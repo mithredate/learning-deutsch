@@ -59,7 +59,7 @@ export const DAYS: Day[] = [
       { place: 'sofa', minutes: 15, what: '⌨️ <b>Deutsche Tastatur einrichten und einmal benutzen</b> — Systemeinstellungen → Tastatur → Eingabequellen → „Deutsch". Dann zehn Minuten tippen: die drei Sätze von gestern, danach ein Absatz aus einem Transkript.', en: 'Set up the German keyboard and use it once — System Settings → Keyboard → Input Sources → German. Then type for ten minutes: yesterday\'s three sentences, then a paragraph from a transcript.', note: 'Du tippst Programmer Dvorak. Die Prüfung stellt eine deutsche <b>QWERTZ</b>-Tastatur, die du nicht umstellen kannst — und der Brief sind 30 Minuten auf genau dieser Tastatur. Das ist der teuerste vermeidbare Fehler im ganzen Plan. Ab heute wird jedes deutsche Wort darauf getippt: ä ö ü ß, y und z vertauscht.' },
       { place: 'bed', minutes: 5, what: 'Drei Sätze über dein Wochenende.', en: 'Three sentences about your weekend.' },
     ],
-    deck: ['falle', 'koll'],
+    deck: ['falle', 'koll', 'digital'],
   },
 
   // ── Woche 2 · Hörverstehen Teil 2 ─────────────────────────────────────
@@ -124,7 +124,7 @@ export const DAYS: Day[] = [
       { place: 'gym', minutes: 12, karten: true, what: 'Kartenrunde <b>Brief-Mechanik</b> + Grammatik.', en: 'Card round: letter mechanics + grammar.' },
       { place: 'sofa', minutes: 35, what: 'Ein Brief, <b>30 Minuten, getippt, mit Uhr</b> — deutsche Tastatur, Autokorrektur und Rechtschreibprüfung aus. Dann den Text hierher kopieren.', en: 'One letter, 30 minutes, typed, on the clock — German keyboard, autocorrect and spellcheck off. Then copy the text over to me.', note: 'Checkliste vorher lesen: Betreff · Anrede + Gruß · alle 4 Leitpunkte · Schluss mit einer Frage.' },
     ],
-    deck: ['brief', 'gramm'],
+    deck: ['brief', 'gramm', 'digital'],
   },
   {
     date: '2026-08-22', kind: 'big',
@@ -315,7 +315,7 @@ export const DAYS: Day[] = [
       { place: 'sofa', minutes: 180, what: 'LV 1–3, SB 1–2 und ein 30-Minuten-Brief. Drei Stunden, mit Uhr, alles am Rechner.', en: 'Reading 1–3, Sprachbausteine 1–2 and a 30-minute letter. Three hours, on the clock, all on the computer.' },
       { place: 'bed', minutes: 5, what: 'Drei Sätze: wie fühlten sich die letzten 30 Minuten an?', en: 'Three sentences: how did the last 30 minutes feel?' },
     ],
-    deck: ['falle', 'koll'],
+    deck: ['falle', 'koll', 'digital'],
   },
   {
     date: '2026-09-06', kind: 'day',
@@ -394,7 +394,7 @@ export const DAYS: Day[] = [
       { place: 'gym', minutes: 10, karten: true, what: 'Kartenrunde <b>Brief</b>.', en: 'Card round: letter.' },
       { place: 'sofa', minutes: 40, what: 'Brief auf Zeit. Danach: Redemittel für <i>gemeinsam planen</i> — Vorschlag, Zustimmung, Einwand, Kompromiss.', en: 'Timed letter. Then: phrases for planning together — proposal, agreement, objection, compromise.' },
     ],
-    deck: ['brief', 'gramm'],
+    deck: ['brief', 'gramm', 'digital'],
   },
   {
     date: '2026-09-12', kind: 'exam',
@@ -405,7 +405,9 @@ export const DAYS: Day[] = [
       { place: 'sofa', minutes: 210, datei: 'telc-b1-uebungstest-1-hoerverstehen.mp3', what: 'Dreieinhalb Stunden unter echten Bedingungen: am Rechner, deutsche Tastatur, Brief getippt. Handy weg.', en: 'Three and a half hours under real conditions: on the computer, German keyboard, letter typed. Phone away.', note: 'Ziel: alle Teile ≥ 60 %, Hören ≥ 70 %.' },
       { place: 'bed', minutes: 0, what: 'Nichts. Ausruhen.', en: 'Nothing. Rest.' },
     ],
-    deck: [],
+    // The rehearsal drills no words — only the six cards about operating the
+    // machine, which is the one thing a paper mock cannot rehearse.
+    deck: ['digital'],
   },
   {
     date: '2026-09-13', kind: 'day',
@@ -446,7 +448,7 @@ export const DAYS: Day[] = [
       { place: 'sofa', minutes: 35, hoeren: ['eigen-01-teil1', 'eigen-01-teil3'], what: 'Brief auf Zeit, dann ein Hörteil, den du schon zweimal gehört hast.', en: 'Timed letter, then a listening Teil you have already heard twice.', note: 'Bewusst ein alter Teil: die Versuchsliste soll heute nach oben zeigen.' },
       { place: 'bed', minutes: 5, what: 'Drei Sätze.', en: 'Three sentences.' },
     ],
-    deck: ['brief'],
+    deck: ['brief', 'digital'],
   },
   {
     date: '2026-09-24', kind: 'rest',
