@@ -131,6 +131,24 @@ function advance() {
   }
 }
 
+/**
+ * Move through the round *without grading anything*.
+ *
+ * Distinct from ⏮/⏭ on the player, which only move what is being read aloud
+ * („that's not what I wanted", 2026-08-15). This is the deck itself: go back to
+ * the card you wanted to look at twice, skip the one you are not ready to judge.
+ *
+ * Neither direction touches „saß ✓", on purpose — a card you merely walked past
+ * has not been answered, and must come back.
+ */
+function move(delta: number) {
+  const next = pos.value + delta
+  if (next < 0 || next >= queue.value.length) return
+  halt()
+  pos.value = next
+  flipped.value = false
+}
+
 function knew() {
   // Persist before advancing: a card that sat is done for this block, today and
   // after the next app restart. This is the whole fix for „it always starts over".
@@ -299,6 +317,29 @@ function missed() {
         <button v-else type="button" class="flex-1 bg-surface px-2 py-3.5 text-[0.87rem] text-ink-2" @click="flipped = true">
           aufdecken
         </button>
+      </div>
+
+      <!--
+        Moving through the deck, as opposed to judging it. Quieter than the row
+        above on purpose: grading is what advances the round, this is for the
+        card you want to see again and the one you are not ready to answer.
+        Skipping leaves „saß ✓" untouched, so a skipped card still comes back.
+      -->
+      <div class="flex gap-px border-t border-line-soft bg-line-soft">
+        <button
+          type="button"
+          class="flex-1 bg-surface px-2 py-2.5 text-[0.8rem] text-ink-3 disabled:opacity-30"
+          :disabled="pos === 0"
+          aria-label="Eine Karte zurück"
+          @click="move(-1)"
+        >‹ zurück</button>
+        <button
+          type="button"
+          class="flex-1 bg-surface px-2 py-2.5 text-[0.8rem] text-ink-3 disabled:opacity-30"
+          :disabled="pos >= queue.length - 1"
+          aria-label="Diese Karte überspringen"
+          @click="move(1)"
+        >überspringen ›</button>
       </div>
     </template>
   </section>
