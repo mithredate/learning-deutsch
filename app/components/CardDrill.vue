@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { TAG_NAMES } from '~/data/cards'
+import { TAG_NAMES, KIND_NAMES, type CardKind } from '~/data/cards'
 import type { Card } from '~/types'
 import { useWortAudio } from '~/composables/useWortAudio'
 import { useProgress } from '~/composables/useProgress'
@@ -9,7 +9,7 @@ import { cardKey } from '~/utils/speakable'
  * `id` is the block this round belongs to — `${date}:${slotIndex}`, the same key
  * the tick marks use. It is what makes „saß ✓" survive closing the app.
  */
-const props = defineProps<{ cards: Card[]; id: string }>()
+const props = defineProps<{ cards: Card[]; id: string; kind?: CardKind }>()
 const emit = defineEmits<{ miss: [cue: string] }>()
 
 const { hydrate, clearedCards, clearCard, resetDrill } = useProgress()
@@ -154,7 +154,10 @@ function missed() {
     :style="{ boxShadow: 'var(--shadow)' }"
   >
     <header class="flex items-center justify-between gap-2.5 border-b border-line-soft px-4 py-3">
-      <h3 class="min-w-0 flex-1 text-base">{{ label }}</h3>
+      <h3 class="min-w-0 flex-1 text-base">
+        <span v-if="kind" class="eyebrow block">{{ KIND_NAMES[kind] }}</span>
+        {{ label }}
+      </h3>
 
       <ClientOnly>
         <span v-if="!finished && current" class="-my-1 flex items-center gap-1">

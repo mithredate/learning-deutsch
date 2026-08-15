@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { usePlan, deckFor, formatDay, daysUntilExam } from '~/composables/usePlan'
+import { groupByKind } from '~/data/cards'
 import { studyDays } from '~/data/days'
 import { useProgress } from '~/composables/useProgress'
 import { useEnglish } from '~/composables/useEnglish'
@@ -31,6 +32,8 @@ function cardsFor(slot: Slot) {
 const orphanDeck = computed(() =>
   day.value.slots.some(s => s.karten) ? [] : deckFor(day.value.deck, index.value),
 )
+
+const orphanGroups = computed(() => (mounted.value ? groupByKind(orphanDeck.value) : []))
 
 const left = computed(() => daysUntilExam(day.value.date))
 
@@ -242,7 +245,14 @@ function go(delta: number) {
         />
       </div>
 
-      <CardDrill v-if="mounted && orphanDeck.length" :id="`${day.date}:deck`" :cards="orphanDeck" @miss="missCard" />
+      <CardDrill
+        v-for="g in orphanGroups"
+        :key="g.kind"
+        :id="`${day.date}:deck:${g.kind}`"
+        :kind="g.kind"
+        :cards="g.cards"
+        @miss="missCard"
+      />
 
       <section v-if="mounted && day.slots.length" class="flex flex-col gap-2 rounded-2xl border border-line bg-surface px-4 py-3.5">
         <label class="eyebrow" for="note">Notizen für heute</label>

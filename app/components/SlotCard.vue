@@ -3,6 +3,7 @@ import type { Card, Place, Slot } from '~/types'
 import { episodeById } from '~/data/hoeren'
 import { useUebung } from '~/composables/useUebung'
 import { useEnglish } from '~/composables/useEnglish'
+import { groupByKind } from '~/data/cards'
 
 const props = defineProps<{
   slot: Slot
@@ -31,6 +32,13 @@ onMounted(hydrate)
 const episodes = computed(() =>
   (props.slot.hoeren ?? []).map(id => episodeById(id)).filter(Boolean),
 )
+
+/**
+ * Words and tactics get their own round. Same block, same evening, but you are
+ * not asked to switch between „die Seilbahn" and „nie ein Feld leer lassen"
+ * every second card.
+ */
+const groups = computed(() => groupByKind(props.cards ?? []))
 
 const mmss = (s: number) => `${Math.floor(s / 60)}:${String(s % 60).padStart(2, '0')}`
 </script>
@@ -117,7 +125,14 @@ const mmss = (s: number) => `${Math.floor(s / 60)}:${String(s % 60).padStart(2, 
 
       <LocalAudio v-if="slot.dateien || slot.datei" :want="slot.datei" />
 
-      <CardDrill v-if="cards?.length" :id="id" :cards="cards" @miss="emit('miss', $event)" />
+      <CardDrill
+        v-for="g in groups"
+        :key="g.kind"
+        :id="`${id}:${g.kind}`"
+        :kind="g.kind"
+        :cards="g.cards"
+        @miss="emit('miss', $event)"
+      />
 
       <button
         type="button"

@@ -9,6 +9,7 @@ export type CardTag =
   | 'gramm'
   | 'falle'
   | 'brief'
+  | 'digital'
 
 export interface Card {
   tag: CardTag

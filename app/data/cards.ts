@@ -11,6 +11,46 @@ export const TAG_NAMES: Record<CardTag, string> = {
   gramm: 'Grammatik',
   falle: 'Hörfallen',
   brief: 'Brief',
+  digital: 'Digitale Prüfung',
+}
+
+/**
+ * Two kinds of card, and they must not share a round.
+ *
+ * „die Seilbahn" and „immer ankreuzen, nie ein Feld leer lassen" are both cards,
+ * but they are not the same activity: one is a word you either have or you
+ * don't, the other is a tactic you understand once and then only need reminding
+ * of. Shuffled together the tactics dilute the vocabulary — and vocabulary is
+ * the root cause this ledger keeps pointing at. Reported 2026-08-15:
+ * „separate words from general tips and tricks."
+ */
+export type CardKind = 'wort' | 'tipp'
+
+export const CARD_KIND: Record<CardTag, CardKind> = {
+  'v-arbeit': 'wort',
+  'v-buero': 'wort',
+  'v-ansage': 'wort',
+  'v-wohnen': 'wort',
+  'v-gesund': 'wort',
+  'v-reise': 'wort',
+  // A collocation is a word you cannot store one word at a time — still a word.
+  koll: 'wort',
+  gramm: 'tipp',
+  falle: 'tipp',
+  brief: 'tipp',
+  digital: 'tipp',
+}
+
+export const KIND_NAMES: Record<CardKind, string> = {
+  wort: 'Wörter',
+  tipp: 'Regeln & Tipps',
+}
+
+/** Words first: they are the gap, the tactics are the reminder. */
+export function groupByKind(cards: Card[]) {
+  return (['wort', 'tipp'] as CardKind[])
+    .map(kind => ({ kind, cards: cards.filter(c => CARD_KIND[c.tag] === kind) }))
+    .filter(group => group.cards.length > 0)
 }
 
 /**
@@ -173,7 +213,7 @@ export const CARDS: Card[] = [
   // Teil 1 kalt: 2 von 5. Nicht das Ohr — die Lesezeit. Fünf Aussagen in
   // 30 Sekunden sind 6 Sekunden pro Satz: genug zum Markieren, nie genug
   // zum Übersetzen. Diese sechs Karten sind die ganze Routine.
-  { tag: 'falle', cue: 'Teil 1: 30 Sekunden, fünf Aussagen. Was tust du?', answer: 'Nicht lesen — <b>markieren</b>. In jeder Aussage nur das eine Wort, an dem sie hängt.', meaning: "Don't read for meaning — mark the hinge. Six seconds a statement is enough to see what each one turns on, never enough to translate it.", examples: ['Danach wartest du beim Hören auf fünf <b>Signale</b> statt auf fünf Sätze.'], hint: '2026-08-15 · Teil 1 kalt 2/5' },
+  { tag: 'falle', cue: 'Teil 1: 30 Sekunden, fünf Aussagen. Was tust du?', answer: 'Nicht lesen — das <b>Scharnier</b> finden. In jeder Aussage nur das eine Wort, an dem sie hängt. Digital: <b>merken</b>, nicht markieren.', meaning: "Don't read for meaning — find the hinge. Six seconds a statement is enough to see what each one turns on, never enough to translate it. The digital exam can highlight, but dragging a mouse over five words does not fit into 30 seconds.", examples: ['Danach wartest du beim Hören auf fünf <b>Signale</b> statt auf fünf Sätze.'], hint: '2026-08-15 · Teil 1 kalt 2/5' },
   { tag: 'falle', cue: 'Scharnier: meistens · oft · normalerweise · selten', answer: '<b>Häufigkeit.</b> Der Text muss sagen, <i>wie oft</i> — nicht <i>ob</i>.', meaning: 'Frequency hinge. The audio has to match how often, not whether it happens at all.', examples: ['Er fährt <b>meistens</b> mit dem Zug — ein einziges Mal mit dem Auto widerlegt das nicht.'] },
   { tag: 'falle', cue: 'Scharnier: trotz · obwohl · trotzdem', answer: '<b>Einräumung.</b> Zwei Hälften — es gilt die zweite.', meaning: 'Concession. Two halves, and only the second one is what the statement actually claims.', examples: ['„<b>Trotz</b> des Regens war es schön" ist richtig, wenn es schön war. Der Regen ist Kulisse.'] },
   { tag: 'falle', cue: 'Scharnier: lieber · am liebsten · statt', answer: '<b>Präferenz.</b> A <i>gegen</i> B — nicht A allein.', meaning: 'Preference. The claim compares two options; both sides have to be in the audio.', examples: ['Er verreist <b>lieber</b> allein <b>als</b> mit Freunden. „Er reist gern allein" reicht nicht.'] },
@@ -184,4 +224,15 @@ export const CARDS: Card[] = [
   { tag: 'brief', cue: 'Die vier Dinge, die jeder Brief braucht', answer: '<b>Betreff</b> · Anrede + Gruß · alle 4 Leitpunkte · Schluss mit einer <b>Frage</b>', meaning: 'Subject line · greeting and sign-off · all four bullet points · close with a question.', examples: ['Im letzten Test fehlte der Betreff — das kostet in Kriterium II direkt eine Note.'], hint: 'Ledger 18' },
   { tag: 'brief', cue: '„Sehr geehrte Damen und Herren," → Gruß?', answer: '<b>Mit freundlichen Grüßen</b>', meaning: 'Formal opening takes the formal close. Never "Liebe Grüße" after "Sehr geehrte".', examples: ['Formell ↔ formell.'] },
   { tag: 'brief', cue: '„Liebe Frau Meier," → Gruß?', answer: '<b>Viele Grüße</b> / Herzliche Grüße', meaning: 'Semi-formal — exactly the register telc B1 asks for almost every time.', examples: ['Halbformell — genau der Ton, den telc B1 fast immer verlangt.'] },
+
+  // ── Die Prüfung ist digital (bestätigt 2026-08-15) ────────────────────
+  //
+  // Nicht Wortschatz, sondern Bedienung: sechs Dinge, die am 25.09. anders
+  // sind als in jedem Übungstest auf Papier, den wir bisher gerechnet haben.
+  { tag: 'digital', cue: 'Womit schreibst du den Brief?', answer: 'Getippt, auf der <b>deutschen QWERTZ-Tastatur</b> des Prüfungszentrums. Rechner, Maus und Kopfhörer stellt das Zentrum.', meaning: 'Typed, on the test centre’s German QWERTZ keyboard. Computer, mouse and headphones are provided — you cannot bring or configure your own.', examples: ['Du tippst sonst Dvorak. Auf QWERTZ sind <b>y und z vertauscht</b>.'], hint: 'telc digital ab 2026' },
+  { tag: 'digital', cue: 'Wo liegen ä, ö, ü und ß auf QWERTZ?', answer: '<b>ö ä</b> rechts neben dem L · <b>ü</b> rechts neben dem P · <b>ß</b> rechts neben der 0.', meaning: 'ö ä sit right of L, ü right of P, ß right of the 0. Learn them by feel — hunting for an umlaut costs seconds you do not have in a 30-minute letter.', examples: ['Üben, bis du <b>Grüße</b> und <b>möchte</b> ohne Hinsehen tippst.'] },
+  { tag: 'digital', cue: 'Was zeigt der Bildschirm beim Schreiben mit?', answer: 'Die <b>Wortzahl</b>, laufend. Kein Zählen mehr — und keine Ausrede für zu kurz.', meaning: 'A live word count. No counting by hand any more — and no excuse for coming in short.', examples: ['Ändern und umstellen geht ohne Durchstreichen: der Text bleibt sauber.'] },
+  { tag: 'digital', cue: 'Kann man den Text am Bildschirm markieren?', answer: 'Ja, mit der Maus — aber es kostet Zeit. Im Lesen sinnvoll, in <b>Hören Teil 1</b> nicht: 30 Sekunden für fünf Aussagen.', meaning: 'Yes, with the mouse. Worth it in the reading paper, not in listening Teil 1 — you have 30 seconds for five statements.', examples: ['Regel: markieren, wo du zurückspringst. Merken, wo die Uhr läuft.'] },
+  { tag: 'digital', cue: 'Was nimmst du mit in die Prüfung?', answer: 'Nur <b>Ausweis</b> und Anmeldung. Eigene Stifte und eigenes Papier sind nicht erlaubt.', meaning: 'Only your ID and the registration. Your own pens and paper are not allowed — ask the centre whether they hand out scratch paper.', examples: ['Alles Schriftliche passiert am Rechner.'] },
+  { tag: 'digital', cue: 'Kopfhörer im Hörverstehen — was tust du zuerst?', answer: 'Die <b>Lautstärke einstellen</b>, bevor Teil 1 startet. Jeder hat eigene Kopfhörer.', meaning: 'Set the volume before Teil 1 begins. Everyone gets their own headphones — the room acoustics no longer decide what you hear.', examples: ['Der einzige Teil der Prüfung, den du selbst regeln kannst. Nutze ihn vorher, nicht mittendrin.'] },
 ]

@@ -44,7 +44,7 @@ const STEPS = [
   {
     icon: '🌙',
     title: 'Before sleep — 5 min',
-    body: 'Three sentences in German, in any notes app. Wrong is fine. The point is producing, not being correct.',
+    body: 'Three sentences in German, in any notes app — typed on the <b>German keyboard</b>. Wrong is fine; the point is producing, not being correct. The exam is digital and hands you a QWERTZ layout you cannot change, so every German character you type between now and 25.09. is practice for it.',
   },
 ]
 </script>
