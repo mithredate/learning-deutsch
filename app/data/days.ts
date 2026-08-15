@@ -33,14 +33,17 @@ export const DAYS: Day[] = [
   },
   {
     date: '2026-08-15', kind: 'big',
-    headline: 'Teil-Stapel: HV Teil 1 + Teil 3',
-    tagline: 'Küchentisch, Papier, Uhr. Nicht der Schreibtisch.',
-    needs: ['Stift + Papier'],
+    headline: 'ÜT4 Hörverstehen komplett',
+    tagline: 'Kein Stapel startet kalt. Erst aufwärmen, dann die Uhr.',
+    needs: ['MP3 auf dem Handy', 'ÜT4 PDF S. 14–16', 'Stift + Papier'],
     slots: [
-      { place: 'sofa', minutes: 120, hoeren: ['eigen-01-teil1', 'eigen-01-teil3'], what: 'Beide Teile kalt und mit Uhr, hintereinander weg. Danach Zeile für Zeile gegen das Transkript.', note: 'Der erste Stapel der Rampe: 2 Teile heute, in fünf Wochen die ganze Prüfung. Transkript gibt es nach dem Auswerten.' },
+      { place: 'sofa', minutes: 15, karten: ['v-reise', 'falle'], what: 'Kartenrunde <b>Reisen</b> + <b>Fallen</b> — laut, auf Deutsch. Das ist das Aufwärmen, nicht der Test.', note: 'Absichtlich <i>nicht</i> die Wörter aus ÜT4 (Arbeit, Büro, Durchsagen). Sonst misst der Test die letzten zehn Minuten statt der letzten zwei Wochen.' },
+      { place: 'sofa', minutes: 10, karten: ['falle'], what: 'Die <b>30-Sekunden-Routine</b>: sechs neue Karten. Danach deine fünf Zeichen oben auf S. 14 schreiben — eins pro Scharnier.', note: 'Teil 1 kalt war 2/5. Nicht das Ohr, sondern die Lesezeit: 30 Sekunden für fünf Aussagen sind 6 Sekunden pro Satz.' },
+      { place: 'sofa', minutes: 35, dateien: true, what: 'Das ganze Hörverstehen am Stück, mit Aufgabenblatt. <b>Nicht pausieren, nicht zurückspulen.</b>', note: 'Ziel <b>16 von 20</b> (80 %). Erst wenn die Zahl steht, gibt es den nächsten frischen Übungstest.' },
+      { place: 'sofa', minutes: 50, what: 'Zahlen abschicken, dann Zeile für Zeile gegen das Transkript. Jeder Fehler bekommt einen Fallentyp.', note: 'Nicht „was war die richtige Antwort", sondern „welche Falle war das". Ein Fehler ohne Kategorie kommt wieder.' },
       { place: 'bed', minutes: 5, what: 'Drei Sätze: ein Wort, das du heute zum ersten Mal wirklich verstanden hast.' },
     ],
-    deck: ['v-ansage'],
+    deck: ['v-reise', 'falle'],
   },
   {
     date: '2026-08-16', kind: 'day',
