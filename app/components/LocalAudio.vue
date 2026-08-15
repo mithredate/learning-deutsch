@@ -60,6 +60,14 @@ function remember() {
   if (player.value && nowPlaying.value) memory.set(nowPlaying.value.id, player.value.currentTime)
 }
 
+/**
+ * Warn, but do not refuse. The unfiltered input exists precisely for files iOS
+ * has tagged oddly, so a missing or surprising MIME type is not evidence of a
+ * mistake — a wrong pick shows up immediately as a track that will not play,
+ * and „entfernen" is right there.
+ */
+const AUDIO_EXT = /\.(mp3|m4a|aac|wav|aiff?|ogg|opus|mp4|caf)$/i
+
 async function onPick(event: Event) {
   const input = event.target as HTMLInputElement
   const file = input.files?.[0]
@@ -68,6 +76,9 @@ async function onPick(event: Event) {
   error.value = ''
   try {
     await add(file)
+    if (!file.type.startsWith('audio/') && !AUDIO_EXT.test(file.name)) {
+      error.value = `„${file.name}" sieht nicht nach Audio aus — gespeichert, aber wahrscheinlich nicht abspielbar.`
+    }
   } catch (e) {
     error.value = e instanceof Error ? e.message : 'Konnte die Datei nicht speichern.'
   } finally {
@@ -131,7 +142,31 @@ const mb = (bytes: number) => `${(bytes / 1_048_576).toFixed(1)} MB`
         : 'self-start px-1 py-0.5 text-[0.78rem] text-ink-3 underline underline-offset-2'"
     >
       {{ busy ? 'wird gespeichert …' : asking ? '+ MP3 vom Gerät hinzufügen' : '+ weitere Datei' }}
-      <input type="file" accept="audio/*" class="sr-only" :disabled="busy" @change="onPick">
+      <!--
+        Explicit extensions, never `audio/*`. On iOS a wildcard media type sends
+        Safari to the *photo library* picker, where the only things carrying
+        audio are videos — so the file list showed .mp4 and greyed out the .mp3
+        sitting in Files (reported 2026-08-15). Naming the extensions switches it
+        to the document picker.
+      -->
+      <input
+        type="file"
+        accept=".mp3,.m4a,.aac,.wav,.aiff,.ogg,.opus,audio/mpeg,audio/mp4,audio/x-m4a,audio/aac,audio/wav"
+        class="sr-only"
+        :disabled="busy"
+        @change="onPick"
+      >
+    </label>
+
+    <!--
+      The escape hatch. A file that arrived by AirDrop or from a download can
+      carry a type iOS does not tag the way the picker expects, and then even the
+      explicit list hides it. This input filters nothing at all; `onPick` warns
+      if the result does not look like audio, and otherwise trusts you.
+    -->
+    <label class="cursor-pointer self-start px-1 py-0.5 text-[0.75rem] text-ink-3 underline underline-offset-2">
+      Datei wird nicht angezeigt? Alle Dateien zeigen
+      <input type="file" class="sr-only" :disabled="busy" @change="onPick">
     </label>
 
     <p v-if="!supported()" class="text-[0.78rem] text-crit">
