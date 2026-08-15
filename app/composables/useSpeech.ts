@@ -23,28 +23,70 @@ export interface Line {
 
 const LANGS = { de: 'de-DE', en: 'en-US' } as const
 
-/** Cards carry light markup (`<b>` round the target word). Never read it out. */
+/**
+ * Card text is written to be read with the *eyes*. The meaning field is a
+ * dictionary entry, not a sentence — `to employ · sich ~ mit = to occupy
+ * oneself with` — and a synthesizer reads that literally: "tilde", "equals",
+ * and a run of German words in an American accent. Notation has to become
+ * words, or punctuation, before it reaches the voice.
+ */
 function plain(html: string) {
   return html
     .replace(/<[^>]+>/g, '')
     .replace(/&nbsp;/g, ' ')
-    .replace(/&amp;/g, 'und')
+    // Only ever appears in an English gloss here (`A&E`), so "and", not "und".
+    .replace(/&amp;|&/g, ' and ')
+    // Grammar shorthand, spelled out. Longest first — `Akk.` before a bare `+`.
+    .replace(/\(\s*\+\s*Akk\.?\s*\)/gi, '(plus accusative)')
+    .replace(/\(\s*\+\s*Dat\.?\s*\)/gi, '(plus dative)')
+    .replace(/\+\s*Akk\.?/gi, 'plus accusative')
+    .replace(/\+\s*Dat\.?/gi, 'plus dative')
+    // Symbols that mean something to a reader and nothing to a voice.
+    .replace(/\s*↔\s*/g, ', versus ')
+    .replace(/\s*→\s*/g, ', ')
+    .replace(/\s*=\s*/g, ' means ')
+    .replace(/\s*·\s*/g, '. ')   // sense separator — a full stop is the pause it wants
+    .replace(/\s*—\s*/g, ', ')
+    .replace(/\s*\/\s*/g, ' or ')
+    .replace(/\s*…\s*/g, ', ')
+    .replace(/~/g, '')           // stands in for the headword; the ear already has it
+    .replace(/[„“”"]/g, '')      // quote glyphs get announced by some voices
+    .replace(/\s+([.,])/g, '$1')
+    .replace(/([.,])\1+/g, '$1')
     .replace(/\s+/g, ' ')
     .trim()
 }
 
 /**
- * Best available voice for a language. Prefers a local one: on iOS a
- * network voice stalls for a second on a bad connection, and at the gym that
- * reads as "the button is broken" and the app gets closed.
+ * macOS and iOS ship a row of novelty voices — Bahh is a sheep, Bells is a
+ * chime — and they sit in `getVoices()` next to the real ones. Picking "the
+ * first local match" is luck, not a choice: on this machine the en-US list runs
+ * Samantha, Albert, Bad News, Bahh, Bells, Boing.
+ */
+const NOVELTY = /^(albert|bad news|bahh|bells|boing|bubbles|cellos|deranged|good news|hysterical|jester|junior|kathy|organ|ralph|superstar|trinoids|whisper|wobble|zarvox)/i
+
+/**
+ * Best available voice for a language, in descending order of how good it will
+ * actually sound. Local beats network: on iOS a network voice stalls for a
+ * second on a bad connection, which at the gym reads as "the button is broken".
+ *
+ * The big quality jump is not in this function though — it is whether the
+ * device has an *enhanced* voice installed at all (iOS: Einstellungen →
+ * Bedienungshilfen → Gesprochene Inhalte → Stimmen). The compact voices that
+ * ship by default are the robotic ones.
  */
 function pickVoice(voices: SpeechSynthesisVoice[], lang: string) {
-  const matches = voices.filter(v => v.lang.replace('_', '-').startsWith(lang.slice(0, 2)))
-  if (!matches.length) return undefined
+  const norm = (v: SpeechSynthesisVoice) => v.lang.replace('_', '-')
+  const exact = voices.filter(v => norm(v) === lang && !NOVELTY.test(v.name))
+  const loose = voices.filter(v => norm(v).startsWith(lang.slice(0, 2)) && !NOVELTY.test(v.name))
+  const pool = exact.length ? exact : loose
+  if (!pool.length) return undefined
   return (
-    matches.find(v => v.lang.replace('_', '-') === lang && v.localService)
-    ?? matches.find(v => v.lang.replace('_', '-') === lang)
-    ?? matches[0]
+    pool.find(v => /enhanced|premium|siri/i.test(v.name) && v.localService)
+    ?? pool.find(v => /enhanced|premium|siri/i.test(v.name))
+    ?? pool.find(v => v.default)
+    ?? pool.find(v => v.localService)
+    ?? pool[0]
   )
 }
 
@@ -119,9 +161,11 @@ export function useSpeech() {
       if (token !== mine) return
       if (line.gap) await wait(line.gap)
       if (token !== mine) return
-      // German slower than English: the German is the thing being learned, the
-      // English is only the check.
-      await say(line, opts.rate ?? (line.lang === 'de' ? 0.82 : 0.95))
+      // German a little under natural, English at natural pace. Not slower:
+      // Apple's compact voices are concatenative, so dragging the rate down
+      // stretches the joins between recorded fragments and makes them sound
+      // *more* robotic, not clearer.
+      await say(line, opts.rate ?? (line.lang === 'de' ? 0.92 : 1))
     }
 
     if (token === mine) speaking.value = false
