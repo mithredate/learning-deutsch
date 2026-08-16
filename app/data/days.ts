@@ -83,7 +83,7 @@ export const DAYS: Day[] = [
     aufgabe: 'Die Firma plant eine Weihnachtsfeier. Planen Sie mit einer Kollegin Termin, Ort, Essen und Budget.', aufgabeEn: 'The company is planning a Christmas party. With a colleague, plan the date, the place, the food and the budget.',
     slots: [
       { place: 'gym', minutes: 10, karten: true, what: 'Kartenrunde <b>Brief-Mechanik</b>.', en: 'Card round: letter mechanics.' },
-      { place: 'sofa', minutes: 35, what: '✍️ <b>Brief #1, 30 Minuten, getippt, mit Uhr</b> — QWERTZ, Rechtschreibprüfung aus. Vor dem Tippen die 4 Leitpunkte als Checkliste antippen; <b>Liebe/r nach Genus</b>. Danach den Text an mich — ich prüfe gegen die Mock-Fehlerliste (Ledger 44–46).', en: 'Letter #1, 30 minutes, typed, on the clock — QWERTZ, spellcheck off. Tap the 4 guide points as a checklist before typing; Liebe/r by gender. Then send me the text — I grade it against the mock error list.', note: 'Der Mock hat gezeigt: Leitpunkt vergessen und „Lieber Maria" kosten mehr als jede Vokabel. WPM notieren — Baseline ist 10.' },
+      { place: 'sofa', minutes: 35, what: '✍️ <b>Brief #1 — Thema „Kino", 30 Minuten, getippt, mit Uhr</b> (QWERTZ, Rechtschreibprüfung aus). Aufgabe: <i>Sie waren im Kino und haben einen Film gesehen. Ihr Freund war auf der Reise und konnte nicht kommen. Schreiben Sie: Wie war der Film? · Was hat Ihnen (nicht) gefallen? · Machen Sie einen Termin — Sie möchten den Film noch mal sehen.</i> Vorher die Leitpunkte als Checkliste antippen; <b>Liebe/r nach Genus</b>. Danach den Text an mich.', en: 'Letter #1 — topic “cinema”, 30 minutes, typed, on the clock (QWERTZ, spellcheck off). Task: you saw a film, your friend was travelling and missed it. Cover: how was the film · what you liked (or not) · propose a date to see it again. Tap the guide points as a checklist first; Liebe/r by gender. Then send me the text.', note: 'Das Skelett steht in reference/brief-themen-lehrerin.md — die 12 Lehrerin-Themen sind EIN Brief mit 12 Kostümen. WPM notieren — Baseline ist 10.' },
       { place: 'bed', minutes: 10, what: '🗣 <b>Erst der Null-äh-Drill</b>: dein Teil-1-Intro einmal laut, null Füllwörter — stille Pausen sind erlaubt und erwünscht. <b>Dann KI-Runde, 10 Minuten</b> (Prompt unter <i>Sprechen</i>, jetzt mit Teil-Ansagen). Danach drei Sätze aufschreiben, die gefehlt haben.', en: 'First the zero-filler drill: your Teil 1 intro once, out loud, zero fillers — silent pauses are allowed and encouraged. Then the 10-minute speaking round (prompt under Sprechen, now with proper announcements). Afterwards write down three missing sentences.', note: 'Baseline vom 16.08.: äh/ähm alle 2–3 Wörter. Die Regel: still denken statt äh — und kein englisches „so". Wortfeld <b>Arbeit</b>.' },
     ],
     deck: ['falle'],
@@ -115,14 +115,14 @@ export const DAYS: Day[] = [
   },
   {
     date: '2026-08-21', kind: 'class',
-    headline: 'Brief #2 — alle 4 Leitpunkte, null Mechanikfehler',
+    headline: 'Brief #2 — Thema „Geburtstag", null Mechanikfehler',
     tagline: 'telc ist digital. Deutsche Tastatur, Autokorrektur aus, Uhr läuft.',
     needs: ['Laptop + deutsche Tastatur'],
     thema: { title: 'Zukunftspläne', cards: ['Jana, 16, Schülerin', 'Max, 17, Schüler'] },
     aufgabe: 'Sie möchten nach B1 zusammen weiterlernen. Wählen Sie gemeinsam einen Kurs aus und planen Sie die Anmeldung.', aufgabeEn: 'You want to carry on learning together after B1. Choose a course together and plan how to enrol.',
     slots: [
       { place: 'gym', minutes: 12, karten: true, what: 'Kartenrunde <b>Brief-Mechanik</b> + Grammatik.', en: 'Card round: letter mechanics + grammar.' },
-      { place: 'sofa', minutes: 35, what: 'Ein Brief, <b>30 Minuten, getippt, mit Uhr</b> — deutsche Tastatur, Autokorrektur und Rechtschreibprüfung aus. Dann den Text hierher kopieren.', en: 'One letter, 30 minutes, typed, on the clock — German keyboard, autocorrect and spellcheck off. Then copy the text over to me.', note: 'Checkliste vorher lesen: Betreff · Anrede + Gruß · alle 4 Leitpunkte · Schluss mit einer Frage.' },
+      { place: 'sofa', minutes: 35, what: '✍️ <b>Brief #2 — Thema „Geburtstag", 30 Minuten, getippt, mit Uhr.</b> Aufgabe: <i>Sie haben Ihren Geburtstag gefeiert. Ihr Freund war krank und ist nicht gekommen. Schreiben Sie: Wie war die Party? · Welches Geschenk war besonders gut und warum? · Machen Sie einen Termin.</i> Dann den Text hierher kopieren.', en: 'Letter #2 — topic “birthday”, 30 minutes, typed, on the clock. Task: you celebrated your birthday, your sick friend missed it. Cover: how was the party · which present was especially good and why · propose a date to meet. Then copy the text over to me.', note: 'Ziel diesmal: <b>null Mechanikfehler</b> — Anrede nach Genus · alle Leitpunkte · Schluss mit Frage. WPM wieder notieren.' },
     ],
     deck: ['brief', 'gramm', 'digital'],
   },
