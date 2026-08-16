@@ -48,18 +48,17 @@ export const DAYS: Day[] = [
     deck: ['v-reise', 'falle'],
   },
   {
-    date: '2026-08-16', kind: 'day',
-    headline: 'Fehleranalyse + Woche vorbereiten',
-    tagline: 'Der Sonntag, an dem die nächste Woche überhaupt möglich wird.',
-    needs: ['deine Zahlen von gestern'],
+    date: '2026-08-16', kind: 'big',
+    headline: 'Voller Probetest am Laptop — ÜT1',
+    tagline: 'Heute läuft nichts in der App: der Mock läuft am Rechner, im telc-Layout.',
+    needs: ['Laptop', 'deutsche QWERTZ-Tastatur', 'Kopfhörer'],
     slots: [
-      { place: 'gym', minutes: 10, karten: true, what: 'Kartenrunde. Nur die Fallentypen.', en: 'Card round. Trap types only.' },
-      { place: 'sofa', minutes: 40, what: 'Schreib mir deine Ergebnisse — ich mache die Fehleranalyse. Dann: <b>sag mir, welcher Test diese Woche dran ist.</b>', en: 'Send me your results — I do the error analysis. Then tell me which test we use this week.', note: 'Ich brauche den Vorlauf, um das Audio zu bauen — sonst gibt es Dienstag nichts zu hören.' },
-      { place: 'sofa', minutes: 10, dateien: true, datei: 'telc-b1-uebungstest-4-hoerverstehen.mp3', what: '<b>Die ÜT4-Datei aufs Handy holen</b> — einmal machen, dann steht sie für jeden Block, der sie braucht.', en: 'Get the ÜT4 file onto your phone — do it once and every block that needs it has it.', note: 'Ich schicke dir die MP3; per AirDrop aufs Handy, dann hier importieren. Ohne sie fällt jeder Block mit 🎵 aus.' },
-      { place: 'sofa', minutes: 15, what: '⌨️ <b>Deutsche Tastatur einrichten und einmal benutzen</b> — Systemeinstellungen → Tastatur → Eingabequellen → „Deutsch". Dann zehn Minuten tippen: die drei Sätze von gestern, danach ein Absatz aus einem Transkript.', en: 'Set up the German keyboard and use it once — System Settings → Keyboard → Input Sources → German. Then type for ten minutes: yesterday\'s three sentences, then a paragraph from a transcript.', note: 'Du tippst Programmer Dvorak. Die Prüfung stellt eine deutsche <b>QWERTZ</b>-Tastatur, die du nicht umstellen kannst — und der Brief sind 30 Minuten auf genau dieser Tastatur. Das ist der teuerste vermeidbare Fehler im ganzen Plan. Ab heute wird jedes deutsche Wort darauf getippt: ä ö ü ß, y und z vertauscht.' },
-      { place: 'bed', minutes: 5, what: 'Drei Sätze über dein Wochenende.', en: 'Three sentences about your weekend.' },
+      { place: 'sofa', minutes: 15, what: '⌨️ <b>Deutsche Tastatur einrichten und warmtippen</b> — Systemeinstellungen → Tastatur → Eingabequellen → „Deutsch". Dann zehn Minuten tippen: ä ö ü ß, y und z vertauscht.', en: 'Set up the German keyboard and warm up — System Settings → Keyboard → Input Sources → German. Then type for ten minutes: ä ö ü ß, y and z swapped.', note: 'Der Brief im Mock wird auf genau dieser Tastatur getippt — wie am 25.09.' },
+      { place: 'sofa', minutes: 160, what: '🖥️ <b>Der Mock — am Laptop, nicht hier.</b> <code>~/projects/learning/german/mock/ut1.html</code> im Browser öffnen. Ablauf wie in der echten Prüfung: Lesen + Sprachbausteine <b>90 min</b> → Hören ca. 30 min → Brief <b>30 min</b>, getippt. Nicht pausieren, nie ein Feld leer lassen.', en: 'The mock — on the laptop, not here. Open ~/projects/learning/german/mock/ut1.html in the browser. Real exam order: Lesen + Sprachbausteine 90 min → Hören ~30 min → Brief 30 min, typed. No pausing, never leave a field blank.', note: 'Am Ende erzeugt die Seite <b>einen Bericht</b> — kopieren und mir im Chat schicken. Die Analyse machen wir zusammen, in einer Sitzung.' },
+      { place: 'sofa', minutes: 20, what: '🗣 <b>Sprechen-Mock mit Gemini</b> — den Prompt aus <code>mock/sprechen-gemini-prompt.md</code> einfügen und die drei Teile durchspielen. Pausen sind erlaubt; einmal korrigieren, dann weiter.', en: 'Speaking mock with Gemini — paste the prompt from mock/sprechen-gemini-prompt.md and run all three parts. Pauses are allowed; correct once, then move on.', note: 'Transkript oder Notizen mit in den Bericht.' },
+      { place: 'bed', minutes: 5, what: 'Drei Sätze über den Test — auf der deutschen Tastatur getippt.', en: 'Three sentences about the test — typed on the German keyboard.' },
     ],
-    deck: ['falle', 'koll', 'digital'],
+    deck: ['falle'],
   },
 
   // ── Woche 2 · Hörverstehen Teil 2 ─────────────────────────────────────
