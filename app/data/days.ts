@@ -49,13 +49,13 @@ export const DAYS: Day[] = [
   },
   {
     date: '2026-08-16', kind: 'big',
-    headline: 'Voller Probetest am Laptop — ÜT1',
+    headline: 'Voller Probetest am Laptop — ÜT1 Schule',
     tagline: 'Heute läuft nichts in der App: der Mock läuft am Rechner, im telc-Layout.',
     needs: ['Laptop', 'deutsche QWERTZ-Tastatur', 'Kopfhörer'],
     slots: [
       { place: 'sofa', minutes: 15, what: '⌨️ <b>Deutsche Tastatur einrichten und warmtippen</b> — Systemeinstellungen → Tastatur → Eingabequellen → „Deutsch". Dann zehn Minuten tippen: ä ö ü ß, y und z vertauscht.', en: 'Set up the German keyboard and warm up — System Settings → Keyboard → Input Sources → German. Then type for ten minutes: ä ö ü ß, y and z swapped.', note: 'Der Brief im Mock wird auf genau dieser Tastatur getippt — wie am 25.09.' },
-      { place: 'sofa', minutes: 160, what: '🖥️ <b>Der Mock — am Laptop, nicht hier.</b> <code>~/projects/learning/german/mock/ut1.html</code> im Browser öffnen. Ablauf wie in der echten Prüfung: Lesen + Sprachbausteine <b>90 min</b> → Hören ca. 30 min → Brief <b>30 min</b>, getippt. Nicht pausieren, nie ein Feld leer lassen.', en: 'The mock — on the laptop, not here. Open ~/projects/learning/german/mock/ut1.html in the browser. Real exam order: Lesen + Sprachbausteine 90 min → Hören ~30 min → Brief 30 min, typed. No pausing, never leave a field blank.', note: 'Am Ende erzeugt die Seite <b>einen Bericht</b> — kopieren und mir im Chat schicken. Die Analyse machen wir zusammen, in einer Sitzung.' },
-      { place: 'sofa', minutes: 20, what: '🗣 <b>Sprechen-Mock mit Gemini</b> — den Prompt aus <code>mock/sprechen-gemini-prompt.md</code> einfügen und die drei Teile durchspielen. Pausen sind erlaubt; einmal korrigieren, dann weiter.', en: 'Speaking mock with Gemini — paste the prompt from mock/sprechen-gemini-prompt.md and run all three parts. Pauses are allowed; correct once, then move on.', note: 'Transkript oder Notizen mit in den Bericht.' },
+      { place: 'sofa', minutes: 160, what: '🖥️ <b>Der Mock — am Laptop, nicht hier.</b> <code>~/projects/learning/german/mock/ut1-schule.html</code> im Browser öffnen. Ablauf wie in der echten Prüfung: Lesen + Sprachbausteine <b>90 min</b> → Hören ca. 30 min → Brief <b>30 min</b>, getippt. Nicht pausieren, nie ein Feld leer lassen.', en: 'The mock — on the laptop, not here. Open ~/projects/learning/german/mock/ut1-schule.html in the browser. Real exam order: Lesen + Sprachbausteine 90 min → Hören ~30 min → Brief 30 min, typed. No pausing, never leave a field blank.', note: 'Am Ende erzeugt die Seite <b>einen Bericht</b> — kopieren und mir im Chat schicken. Die Analyse machen wir zusammen, in einer Sitzung.' },
+      { place: 'sofa', minutes: 20, what: '🗣 <b>Sprechen-Mock mit Gemini</b> — den Prompt aus <code>mock/sprechen-gemini-prompt-schule.md</code> einfügen und die drei Teile durchspielen. Pausen sind erlaubt; einmal korrigieren, dann weiter.', en: 'Speaking mock with Gemini — paste the prompt from mock/sprechen-gemini-prompt.md and run all three parts. Pauses are allowed; correct once, then move on.', note: 'Transkript oder Notizen mit in den Bericht.' },
       { place: 'bed', minutes: 5, what: 'Drei Sätze über den Test — auf der deutschen Tastatur getippt.', en: 'Three sentences about the test — typed on the German keyboard.' },
     ],
     deck: ['falle'],
