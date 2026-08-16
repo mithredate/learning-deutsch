@@ -12,6 +12,7 @@ export const TAG_NAMES: Record<CardTag, string> = {
   falle: 'Hörfallen',
   brief: 'Brief',
   digital: 'Digitale Prüfung',
+  thema: 'Sprechthemen',
 }
 
 /**
@@ -39,6 +40,8 @@ export const CARD_KIND: Record<CardTag, CardKind> = {
   falle: 'tipp',
   brief: 'tipp',
   digital: 'tipp',
+  // An opinion sentence is a Redemittel with your name on it — reminded, not memorized.
+  thema: 'tipp',
 }
 
 export const KIND_NAMES: Record<CardKind, string> = {
@@ -235,4 +238,30 @@ export const CARDS: Card[] = [
   { tag: 'digital', cue: 'Kann man den Text am Bildschirm markieren?', answer: 'Ja, mit der Maus — aber es kostet Zeit. Im Lesen sinnvoll, in <b>Hören Teil 1</b> nicht: 30 Sekunden für fünf Aussagen.', meaning: 'Yes, with the mouse. Worth it in the reading paper, not in listening Teil 1 — you have 30 seconds for five statements.', examples: ['Regel: markieren, wo du zurückspringst. Merken, wo die Uhr läuft.'] },
   { tag: 'digital', cue: 'Was nimmst du mit in die Prüfung?', answer: 'Nur <b>Ausweis</b> und Anmeldung. Eigene Stifte und eigenes Papier sind nicht erlaubt.', meaning: 'Only your ID and the registration. Your own pens and paper are not allowed — ask the centre whether they hand out scratch paper.', examples: ['Alles Schriftliche passiert am Rechner.'] },
   { tag: 'digital', cue: 'Kopfhörer im Hörverstehen — was tust du zuerst?', answer: 'Die <b>Lautstärke einstellen</b>, bevor Teil 1 startet. Jeder hat eigene Kopfhörer.', meaning: 'Set the volume before Teil 1 begins. Everyone gets their own headphones — the room acoustics no longer decide what you hear.', examples: ['Der einzige Teil der Prüfung, den du selbst regeln kannst. Nutze ihn vorher, nicht mittendrin.'] },
+
+  // ── Brief-Bausteine — das eine Skelett hinter allen 12 Lehrerin-Themen ──
+  // (german/reference/brief-themen-lehrerin.md · aus dem Mock vom 16.08.:
+  //  „Lieber Maria" und ein vergessener Leitpunkt kosten mehr als jede Vokabel)
+  { tag: 'brief', cue: 'Der Dreischritt jedes Lehrerin-Briefs', answer: '<b>Beschreiben</b> (Wie war es?) → <b>Begründen</b> (Warum?) → <b>Vorschlag / Termin</b>.', meaning: 'Describe how it was, give reasons why, then propose a meeting or date. Every one of the twelve letter prompts follows exactly this shape.', examples: ['Erst die drei Leitpunkte antippen, dann tippen.'], hint: 'Ledger 47' },
+  { tag: 'brief', cue: 'Die Anrede — Freundin Anna, Freund Karim', answer: '<b>Liebe</b> Anna, · <b>Lieber</b> Karim,', meaning: 'Liebe for a woman, Lieber for a man. The one-letter mistake that opened the mock letter.', examples: ['Liebe Maria, wie schön, von dir zu hören!'], hint: 'Ledger 45' },
+  { tag: 'brief', cue: 'Der Einstieg — er/sie konnte nicht kommen', answer: 'Wie schade, dass du nicht dabei sein konntest! Ich hoffe, es geht dir wieder besser.', meaning: 'What a pity you could not be there! I hope you are feeling better again.', examples: ['Passt nach jeder Anrede — Krankheit, Reise oder Termin.'] },
+  { tag: 'brief', cue: 'Baustein Beschreiben', answer: 'Der Ausflug war wirklich toll. <b>Besonders gut hat mir</b> die Aussicht <b>gefallen</b>.', meaning: 'The trip was really great. I especially liked the view. — The all-purpose describing pair: „… war wirklich toll" plus „besonders gut hat mir … gefallen".', examples: ['Die Party war wunderbar — besonders gut hat mir die Musik gefallen.'] },
+  { tag: 'brief', cue: 'Baustein Begründen', answer: 'Ich fand den Abend so schön, <b>weil</b> endlich alle Freunde zusammen <b>waren</b>.', meaning: 'I found the evening so lovely because all my friends were finally together. — weil sends the verb to the end.', examples: ['Ich habe dieses Auto gekauft, weil es wenig verbraucht.'] },
+  { tag: 'brief', cue: 'Baustein Begründen — negativ (Thema Gruppenreise!)', answer: 'Ein bisschen <b>geärgert habe ich mich über</b> das Wetter.', meaning: 'I was a little annoyed about the weather. — sich ärgern über + accusative; the only prompt with a negative point.', examples: ['Geärgert habe ich mich über den lauten Reiseleiter.'], hint: 'Ledger 39' },
+  { tag: 'brief', cue: 'Baustein Vorschlag', answer: '<b>Hast du am Samstag Zeit? Wollen wir</b> den Film zusammen sehen?', meaning: 'Are you free on Saturday? Shall we watch the film together? — question plus wollen wir covers the third bullet in one line.', examples: ['Hast du nächste Woche Zeit? Wollen wir zusammen ins Einkaufszentrum fahren?'] },
+  { tag: 'brief', cue: 'Baustein Vorschlag — förmlicher', answer: '<b>Ich schlage vor, dass</b> wir uns nächste Woche <b>treffen</b>. Dann erzähle ich dir alles.', meaning: 'I suggest that we meet next week. Then I will tell you everything. — dass sends the verb to the end.', examples: ['Ich schlage vor, dass wir am Sonntag zusammen zum Tanzkurs gehen.'] },
+  { tag: 'brief', cue: 'Der Schluss vor dem Gruß', answer: '<b>Ich freue mich auf deine Antwort.</b> Melde dich bald!', meaning: 'I look forward to your reply. Get in touch soon! — sich freuen auf + accusative closes every letter.', examples: ['Ich freue mich darauf, dich bald zu sehen.'], hint: 'Ledger 14' },
+
+  // ── Sprechthemen der Lehrerin — eine Meinung + zwei eigene Beispiele pro Thema ──
+  { tag: 'thema', cue: 'Vor- und Nachteile vom Internet — deine Meinung?', answer: '<b>Einerseits</b> finde ich das Internet sehr praktisch, weil man alles schnell findet. <b>Andererseits</b> verliert man dabei leicht die Zeit.', meaning: 'On the one hand the internet is very practical because you find everything fast; on the other hand you easily lose track of time.', examples: ['Ich arbeite als Softwareentwickler — ohne Internet könnte ich gar nicht arbeiten.'] },
+  { tag: 'thema', cue: 'Sollen Kinder im Kindergarten eine Fremdsprache lernen?', answer: 'Ich finde ja, <b>denn</b> kleine Kinder lernen Sprachen viel leichter als Erwachsene.', meaning: 'I think yes, because small children learn languages much more easily than adults.', examples: ['Ich lerne seit zwei Jahren Deutsch — als Kind wäre es schneller gegangen!'] },
+  { tag: 'thema', cue: 'Soll Arbeiten an den Feiertagen verboten sein?', answer: '<b>Ich bin dagegen</b>, es ganz zu verbieten — im Krankenhaus zum Beispiel muss immer jemand arbeiten.', meaning: 'I am against banning it completely — in a hospital, for example, someone always has to work.', examples: ['Wer am Feiertag arbeitet, sollte aber mehr Geld bekommen.'] },
+  { tag: 'thema', cue: 'Urlaub am Strand und im Hotel — oder zu Hause?', answer: '<b>Für mich</b> ist Urlaub am Strand die bessere Wahl, weil ich dort wirklich abschalten kann.', meaning: 'For me a beach holiday is the better choice because I can really switch off there.', examples: ['Zu Hause denke ich sofort wieder an die Arbeit.'] },
+  { tag: 'thema', cue: 'E-Bücher — braucht man noch gedruckte Bücher?', answer: '<b>Meiner Meinung nach</b> braucht man beides: E-Bücher für unterwegs, gedruckte Bücher zum Verschenken.', meaning: 'In my opinion you need both: e-books for on the go, printed books as presents.', examples: ['Auf dem Handy lese ich unterwegs — aber ein Geschenk soll man anfassen können.'] },
+  { tag: 'thema', cue: 'Dürfen Männer weinen?', answer: 'Natürlich, <b>ich finde es sogar wichtig</b> — Gefühle zu zeigen ist keine Schwäche, sondern ehrlich.', meaning: 'Of course — I even think it is important. Showing feelings is not weakness, it is honest.', examples: ['Bei einem traurigen Film weine ich manchmal auch.'] },
+  { tag: 'thema', cue: 'Autofreies Stadtzentrum?', answer: '<b>Ich bin dafür</b>, weil die Luft besser wird und man in Ruhe zu Fuß gehen kann.', meaning: 'I am in favour, because the air gets better and you can walk in peace.', examples: ['In Frankfurt fahre ich sowieso lieber mit der Bahn als mit dem Auto.'] },
+  { tag: 'thema', cue: 'Vegetarische Ernährung — deine Meinung?', answer: 'Ich esse zwar Fleisch, <b>aber</b> ein oder zwei vegetarische Tage pro Woche <b>finde ich eine gute Idee</b>.', meaning: 'I do eat meat, but I think one or two vegetarian days a week are a good idea.', examples: ['Ich backe gern Brot — vegetarisch kochen macht mir auch Spaß.'] },
+  { tag: 'thema', cue: 'Umwelt — was kann jeder Einzelne tun?', answer: '<b>Ich glaube</b>, jeder kann etwas tun: weniger Auto fahren, Müll trennen und weniger wegwerfen.', meaning: 'I believe everyone can do something: drive less, separate the rubbish and throw away less.', examples: ['Ich fahre mit der Bahn zur Arbeit statt mit dem Auto.'] },
+  { tag: 'thema', cue: 'Mahlzeit bei der Arbeit — Kantine oder mitbringen?', answer: '<b>Am liebsten</b> bringe ich mein Essen selbst mit, weil es gesünder und billiger ist.', meaning: 'I prefer to bring my own food because it is healthier and cheaper.', examples: ['In der Kantine esse ich nur, wenn ich keine Zeit zum Kochen hatte.'] },
+  { tag: 'thema', cue: 'Ernährung bei der Arbeit — wie bleibt man fit?', answer: '<b>Wichtig ist</b>, dass man regelmäßig isst und genug Wasser trinkt — sonst kann man sich nicht konzentrieren.', meaning: 'The important thing is to eat regularly and drink enough water — otherwise you cannot concentrate.', examples: ['Ich sitze den ganzen Tag am Computer, deshalb gehe ich mittags kurz spazieren.'] },
 ]

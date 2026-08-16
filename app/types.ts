@@ -10,6 +10,7 @@ export type CardTag =
   | 'falle'
   | 'brief'
   | 'digital'
+  | 'thema'
 
 export interface Card {
   tag: CardTag

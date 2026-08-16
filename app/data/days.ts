@@ -73,7 +73,7 @@ export const DAYS: Day[] = [
       { place: 'sofa', minutes: 35, karten: ['v-arbeit'], what: 'Das Themenfeld <b>Arbeit &amp; Beruf</b> — 25 Karten, hier im Block. Danach schreib mir: ich drille sie hart, mit Sätzen statt Übersetzungen.', en: 'The word field work & career — 25 cards, here in this block. Then message me: I drill them hard, in sentences rather than translations.', note: 'Umdrehen zeigt die deutsche Erklärung <i>und</i> die englische Bedeutung.' },
       { place: 'bed', minutes: 5, what: 'Drei Sätze mit drei neuen Wörtern von heute.', en: 'Three sentences using three new words from today.' },
     ],
-    deck: ['v-arbeit', 'v-buero'],
+    deck: ['v-arbeit', 'v-buero', 'brief'],
   },
   {
     date: '2026-08-18', kind: 'day',
@@ -86,7 +86,7 @@ export const DAYS: Day[] = [
       { place: 'sofa', minutes: 35, what: '✍️ <b>Brief #1 — Thema „Kino", 30 Minuten, getippt, mit Uhr</b> (QWERTZ, Rechtschreibprüfung aus). Aufgabe: <i>Sie waren im Kino und haben einen Film gesehen. Ihr Freund war auf der Reise und konnte nicht kommen. Schreiben Sie: Wie war der Film? · Was hat Ihnen (nicht) gefallen? · Machen Sie einen Termin — Sie möchten den Film noch mal sehen.</i> Vorher die Leitpunkte als Checkliste antippen; <b>Liebe/r nach Genus</b>. Danach den Text an mich.', en: 'Letter #1 — topic “cinema”, 30 minutes, typed, on the clock (QWERTZ, spellcheck off). Task: you saw a film, your friend was travelling and missed it. Cover: how was the film · what you liked (or not) · propose a date to see it again. Tap the guide points as a checklist first; Liebe/r by gender. Then send me the text.', note: 'Das Skelett steht in reference/brief-themen-lehrerin.md — die 12 Lehrerin-Themen sind EIN Brief mit 12 Kostümen. WPM notieren — Baseline ist 10.' },
       { place: 'bed', minutes: 10, what: '🗣 <b>Erst der Null-äh-Drill</b>: dein Teil-1-Intro einmal laut, null Füllwörter — stille Pausen sind erlaubt und erwünscht. <b>Dann KI-Runde, 10 Minuten</b> (Prompt unter <i>Sprechen</i>, jetzt mit Teil-Ansagen). Danach drei Sätze aufschreiben, die gefehlt haben.', en: 'First the zero-filler drill: your Teil 1 intro once, out loud, zero fillers — silent pauses are allowed and encouraged. Then the 10-minute speaking round (prompt under Sprechen, now with proper announcements). Afterwards write down three missing sentences.', note: 'Baseline vom 16.08.: äh/ähm alle 2–3 Wörter. Die Regel: still denken statt äh — und kein englisches „so". Wortfeld <b>Arbeit</b>.' },
     ],
-    deck: ['falle'],
+    deck: ['brief', 'falle'],
   },
   {
     date: '2026-08-19', kind: 'class',
@@ -111,7 +111,7 @@ export const DAYS: Day[] = [
       { place: 'sofa', minutes: 35, hoeren: ['eigen-01-teil2'], what: 'Transkript mitlesen: <b>jede Aussage ihrer Paraphrase im Text zuordnen</b> — laut („aufhören heißt: nicht mehr zusammen spielen"). Danach 10 neue ✓/✗-Aussagen im Chat.', en: 'Read along with the transcript: match every statement to its paraphrase in the text, out loud. Then 10 new true/false statements in chat.', note: 'Die Regel aus dem Mock: Wortgleichheit gefunden → Falle vermuten. Keine Wortgleichheit → Paraphrase suchen, nicht automatisch „falsch" tippen.' },
       { place: 'bed', minutes: 10, what: '🗣 <b>KI-Runde, 10 Minuten</b> — Teil 3 mit der Sprach-KI. Prompt und Regeln stehen unter <i>Sprechen</i>. Danach drei Sätze aufschreiben, die dir im Gespräch gefehlt haben.', en: 'Speaking round, 10 minutes — Teil 3 with the voice AI. The prompt and the rules are on the Sprechen page. Afterwards write down three sentences you were missing.', note: 'Benutze bewusst die Wörter von gestern: der Ablauf, die Schicht, der Vorgesetzte, einstellen.' },
     ],
-    deck: ['v-buero', 'koll'],
+    deck: ['v-buero', 'koll', 'thema'],
   },
   {
     date: '2026-08-21', kind: 'class',
