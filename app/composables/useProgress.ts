@@ -19,10 +19,20 @@ interface ProgressState {
    * and a card cleared in the warm-up must not empty the block after it.
    */
   drills: Record<string, string[]>
+  /**
+   * Block id → how the quiz went, first answer per card only.
+   *
+   * The drill lets a missed card come back until it sits, which is right for
+   * learning but useless as a measurement — by the last pass everything is
+   * always 100 %. What the daily report needs is the first pass: which cards
+   * you actually knew when they surprised you. So the first grading of a cue
+   * in a block is recorded here and later gradings of the same cue are ignored.
+   */
+  quiz: Record<string, { right: string[]; wrong: string[]; at: string }>
   setupDone: boolean
 }
 
-const state = reactive<ProgressState>({ slots: {}, notes: {}, misses: {}, drills: {}, setupDone: false })
+const state = reactive<ProgressState>({ slots: {}, notes: {}, misses: {}, drills: {}, quiz: {}, setupDone: false })
 const ready = ref(false)
 
 function read<T>(key: string, fallback: T): T {
@@ -53,6 +63,7 @@ export function useProgress() {
     state.notes = read('notes', {})
     state.misses = read('misses', {})
     state.drills = read('drills', {})
+    state.quiz = read('quiz', {})
     state.setupDone = read('setupDone', false)
     ready.value = true
   }
@@ -68,10 +79,16 @@ export function useProgress() {
     write('drills', state.drills)
   }
 
-  /** „Noch einmal" — the whole deck comes back, on purpose and by hand. */
+  /**
+   * „Noch einmal" — the whole deck comes back, on purpose and by hand.
+   * The quiz record goes with it: a deliberate restart is a retest, and a
+   * retest that could only ever confirm the old score would measure nothing.
+   */
   function resetDrill(id: string) {
     delete state.drills[id]
+    delete state.quiz[id]
     write('drills', state.drills)
+    write('quiz', state.quiz)
   }
 
   function isTicked(date: string, index: number) {
@@ -100,13 +117,22 @@ export function useProgress() {
     write('misses', state.misses)
   }
 
+  /** First answer per cue and block wins; retries of the same card are ignored. */
+  function gradeCard(id: string, cue: string, ok: boolean) {
+    const q = state.quiz[id]
+      ?? (state.quiz[id] = { right: [], wrong: [], at: new Date().toISOString().slice(0, 16) })
+    if (q.right.includes(cue) || q.wrong.includes(cue)) return
+    ;(ok ? q.right : q.wrong).push(cue)
+    write('quiz', state.quiz)
+  }
+
   function dismissSetup() {
     state.setupDone = true
     write('setupDone', true)
   }
 
   return {
-    state, ready, hydrate, isTicked, toggleSlot, dayTouched, setNote, missCard,
+    state, ready, hydrate, isTicked, toggleSlot, dayTouched, setNote, missCard, gradeCard,
     clearedCards, clearCard, resetDrill, dismissSetup,
   }
 }

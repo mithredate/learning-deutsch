@@ -63,6 +63,23 @@ const report = computed(() => {
     }
   }
 
+  // The quiz record: first answer per card and block. This is the line that
+  // used to be typed into the notes field by hand („Karten: 8/10").
+  const strip = (s: string) => s.replace(/<[^>]+>/g, '')
+  const rounds = Object.entries(state.quiz)
+    .map(([id, q]) => ({ id, date: id.slice(0, 10), q, total: q.right.length + q.wrong.length }))
+    .filter(r => r.total > 0)
+    .sort((a, b) => a.q.at.localeCompare(b.q.at))
+  if (rounds.length) {
+    lines.push('', '## Wortschatz-Quiz  (erster Versuch zählt)')
+    for (const r of rounds) {
+      lines.push(
+        `${r.date}  ${r.q.right.length}/${r.total}` +
+        (r.q.wrong.length ? `\n        falsch: ${r.q.wrong.map(strip).join(' · ')}` : '  — alles gewusst'),
+      )
+    }
+  }
+
   const stuck = CARDS
     .map(c => ({ card: c, n: state.misses[c.cue] ?? 0 }))
     .filter(x => x.n > 0)

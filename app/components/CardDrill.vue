@@ -12,7 +12,7 @@ import { cardKey } from '~/utils/speakable'
 const props = defineProps<{ cards: Card[]; id: string; kind?: CardKind }>()
 const emit = defineEmits<{ miss: [cue: string] }>()
 
-const { hydrate, clearedCards, clearCard, resetDrill } = useProgress()
+const { state, hydrate, clearedCards, clearCard, resetDrill, gradeCard } = useProgress()
 // Synchronously, not in onMounted: the first `reset()` runs during setup, and a
 // round built before storage is read would show every cleared card again.
 hydrate()
@@ -162,17 +162,24 @@ function move(delta: number) {
 function knew() {
   // Persist before advancing: a card that sat is done for this block, today and
   // after the next app restart. This is the whole fix for „it always starts over".
-  if (current.value) clearCard(props.id, cardKey(current.value))
+  if (current.value) {
+    gradeCard(props.id, current.value.cue, true)
+    clearCard(props.id, cardKey(current.value))
+  }
   advance()
 }
 
 function missed() {
   if (current.value) {
+    gradeCard(props.id, current.value.cue, false)
     emit('miss', current.value.cue)
     again.value.push(current.value)
   }
   advance()
 }
+
+/** The block's quiz record — first answer per card, straight from storage. */
+const quiz = computed(() => state.quiz[props.id])
 </script>
 
 <template>
@@ -248,6 +255,13 @@ function missed() {
     <div v-if="finished" class="flex flex-col items-center gap-3 px-4 py-7 text-center">
       <span class="font-serif text-2xl">Durch.</span>
       <p class="text-[0.87rem] text-ink-2">Alle {{ cards.length }} Karten einmal richtig.</p>
+      <!-- The number that goes into the report: the first pass, not the last. -->
+      <p v-if="quiz && (quiz.right.length + quiz.wrong.length)" class="text-[0.85rem]">
+        <b :class="quiz.wrong.length ? 'text-crit' : 'text-good'">
+          {{ quiz.right.length }} / {{ quiz.right.length + quiz.wrong.length }}
+        </b>
+        <span class="text-ink-2"> beim ersten Versuch — steht im Bericht.</span>
+      </p>
       <button
         type="button"
         class="rounded-lg border border-line bg-surface-2 px-4 py-2 text-[0.85rem] text-ink-2"

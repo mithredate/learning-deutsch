@@ -87,6 +87,13 @@ function go(delta: number) {
             aria-label="Nächster Tag"
             @click="go(1)"
           >›</button>
+          <!-- The overview in one tap: which day carries which Teil. The footer
+               link stays for the long read; this is for the quick glance. -->
+          <NuxtLink
+            to="/kalender"
+            class="flex h-9 w-10 items-center justify-center rounded-lg border border-line bg-surface no-underline"
+            aria-label="Zum Lernkalender"
+          >📅</NuxtLink>
         </nav>
 
         <h1 class="text-[clamp(1.7rem,6vw,2.15rem)] leading-tight">{{ day.headline }}</h1>
