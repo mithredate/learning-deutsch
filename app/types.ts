@@ -43,6 +43,13 @@ export interface Card {
   examples?: string[]
   /** Where this came from: a ledger number, an exam item. Keeps drills honest. */
   hint?: string
+  /**
+   * Kern des Themenfelds. A 20-card evening ignores how memory works — nobody
+   * holds 20 new words from one sitting ("I can't memorize 200 things",
+   * 2026-08-17). A drill therefore serves only the core until every core card
+   * has sat once; the rest is the Ausbau and stays locked until then.
+   */
+  core?: boolean
 }
 
 /** Where the block happens. The place is the cue, not the clock. */
@@ -87,8 +94,10 @@ export type DayKind = 'class' | 'day' | 'big' | 'exam' | 'rest'
  * *pair* of person-cards — that is the exam shape: two candidates get the same
  * theme from different sides, then discuss it.
  *
- * Labels only (name, age, role) — enough to tell the two cards apart in class.
- * The handout's photos and quotes stay out of this public repo.
+ * `cards` stays labels only (name, age, role). The readable material — an
+ * original quote, a described photo, the topic's toolkit — lives in
+ * `data/themen.ts`, keyed by date. The handout's actual photos and quotes stay
+ * out of this public repo; what ships is rewritten, same stance, own words.
  */
 export interface Thema {
   title: string

@@ -41,6 +41,9 @@ function halt() {
 }
 onUnmounted(halt)
 
+/** Cards behind the core gate right now — shown on the finished screen. */
+const locked = ref(0)
+
 /**
  * Rebuild the round from what is *not* yet cleared.
  *
@@ -48,12 +51,21 @@ onUnmounted(halt)
  * cursor goes stale the moment the deck changes underneath it (a card edited,
  * the rotation moved on), and a stale cursor either repeats work or skips cards
  * silently. „Which cards are still open" cannot go stale.
+ *
+ * Decks with `core` cards are served in two tiers: as long as a single core
+ * card is still open, the round is *only* the core. Twenty new words in one
+ * evening is a number for the calendar, not for a memory — the Ausbau unlocks
+ * by clearing the core, not by scrolling past it.
  */
 function reset() {
   halt()
   const done = clearedCards(props.id)
-  const open = props.cards.filter(c => !done.has(cardKey(c)))
-  carried.value = props.cards.length - open.length
+  const openOf = (list: Card[]) => list.filter(c => !done.has(cardKey(c)))
+  const kern = props.cards.filter(c => c.core)
+  const pool = kern.length && openOf(kern).length ? kern : props.cards
+  const open = openOf(pool)
+  locked.value = openOf(props.cards).length - open.length
+  carried.value = pool.length - open.length
   queue.value = open
   again.value = []
   pos.value = 0
@@ -253,8 +265,14 @@ const quiz = computed(() => state.quiz[props.id])
     </header>
 
     <div v-if="finished" class="flex flex-col items-center gap-3 px-4 py-7 text-center">
-      <span class="font-serif text-2xl">Durch.</span>
-      <p class="text-[0.87rem] text-ink-2">Alle {{ cards.length }} Karten einmal richtig.</p>
+      <span class="font-serif text-2xl">{{ locked ? 'Der Kern sitzt.' : 'Durch.' }}</span>
+      <p class="text-[0.87rem] text-ink-2">
+        <template v-if="locked">
+          Die wichtigsten {{ cards.length - locked }} Karten, alle einmal richtig.
+          Der Ausbau ({{ locked }} weitere) wartet — heute oder ein anderes Mal, dein Tempo.
+        </template>
+        <template v-else>Alle {{ cards.length }} Karten einmal richtig.</template>
+      </p>
       <!-- The number that goes into the report: the first pass, not the last. -->
       <p v-if="quiz && (quiz.right.length + quiz.wrong.length)" class="text-[0.85rem]">
         <b :class="quiz.wrong.length ? 'text-crit' : 'text-good'">
@@ -262,6 +280,14 @@ const quiz = computed(() => state.quiz[props.id])
         </b>
         <span class="text-ink-2"> beim ersten Versuch — steht im Bericht.</span>
       </p>
+      <!-- Opting *in* to the Ausbau is the point: the extra cards are a reward
+           for a cleared core, never a queue that was silently waiting. -->
+      <button
+        v-if="locked"
+        type="button"
+        class="rounded-lg border border-accent bg-accent-wash px-4 py-2 text-[0.85rem] font-semibold text-accent"
+        @click="reset"
+      >Ausbau starten — {{ locked }} Karten</button>
       <button
         type="button"
         class="rounded-lg border border-line bg-surface-2 px-4 py-2 text-[0.85rem] text-ink-2"

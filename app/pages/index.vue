@@ -2,6 +2,7 @@
 import { usePlan, deckFor, formatDay, daysUntilExam } from '~/composables/usePlan'
 import { groupByKind } from '~/data/cards'
 import { studyDays } from '~/data/days'
+import { themaKarten, WERKZEUG } from '~/data/themen'
 import { useProgress } from '~/composables/useProgress'
 import { useEnglish } from '~/composables/useEnglish'
 import { useUnklar } from '~/composables/useUnklar'
@@ -39,6 +40,14 @@ const orphanDeck = computed(() =>
 const orphanGroups = computed(() => (mounted.value ? groupByKind(orphanDeck.value) : []))
 
 const left = computed(() => daysUntilExam(day.value.date))
+
+/**
+ * Tonight's Teil 2 material — original texts in `data/themen.ts`, keyed by
+ * date. Empty for a date without authored cards; the template then falls back
+ * to the captions from days.ts instead of showing nothing.
+ */
+const karten = computed(() => themaKarten(day.value.date))
+const werkzeug = computed(() => WERKZEUG[day.value.date])
 
 const STUDY = studyDays()
 /** Position among study days — exam day returns 0 and is labelled instead. */
@@ -182,7 +191,32 @@ function go(delta: number) {
         <div v-if="day.thema" class="flex flex-col gap-2">
           <span class="font-mono text-[0.68rem] tracking-widest uppercase text-ink-3">Teil 2 · Thema</span>
           <h3 class="text-[1.05rem] leading-tight">{{ day.thema.title }}</h3>
-          <ul class="flex list-none flex-col gap-1.5">
+
+          <!-- The full card, readable: what the photo shows (= exam move ①,
+               ready to rehearse) and the person's opinion (= move ②, the text
+               you report in indirect speech). Rewritten texts, not the
+               handout's — same stance, own words; the real photo appears in
+               class. Falls back to the bare captions for a date without
+               authored material. -->
+          <ul v-if="karten.length" class="flex list-none flex-col gap-2">
+            <li
+              v-for="(karte, i) in karten"
+              :key="karte.wer"
+              class="flex flex-col gap-1.5 rounded-xl bg-surface-2 px-3 py-2.5"
+            >
+              <span class="flex items-baseline gap-2">
+                <span class="font-mono text-[0.7rem] text-ink-3">{{ i === 0 ? 'A' : 'B' }}</span>
+                <span class="text-[0.88rem] font-semibold">{{ karte.wer }}</span>
+              </span>
+              <p class="text-[0.82rem] leading-relaxed text-ink-3">
+                <b class="text-ink-2">Bild:</b> {{ karte.bild }}
+              </p>
+              <p class="border-l-2 border-line pl-2.5 text-[0.85rem] leading-relaxed text-ink-2 italic">
+                „{{ karte.zitat }}"
+              </p>
+            </li>
+          </ul>
+          <ul v-else class="flex list-none flex-col gap-1.5">
             <li
               v-for="(card, i) in day.thema.cards"
               :key="card"
@@ -211,6 +245,37 @@ function go(delta: number) {
             <b class="text-ink-2">Vorschlagen, nicht nur zustimmen</b> — einmal höflich widersprechen,
             am Ende laut zusammenfassen.
           </p>
+        </div>
+
+        <!-- The topic's toolkit: 5 words, a few sentences, two grammar traps.
+             Deliberately this small — it is the floor you speak from tonight,
+             not a list to memorize. The big word field lives in the deck. -->
+        <div v-if="werkzeug" class="flex flex-col gap-2.5 border-t border-line-soft pt-3">
+          <span class="font-mono text-[0.68rem] tracking-widest uppercase text-ink-3">Werkzeug fürs Thema</span>
+          <ul class="flex list-none flex-wrap gap-1.5">
+            <li
+              v-for="w in werkzeug.woerter"
+              :key="w.de"
+              class="rounded-lg border border-line-soft bg-surface-2 px-2 py-1 text-[0.8rem]"
+            >
+              <b>{{ w.de }}</b><span class="text-ink-3"> · {{ w.en }}</span>
+            </li>
+          </ul>
+          <ul class="flex list-none flex-col gap-1">
+            <li
+              v-for="r in werkzeug.redemittel"
+              :key="r"
+              class="text-[0.84rem] leading-relaxed text-ink-2"
+            >▸ {{ r }}</li>
+          </ul>
+          <ul class="flex list-none flex-col gap-1">
+            <li
+              v-for="g in werkzeug.grammatik"
+              :key="g"
+              class="copy text-[0.8rem] leading-relaxed text-ink-3"
+              v-html="'⚙ ' + g"
+            />
+          </ul>
         </div>
       </section>
 

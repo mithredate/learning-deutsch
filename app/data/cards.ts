@@ -265,3 +265,37 @@ export const CARDS: Card[] = [
   { tag: 'thema', cue: 'Mahlzeit bei der Arbeit — Kantine oder mitbringen?', answer: '<b>Am liebsten</b> bringe ich mein Essen selbst mit, weil es gesünder und billiger ist.', meaning: 'I prefer to bring my own food because it is healthier and cheaper.', examples: ['In der Kantine esse ich nur, wenn ich keine Zeit zum Kochen hatte.'] },
   { tag: 'thema', cue: 'Ernährung bei der Arbeit — wie bleibt man fit?', answer: '<b>Wichtig ist</b>, dass man regelmäßig isst und genug Wasser trinkt — sonst kann man sich nicht konzentrieren.', meaning: 'The important thing is to eat regularly and drink enough water — otherwise you cannot concentrate.', examples: ['Ich sitze den ganzen Tag am Computer, deshalb gehe ich mittags kurz spazieren.'] },
 ]
+
+/**
+ * Der Kern der vier Themenfeld-Abende — one place instead of forty scattered
+ * flags, so the tier can be re-cut in one edit when a word turns out to be
+ * already known. ~10 per field: the everyday, exam-frequent words first; the
+ * rest of the deck is the Ausbau and stays locked until the core has sat
+ * (see `Card.core` in types.ts and the gate in CardDrill).
+ *
+ * Cut by two rules: (1) words the Sprechen evening of the same week actually
+ * needs out loud, (2) words telc uses in task rubrics and Durchsagen. Swaps
+ * are cheap — say so in chat and the set moves.
+ */
+const CORE_CUES = new Set([
+  // Arbeit & Beruf — Mo 17.08. (die Gastronomie-Karte spricht über Schicht & Ausbildung)
+  'die Bewerbung', 'das Vorstellungsgespräch', 'die Ausbildung', 'die Schicht',
+  'die Überstunden', 'der Feierabend', 'kündigen', 'einstellen', 'das Gehalt',
+  'die Stelle', 'der Ablauf', 'beschäftigen',
+  // Wohnen & Nachbarn — Mo 24.08.
+  'die Miete', 'die Nebenkosten', 'der Vermieter ↔ der Mieter', 'die Hausordnung',
+  'die Ruhezeit', 'der Lärm', 'sich beschweren über', 'umziehen',
+  'die Nachbarschaft', 'die Besichtigung',
+  // Gesundheit — Mo 31.08.
+  'die Beschwerden', 'das Rezept', 'die Überweisung', 'die Krankenkasse',
+  'die Praxis', 'der Termin', 'die Untersuchung', 'sich erholen',
+  'die Ernährung', 'der Facharzt',
+  // Reisen & Behörden — Mo 07.09.
+  'die Verspätung', 'der Anschluss', 'umsteigen', 'das Gleis', 'die Durchsage',
+  'der Stau', 'die Unterkunft', 'zuständig sein für', 'einen Antrag stellen',
+  'die Gebühr',
+])
+
+for (const card of CARDS) {
+  if (CORE_CUES.has(card.cue)) card.core = true
+}

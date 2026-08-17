@@ -70,7 +70,7 @@ export const DAYS: Day[] = [
     aufgabe: 'Sie wollen zusammen ein Abendessen für vier Gäste kochen. Planen Sie Einkauf, Rezept, Kosten und wer was macht.', aufgabeEn: 'You want to cook dinner for four guests together. Plan the shopping, the recipe, the cost and who does what.',
     slots: [
       { place: 'gym', minutes: 15, karten: ['v-buero'], what: 'Kartenrunde <b>Büro &amp; Telefon</b> — alle 6 Karten, zweimal durch.', en: 'Card round: office & telephone — all 6 cards, twice through.', note: 'Genau dafür ist die Zeit zwischen den Sätzen da. Die 20 Arbeitswörter kommen abends.' },
-      { place: 'sofa', minutes: 35, karten: ['v-arbeit'], what: 'Das Themenfeld <b>Arbeit &amp; Beruf</b> — 25 Karten, hier im Block. Danach schreib mir: ich drille sie hart, mit Sätzen statt Übersetzungen.', en: 'The word field work & career — 25 cards, here in this block. Then message me: I drill them hard, in sentences rather than translations.', note: 'Umdrehen zeigt die deutsche Erklärung <i>und</i> die englische Bedeutung.' },
+      { place: 'sofa', minutes: 35, karten: ['v-arbeit'], what: 'Das Themenfeld <b>Arbeit &amp; Beruf</b> — <b>erst der Kern (12 Karten)</b>, der Rest bleibt zu, bis der Kern sitzt. Danach schreib mir: ich drille sie hart, mit Sätzen statt Übersetzungen.', en: 'The word field work & career — the core 12 cards first; the rest stays locked until the core sits. Then message me: I drill them hard, in sentences rather than translations.', note: 'Niemand behält 25 neue Wörter aus einem Abend. Kern heute, Ausbau, wenn er sitzt.' },
       { place: 'bed', minutes: 5, what: 'Drei Sätze mit drei neuen Wörtern von heute.', en: 'Three sentences using three new words from today.' },
     ],
     deck: ['v-arbeit', 'v-buero', 'brief'],
@@ -159,7 +159,7 @@ export const DAYS: Day[] = [
     aufgabe: 'Sie planen ein Grillfest im Hof für die Nachbarn. Klären Sie Termin, Einladung, Essen und Unkostenbeitrag.', aufgabeEn: 'You are planning a barbecue in the courtyard for the neighbours. Settle the date, the invitation, the food and the contribution to costs.',
     slots: [
       { place: 'gym', minutes: 15, karten: true, what: 'Kartenrunde <b>Durchsagen &amp; Kollokationen</b>.', en: 'Card round: announcements & collocations.' },
-      { place: 'sofa', minutes: 35, karten: ['v-wohnen'], what: 'Das Themenfeld <b>Wohnen &amp; Nachbarn</b> — 20 Karten: Miete, Nebenkosten, Hausordnung, Ruhezeit. Danach im Chat abfragen lassen.', en: 'The word field living & neighbours — 20 cards: rent, utilities, house rules, quiet hours. Then let me test you in chat.' },
+      { place: 'sofa', minutes: 35, karten: ['v-wohnen'], what: 'Das Themenfeld <b>Wohnen &amp; Nachbarn</b> — erst der Kern (10 Karten): Miete, Nebenkosten, Hausordnung, Ruhezeit. Danach im Chat abfragen lassen.', en: 'The word field living & neighbours — the core 10 cards first: rent, utilities, house rules, quiet hours. Then let me test you in chat.' },
       { place: 'bed', minutes: 5, what: 'Drei Sätze über deine Wohnung.', en: 'Three sentences about your flat.' },
     ],
     deck: ['v-ansage', 'koll'],
@@ -249,7 +249,7 @@ export const DAYS: Day[] = [
     aufgabe: 'Sie wollen zusammen mit Sport anfangen. Planen Sie Fitnessstudio oder Verein, Termine in der Woche und Kosten.', aufgabeEn: 'You want to take up sport together. Plan gym or club, which days of the week, and the cost.',
     slots: [
       { place: 'gym', minutes: 15, karten: true, what: 'Kartenrunde <b>Brief + Grammatik</b>.', en: 'Card round: letter + grammar.' },
-      { place: 'sofa', minutes: 35, karten: ['v-gesund'], what: 'Das Themenfeld <b>Gesundheit</b> — 20 Karten: Beschwerden, Rezept, Überweisung, Krankenkasse. Dann eine Phrasenbank für den halbformellen Ton.', en: 'The word field health — 20 cards: symptoms, prescription, referral, health insurance. Then a phrase bank for the semi-formal tone.', note: '„Rezept" und „Überweisung" haben je zwei Bedeutungen — genau daraus baut telc Fallen.' },
+      { place: 'sofa', minutes: 35, karten: ['v-gesund'], what: 'Das Themenfeld <b>Gesundheit</b> — erst der Kern (10 Karten): Beschwerden, Rezept, Überweisung, Krankenkasse. Dann eine Phrasenbank für den halbformellen Ton.', en: 'The word field health — the core 10 cards first: symptoms, prescription, referral, health insurance. Then a phrase bank for the semi-formal tone.', note: '„Rezept" und „Überweisung" haben je zwei Bedeutungen — genau daraus baut telc Fallen.' },
       { place: 'bed', minutes: 5, what: 'Drei Sätze mit Briefbausteinen.', en: 'Three sentences using letter building blocks.' },
     ],
     deck: ['brief', 'gramm'],
@@ -339,7 +339,7 @@ export const DAYS: Day[] = [
     aufgabe: 'Sie fahren gemeinsam zur Prüfung. Planen Sie Verkehrsmittel, Uhrzeit, Treffpunkt und einen Plan B.', aufgabeEn: 'You are travelling to the exam together. Plan the transport, the time, the meeting point and a plan B.',
     slots: [
       { place: 'gym', minutes: 15, karten: true, what: 'Kartenrunde <b>Durchsagen</b> — Einfahrt, Kennzeichen, umgehend.', en: 'Card round: announcements — Einfahrt, Kennzeichen, umgehend.' },
-      { place: 'sofa', minutes: 35, karten: ['v-reise'], what: 'Das Themenfeld <b>Reisen &amp; Behörden</b> — 20 Karten: Verspätung, Anschluss, Antrag stellen, Gebühr.', en: 'The word field travel & public offices — 20 cards: delay, connection, filing an application, fee.', note: 'Doppelt nützlich: dieselben Wörter brauchst du nächste Woche in den Alpen.' },
+      { place: 'sofa', minutes: 35, karten: ['v-reise'], what: 'Das Themenfeld <b>Reisen &amp; Behörden</b> — erst der Kern (10 Karten): Verspätung, Anschluss, Antrag stellen, Gebühr.', en: 'The word field travel & public offices — the core 10 cards first: delay, connection, filing an application, fee.', note: 'Doppelt nützlich: dieselben Wörter brauchst du nächste Woche in den Alpen.' },
       { place: 'bed', minutes: 5, what: 'Drei Sätze über die geplante Reise.', en: 'Three sentences about the trip you are planning.' },
     ],
     deck: ['v-ansage'],
