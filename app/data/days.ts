@@ -115,14 +115,14 @@ export const DAYS: Day[] = [
   },
   {
     date: '2026-08-21', kind: 'class',
-    headline: 'Brief #2 — Thema „Geburtstag", null Mechanikfehler',
+    headline: 'Brief #2 — erste telc-Aufgabe („Jennifer"), null Mechanikfehler',
     tagline: 'telc ist digital. Deutsche Tastatur, Autokorrektur aus, Uhr läuft.',
     needs: ['Laptop + deutsche Tastatur'],
     thema: { title: 'Zukunftspläne', cards: ['Jana, 16, Schülerin', 'Max, 17, Schüler'] },
     aufgabe: 'Sie möchten nach B1 zusammen weiterlernen. Wählen Sie gemeinsam einen Kurs aus und planen Sie die Anmeldung.', aufgabeEn: 'You want to carry on learning together after B1. Choose a course together and plan how to enrol.',
     slots: [
       { place: 'gym', minutes: 12, karten: true, what: 'Kartenrunde <b>Brief-Mechanik</b> + Grammatik.', en: 'Card round: letter mechanics + grammar.' },
-      { place: 'sofa', minutes: 35, what: '✍️ <b>Brief #2 — Thema „Geburtstag", 30 Minuten, getippt, mit Uhr.</b> Aufgabe: <i>Sie haben Ihren Geburtstag gefeiert. Ihr Freund war krank und ist nicht gekommen. Schreiben Sie: Wie war die Party? · Welches Geschenk war besonders gut und warum? · Machen Sie einen Termin.</i> Dann den Text hierher kopieren.', en: 'Letter #2 — topic “birthday”, 30 minutes, typed, on the clock. Task: you celebrated your birthday, your sick friend missed it. Cover: how was the party · which present was especially good and why · propose a date to meet. Then copy the text over to me.', note: 'Ziel diesmal: <b>null Mechanikfehler</b> — Anrede nach Genus · alle Leitpunkte · Schluss mit Frage. WPM wieder notieren.' },
+      { place: 'sofa', minutes: 35, what: '✍️ <b>Brief #2 — Aufgabe 3 „Jennifer", 30 Minuten, getippt, mit Uhr.</b> Am Laptop: <code>~/projects/learning/german/mock/brief.html</code> öffnen, unter <i>telc-Format</i> Nr. 3 wählen. Jennifer schreibt, dass ihre Schwester im Oktober heiratet. Vier Punkte: <i>Reaktion auf die Neuigkeit · Übernachtungsmöglichkeit · Sie möchten zur Hochzeit kommen · Hochzeitsgeschenk.</i> Danach den Bericht kopieren und mir schicken.', en: 'Letter #2 — task 3 “Jennifer”, 30 minutes, typed, on the clock. Open ~/projects/learning/german/mock/brief.html on the laptop and pick no. 3 under telc-Format. Jennifer writes that her sister is getting married in October. Four points: react to the news · where you could stay · you want to come · the wedding present. Then copy the report and send it to me.', note: '⚠️ <b>Neues Format.</b> Die zwölf Themen der Lehrerin sind Goethe-Aufgaben (3 Punkte, keine Vorlage). telc gibt dir einen <b>Brief zum Lesen</b>, <b>vier</b> Punkte und verlangt einen <b>Betreff</b>. Ziel heute: alle vier Punkte sichtbar + null Mechanikfehler (Anrede nach Genus, Schluss mit Frage).' },
     ],
     deck: ['brief', 'gramm', 'digital'],
   },
@@ -288,7 +288,7 @@ export const DAYS: Day[] = [
     aufgabe: 'Sie wollen sich zusammen gesünder ernähren. Planen Sie Einkauf, Kochabende und ein Ziel für vier Wochen.', aufgabeEn: 'You want to eat more healthily together. Plan the shopping, the cooking evenings and a goal for four weeks.',
     slots: [
       { place: 'gym', minutes: 10, karten: true, what: 'Kartenrunde <b>Brief</b>.', en: 'Card round: letter.' },
-      { place: 'sofa', minutes: 35, what: '30 Minuten, getippt, Autokorrektur aus, Text an mich.', en: '30 minutes, typed, autocorrect off, send me the text.' },
+      { place: 'sofa', minutes: 35, what: '✍️ <b>Brief #3 — Aufgabe 14 „Sophie"</b> in <code>mock/brief.html</code>. 30 Minuten, getippt, Autokorrektur aus. Sophie ist neu in Würzburg und kennt niemanden. Vier Punkte: <i>Was es Neues bei Ihnen gibt · was Sie in der Freizeit machen · Tipps für Sophie · Reaktion auf den Vorschlag.</i>', en: 'Letter #3 — task 14 “Sophie” in mock/brief.html. 30 minutes, typed, autocorrect off. Sophie is new in Würzburg and knows nobody. Four points: your news · what you do in your free time · tips for Sophie · reaction to her proposal.', note: 'Der Ratschlag-Punkt ist die Lücke aus dem Lernstoff-Extrakt: <i>An deiner Stelle würde ich … · Ich rate dir, … zu … · Du solltest …</i> Mindestens zwei davon einbauen.' },
       { place: 'bed', minutes: 10, what: '🗣 <b>KI-Runde, 10 Minuten</b> — Teil 3 mit der Sprach-KI. Prompt und Regeln stehen unter <i>Sprechen</i>. Danach drei Sätze aufschreiben, die dir im Gespräch gefehlt haben.', en: 'Speaking round, 10 minutes — Teil 3 with the voice AI. The prompt and the rules are on the Sprechen page. Afterwards write down three sentences you were missing.', note: 'Nach dem Brief noch zehn Minuten sprechen — der Kopf ist im Deutschen, das ist die billigste Übung des Tages.' },
     ],
     deck: ['brief'],
@@ -302,7 +302,7 @@ export const DAYS: Day[] = [
     aufgabe: 'Sie suchen zusammen ein Geschenk für Ihre Lehrerin aus und bestellen es online. Einigen Sie sich auf Geschenk, Preis und Lieferung.', aufgabeEn: 'Together you pick a present for your teacher and order it online. Agree on the present, the price and the delivery.',
     slots: [
       { place: 'gym', minutes: 12, karten: true, what: 'Kartenrunde <b>Grammatik</b>.', en: 'Card round: grammar.' },
-      { place: 'sofa', minutes: 40, what: 'Erst den schwächsten Absatz von #3 neu schreiben, dann ein frisches Thema.', en: 'First rewrite the weakest paragraph of #3, then take a fresh prompt.' },
+      { place: 'sofa', minutes: 40, what: 'Erst den schwächsten Absatz von #3 neu schreiben, dann frisch: <b>Aufgabe 15 „Vera"</b> in <code>mock/brief.html</code>. Vera hat eine neue Stelle und ein Verkehrsproblem. Vier Punkte: <i>Was es bei Ihnen Neues gibt · wie Sie zur Arbeit kommen · was Sie über Veras Stelle wissen wollen · Vorschlag für eine Unternehmung.</i>', en: 'First rewrite the weakest paragraph of #3, then fresh: task 15 “Vera” in mock/brief.html. Vera has a new job and a commuting problem. Four points: your news · how you get to work · what you want to know about her job · a proposal for doing something together.', note: 'Punkt 3 verlangt eine <b>indirekte Frage</b>: „Kannst du mir sagen, <b>ob</b> …?" / „Ich würde gern wissen, <b>wie viel</b> …" — Verb ans Ende.' },
     ],
     deck: ['gramm', 'brief'],
   },
@@ -312,7 +312,7 @@ export const DAYS: Day[] = [
     tagline: 'Die schriftliche Hälfte läuft zum ersten Mal ganz durch.',
     needs: ['Test', 'Laptop'],
     slots: [
-      { place: 'sofa', minutes: 180, what: 'LV 1–3, SB 1–2 und ein 30-Minuten-Brief. Drei Stunden, mit Uhr, alles am Rechner.', en: 'Reading 1–3, Sprachbausteine 1–2 and a 30-minute letter. Three hours, on the clock, all on the computer.' },
+      { place: 'sofa', minutes: 180, what: 'LV 1–3, SB 1–2 und ein 30-Minuten-Brief. Drei Stunden, mit Uhr, alles am Rechner. Für den Brief: <code>mock/brief.html</code> → <b>🎲 Zufällige telc-Aufgabe</b> — nicht vorher aussuchen.', en: 'Reading 1–3, Sprachbausteine 1–2 and a 30-minute letter. Three hours, on the clock, all on the computer. For the letter: mock/brief.html → 🎲 random telc task — do not pick it in advance.', note: 'Zufall ist der Punkt: am 25.09. suchst du dir das Thema auch nicht aus.' },
       { place: 'bed', minutes: 5, what: 'Drei Sätze: wie fühlten sich die letzten 30 Minuten an?', en: 'Three sentences: how did the last 30 minutes feel?' },
     ],
     deck: ['falle', 'koll', 'digital'],
@@ -392,7 +392,7 @@ export const DAYS: Day[] = [
     aufgabe: 'Sie planen die Woche in den Alpen: Route, Stellplatz, Einkauf und Essen. Einigen Sie sich am Ende.', aufgabeEn: 'You are planning the week in the Alps: route, pitch, shopping and food. Agree on it at the end.',
     slots: [
       { place: 'gym', minutes: 10, karten: true, what: 'Kartenrunde <b>Brief</b>.', en: 'Card round: letter.' },
-      { place: 'sofa', minutes: 40, what: 'Brief auf Zeit. Danach: Redemittel für <i>gemeinsam planen</i> — Vorschlag, Zustimmung, Einwand, Kompromiss.', en: 'Timed letter. Then: phrases for planning together — proposal, agreement, objection, compromise.' },
+      { place: 'sofa', minutes: 40, what: 'Brief auf Zeit: <b>Aufgabe 5 „Sonja"</b> in <code>mock/brief.html</code> — Musikfestival, Anreise, Übernachtung, jemanden mitbringen. Danach: Redemittel für <i>gemeinsam planen</i> — Vorschlag, Zustimmung, Einwand, Kompromiss.', en: 'Timed letter: task 5 “Sonja” in mock/brief.html — music festival, travel, overnight stay, bringing someone along. Then: phrases for planning together — proposal, agreement, objection, compromise.', note: 'Bewusst gewählt: derselbe Wortschatz, den du eine Woche später in den Alpen wirklich brauchst.' },
     ],
     deck: ['brief', 'gramm', 'digital'],
   },
