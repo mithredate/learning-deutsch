@@ -11,9 +11,10 @@ import KARTEN_JSON from './themaKarten.json'
  *
  * The texts are **rewritten**: same person, same stance, own words. The
  * teacher's photos and printed quotes are copyrighted and stay out of this
- * public repo (see `Thema` in types.ts). Since no photo can ship, `bild`
- * *describes* the photo instead — which is exactly the exam's first move,
- * so reading it doubles as rehearsing it.
+ * public repo (see `Thema` in types.ts). The photos that *do* ship are
+ * generated from the `bild` descriptions (original images, so they may live
+ * here) — and `bild` stays as the model answer behind a toggle: look at the
+ * photo, describe it yourself, then compare.
  */
 export interface ThemaKarte {
   /** Name, Alter, Beruf — wie auf der Karte im Kurs. */
@@ -22,6 +23,8 @@ export interface ThemaKarte {
   bild: string
   /** Die Meinung der Person, umgeschrieben — Stoff für Schritt ② (wiedergeben). */
   zitat: string
+  /** Dateiname unter public/bilder/ — das generierte Foto zur `bild`-Beschreibung. */
+  foto?: string
 }
 
 /**

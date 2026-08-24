@@ -97,6 +97,18 @@ export default defineNuxtConfig({
             cacheableResponse: { statuses: [0, 200] },
           },
         },
+        {
+          // Teil-2 card photos: too heavy to precache (~6 MB total), immutable
+          // once generated — cache on first view so a class evening offline
+          // still shows tonight's cards.
+          urlPattern: ({ url }) => url.pathname.startsWith(`${BASE}bilder/`),
+          handler: 'CacheFirst',
+          options: {
+            cacheName: 'thema-bilder',
+            expiration: { maxEntries: 60, maxAgeSeconds: 60 * 60 * 24 * 365 },
+            cacheableResponse: { statuses: [0, 200] },
+          },
+        },
       ],
     },
     client: { installPrompt: true },

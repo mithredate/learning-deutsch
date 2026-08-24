@@ -48,6 +48,8 @@ const left = computed(() => daysUntilExam(day.value.date))
  */
 const karten = computed(() => themaKarten(day.value.date))
 const werkzeug = computed(() => WERKZEUG[day.value.date])
+/** Card photos live in public/bilder/; every emitted URL carries the baseURL. */
+const base = useRuntimeConfig().app.baseURL
 
 const STUDY = studyDays()
 /** Position among study days — exam day returns 0 and is labelled instead. */
@@ -208,7 +210,23 @@ function go(delta: number) {
                 <span class="font-mono text-[0.7rem] text-ink-3">{{ i === 0 ? 'A' : 'B' }}</span>
                 <span class="text-[0.88rem] font-semibold">{{ karte.wer }}</span>
               </span>
-              <p class="text-[0.82rem] leading-relaxed text-ink-3">
+              <template v-if="karte.foto">
+                <img
+                  :src="`${base}bilder/${karte.foto}`"
+                  :alt="karte.bild"
+                  class="w-full rounded-lg"
+                  loading="lazy"
+                >
+                <!-- Mit Foto wird die Beschreibung zur Musterlösung: erst selbst
+                     beschreiben, dann aufklappen und vergleichen. -->
+                <details class="text-[0.82rem] leading-relaxed text-ink-3">
+                  <summary class="cursor-pointer select-none font-medium text-ink-2">
+                    Bild beschreiben — Musterlösung
+                  </summary>
+                  <p class="mt-1">{{ karte.bild }}</p>
+                </details>
+              </template>
+              <p v-else class="text-[0.82rem] leading-relaxed text-ink-3">
                 <b class="text-ink-2">Bild:</b> {{ karte.bild }}
               </p>
               <p class="border-l-2 border-line pl-2.5 text-[0.85rem] leading-relaxed text-ink-2 italic">
