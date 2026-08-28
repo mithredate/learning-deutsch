@@ -1,0 +1,47 @@
+{
+  "id": "eigen-03-teil1",
+  "title": "Reisen & Verkehr",
+  "teil": "Übungstest E3 · Hörverstehen Teil 1",
+  "file": "eigen-03-teil1.mp3",
+  "seconds": 194,
+  "once": true,
+  "instructions": "Sie hören fünf kurze Texte, jeden nur einmal. Entscheiden Sie, ob die Aussage richtig oder falsch ist.",
+  "items": [
+    {
+      "n": 1,
+      "text": "Der Mann hat für die Verspätung inzwischen Geld zurückbekommen.",
+      "solution": "−",
+      "trap": "wortgleichheit",
+      "why": "„Entschädigung“ und „bekomme man dann zurück“ hört man wörtlich, aber nur als Auskunft am Schalter: „Das Formular liegt seit drei Wochen bei mir auf dem Schreibtisch.“ Beantragt hat er also nichts."
+    },
+    {
+      "n": 2,
+      "text": "Die Frau lernt unterwegs leichter neue Leute kennen, wenn sie ohne Begleitung reist.",
+      "solution": "+",
+      "trap": "paraphrase",
+      "why": "Kein Wort der Aussage steht im Text. Man muss „komme mit wildfremden Menschen ins Gespräch“ und „in der Gruppe bleibt man immer unter sich“ dem Sinn nach zusammensetzen."
+    },
+    {
+      "n": 3,
+      "text": "Der Mann fährt vor allem deshalb mit dem Rad, weil er der Umwelt helfen will.",
+      "solution": "−",
+      "trap": "negation",
+      "why": "Er nennt die Vermutung der Kollegen nur, um sie zu verneinen: „Nein, darum geht es mir überhaupt nicht.“ Sein Grund ist die Zeit – „es war nicht mein Grund“ sagt er am Schluss noch einmal."
+    },
+    {
+      "n": 4,
+      "text": "Die Frau musste sich unterwegs um nichts selbst kümmern.",
+      "solution": "+",
+      "trap": "inferenz",
+      "why": "Das Wort „Gruppenreise“ oder „organisieren“ fällt nie. Man schließt es aus dem Bus, dem Durchzählen und aus „kein einziges Mal eine Karte gelesen, kein Hotel gesucht, keine Fahrkarte gekauft“."
+    },
+    {
+      "n": 5,
+      "text": "Im September regnet es auf dem Campingplatz fast jeden Tag.",
+      "solution": "−",
+      "trap": "absolutizer",
+      "why": "Er widerspricht genau diesem Vorurteil mit Zahlen: „vielleicht an zwei von zehn Tagen“ und „die meisten Abende sitzen wir draußen“. „Fast jeden Tag“ macht die Aussage falsch."
+    }
+  ],
+  "transcript": "Nummer eins (Pendler, m):\nAlso, mein Zug nach Leipzig stand plötzlich vierzig Minuten auf freier Strecke, mitten im Feld. Den Anschluss habe ich natürlich verpasst und bin zwei Stunden später angekommen. Am Schalter hat man mir gesagt, ich könne eine Entschädigung beantragen, einen Teil vom Fahrpreis bekomme man dann zurück. Ähm, ja. Das Formular liegt seit drei Wochen bei mir auf dem Schreibtisch. Ich komme einfach nicht dazu.\n\nNummer zwei (Alleinreisende, w):\nWenn ich erzähle, dass ich allein verreise, schauen mich alle ganz mitleidig an. Dabei ist es doch genau umgekehrt. Allein sitze ich abends am großen Tisch und komme mit wildfremden Menschen ins Gespräch. In der Gruppe bleibt man ja immer unter sich, da redet man den ganzen Abend wieder nur miteinander. Ich war in Portugal keinen einzigen Abend still.\n\nNummer drei (Radfahrer, m):\nIn der Firma sagen alle: Ach, du fährst mit dem Rad, du machst das für die Umwelt. Nein, darum geht es mir überhaupt nicht. Ich bin morgens schlicht schneller. Mit dem Auto stehe ich vierzig Minuten im Verkehr und suche danach noch einen Parkplatz. Mit dem Rad bin ich in fünfundzwanzig Minuten da, und zwar jeden Tag gleich schnell. Dass es der Umwelt nützt, ist schön, aber es war nicht mein Grund.\n\nNummer vier (Busreisende, w):\nUm sieben klopft es an der Tür, das Frühstück steht schon bereit, und um neun sitzen wir alle wieder im Bus. Herr Weber zählt kurz durch, dann geht es zur nächsten Kirche. Ich habe in diesen zehn Tagen kein einziges Mal eine Karte gelesen, kein Hotel gesucht und keine Fahrkarte gekauft. Ehrlich gesagt: Nach einem anstrengenden Jahr war mir genau das recht.\n\nNummer fünf (Camper, m):\nAnfang September ist der Platz in den Alpen fast leer, die Familien sind dann wieder zu Hause. Und immer heißt es: In den Bergen regnet es doch dauernd. Also, wir sind seit acht Jahren jeden Herbst oben. Geregnet hat es vielleicht an zwei von zehn Tagen. Die meisten Abende sitzen wir draußen vor dem Zelt, mit Blick auf das Tal."
+}

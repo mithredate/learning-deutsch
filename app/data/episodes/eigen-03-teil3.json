@@ -1,0 +1,47 @@
+{
+  "id": "eigen-03-teil3",
+  "title": "Fünf Durchsagen unterwegs",
+  "teil": "Übungstest E3 · Hörverstehen Teil 3",
+  "file": "eigen-03-teil3.mp3",
+  "seconds": 436,
+  "once": false,
+  "instructions": "Sie hören fünf Durchsagen, jede zweimal. Entscheiden Sie, ob die Aussage richtig oder falsch ist.",
+  "items": [
+    {
+      "n": 16,
+      "text": "Die Fluggäste müssen zu einem anderen Ausgang gehen als geplant.",
+      "solution": "+",
+      "trap": "paraphrase",
+      "why": "„Nicht am Ausgang B zwölf … sondern am Ausgang A vier“ – die Aussage sagt dasselbe mit anderen Worten. Das Wort „Gate“ oder „Wechsel“ fällt nie."
+    },
+    {
+      "n": 17,
+      "text": "Auch die Winterjacken sind heute um dreißig Prozent billiger.",
+      "solution": "−",
+      "trap": "wortgleichheit",
+      "why": "„Dreißig Prozent reduziert“ und „Jacken“ hört man wörtlich, aber nur für die Sommerjacken. „Die neue Winterware ist von dieser Aktion ausgenommen, dort gilt weiterhin der normale Preis.“"
+    },
+    {
+      "n": 18,
+      "text": "Autofahrer aus Richtung Hannover sollen die Autobahn an der Ausfahrt Göttingen verlassen.",
+      "solution": "−",
+      "trap": "detail",
+      "why": "Göttingen wird genannt, aber als Ende des Staus. Die Ausfahrt heißt Hedemünden – die Ortsnamen fallen je nur einmal, und der Text nennt sie kurz hintereinander."
+    },
+    {
+      "n": 19,
+      "text": "Wer eine Reise buchen will, muss ins Büro kommen oder schreiben.",
+      "solution": "+",
+      "trap": "negation",
+      "why": "Die Verneinung im Text macht die Aussage richtig: „Buchungen können wir am Telefon grundsätzlich nicht entgegennehmen. Kommen Sie dafür bitte persönlich vorbei oder schreiben Sie uns eine E-Mail.“ Ein „nicht“ im Text heißt nicht automatisch „falsch“ in der Aufgabe."
+    },
+    {
+      "n": 20,
+      "text": "Wer während der Fahrt etwas trinken möchte, hat trotzdem eine Möglichkeit.",
+      "solution": "+",
+      "trap": "inferenz",
+      "why": "Das Bistro ist zu, aber „kalte Getränke bekommen Sie aber weiterhin am Automaten im Wagen neun“ – man muss die geschlossene Tür und den Automaten zusammenrechnen."
+    }
+  ],
+  "transcript": "16 · Flughafen, Ausgangswechsel\nEine Information für die Fluggäste des Fluges LH 648 nach Wien, planmäßiger Abflug elf Uhr zwanzig. Dieser Flug wird heute nicht am Ausgang B zwölf abgefertigt, sondern am Ausgang A vier. Bitte begeben Sie sich jetzt dorthin, der Weg dauert etwa zehn Minuten. Der Einstieg beginnt um zehn Uhr fünfzig. Reisende mit einem Anschlussflug in Wien wenden sich bitte vorher an unseren Schalter in der Abflughalle.\n\n17 · Kaufhaus, Angebot des Tages\nSehr geehrte Kundinnen und Kunden, unser Angebot des Tages in der dritten Etage: Alle Sommerjacken sind heute um dreißig Prozent reduziert. Die neue Winterware ist von dieser Aktion ausgenommen, dort gilt weiterhin der normale Preis. Das Angebot gilt nur heute und nur hier im Haus, nicht in unserem Internetgeschäft. Und noch ein Hinweis: Die Kundentoiletten im Erdgeschoss sind wegen einer Reparatur bis morgen geschlossen.\n\n18 · Verkehrsfunk\nUnd jetzt die Verkehrslage. Auf der Autobahn A 7 zwischen Kassel-Nord und Göttingen staut es sich nach einem Unfall auf zwölf Kilometern. Die linke Spur ist gesperrt. Wer aus Richtung Hannover kommt, verlässt die Autobahn am besten schon an der Ausfahrt Hedemünden und fährt über die Bundesstraße 80 weiter. Diese Umleitung ist allerdings nicht ausgeschildert. Die Polizei rechnet damit, dass die Spur gegen achtzehn Uhr wieder frei ist.\n\n19 · Anrufbeantworter eines Reisebüros\nHerzlich willkommen beim Reisebüro Sonnenweg. Unser Büro ist zurzeit leider nicht besetzt. Sie erreichen uns montags bis freitags von neun bis dreizehn Uhr und dienstags zusätzlich von fünfzehn bis achtzehn Uhr. Buchungen können wir am Telefon grundsätzlich nicht entgegennehmen. Kommen Sie dafür bitte persönlich vorbei oder schreiben Sie uns eine E-Mail. Falls Sie sich bereits auf einer Reise befinden und Hilfe brauchen, wählen Sie bitte nicht diese Nummer, sondern unsere Notfallnummer.\n\n20 · Durchsage im Zug\nSehr geehrte Fahrgäste, in wenigen Minuten erreichen wir Fulda. Reisende in Richtung Frankfurt am Main steigen hier bitte um. Ihr Anschlusszug fährt heute nicht von Gleis sieben, sondern von Gleis zwei, und zwar pünktlich. Unser Bordbistro im Wagen sechs bleibt für den Rest der Fahrt geschlossen, weil die Kühlung ausgefallen ist. Kalte Getränke bekommen Sie aber weiterhin am Automaten im Wagen neun."
+}

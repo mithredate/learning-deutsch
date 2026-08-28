@@ -1,0 +1,47 @@
+{
+  "id": "eigen-02-teil1",
+  "title": "Wohnen & Nachbarn",
+  "teil": "Übungstest E2 · Hörverstehen Teil 1",
+  "file": "eigen-02-teil1.mp3",
+  "seconds": 194,
+  "once": true,
+  "instructions": "Sie hören fünf kurze Texte, jeden nur einmal. Entscheiden Sie, ob die Aussage richtig oder falsch ist.",
+  "items": [
+    {
+      "n": 1,
+      "text": "Der Umzug war weniger anstrengend, als die Frau erwartet hatte.",
+      "solution": "+",
+      "trap": "paraphrase",
+      "why": "Kein Wort der Aussage kommt im Text vor. Entscheidend ist der Sinn von „ich hatte mir das ehrlich gesagt viel schlimmer vorgestellt“ – dazu passen sieben Helfer und der geliehene Transporter."
+    },
+    {
+      "n": 2,
+      "text": "Wegen der Kaution wollte der Mann den Vertrag zuerst nicht unterschreiben.",
+      "solution": "−",
+      "trap": "wortgleichheit",
+      "why": "„Kaution“ und „unterschreiben“ hört man beide wörtlich, aber in die andere Richtung: Die drei Monatsmieten waren „ganz normal“, gestört hat ihn das Treppenhausputzen – „Die Kaution war also nie das Problem“."
+    },
+    {
+      "n": 3,
+      "text": "Die Nachbarn über ihr machen jeden Abend Lärm.",
+      "solution": "−",
+      "trap": "absolutizer",
+      "why": "Sie schränkt selbst ein: „vielleicht an zwei Abenden im Monat“, und „an allen anderen Tagen hört man von oben überhaupt nichts“. „Jeden Abend“ macht die Aussage falsch."
+    },
+    {
+      "n": 4,
+      "text": "Die Hausordnung in seinem Haus enthält nur wenige Regeln.",
+      "solution": "+",
+      "trap": "negation",
+      "why": "Er nennt das Vorurteil („ein Zettel, auf dem einem alles verboten wird“) nur, um es zu verneinen: „Nein, bei uns ist das überhaupt nicht so.“ Danach folgen genau zwei Regeln: Müll und Nachtruhe."
+    },
+    {
+      "n": 5,
+      "text": "Die Frau musste sich gegen viele andere Interessenten durchsetzen.",
+      "solution": "+",
+      "trap": "inferenz",
+      "why": "Wörter wie „Konkurrenz“ oder „Bewerber“ fallen nie. Man muss aus „im Hausflur standen noch einmal zwanzig Leute“, „fünf Minuten pro Partei“ und „drei Monate und siebzehn solche Termine“ schließen."
+    }
+  ],
+  "transcript": "Nummer eins (Umzug, w):\nAlso, der Umzug am Samstag – ich hatte mir das ehrlich gesagt viel schlimmer vorgestellt. Wir waren zu siebt, lauter Freunde und mein Bruder, und um vier Uhr nachmittags stand schon alles oben in der neuen Wohnung. Den Transporter hat uns der Bäcker aus der Nachbarschaft geliehen. Am Abend gab es dann Pizza für alle, und damit war die Sache erledigt.\n\nNummer zwei (Mietvertrag, m):\nVor der Unterschrift habe ich mir den Mietvertrag zweimal in Ruhe durchgelesen, und das war auch gut so. Drei Monatsmieten Kaution, das stand ganz normal drin, damit hatte ich gerechnet. Gestört hat mich ein ganz anderer Punkt: Ich sollte jede zweite Woche das Treppenhaus putzen. Diesen Satz habe ich streichen lassen, sonst hätte ich nicht unterschrieben. Die Kaution war also nie das Problem.\n\nNummer drei (Nachbarschaftsstreit, w):\nÄhm, ja, mit den Nachbarn über uns hatten wir im Frühjahr wirklich Ärger, das gebe ich zu. Aber ehrlich gesagt: Laut ist es vielleicht an zwei Abenden im Monat, nämlich dann, wenn die Familie Besuch hat. An allen anderen Tagen hört man von oben überhaupt nichts. Wir haben irgendwann einfach geklingelt und geredet, und seitdem stellen sie die Musik nach zehn Uhr leiser.\n\nNummer vier (Hausordnung, m):\nHausordnung – viele stöhnen ja sofort, wenn sie dieses Wort nur hören. So ein Zettel im Flur, auf dem einem alles verboten wird. Nein, bei uns ist das überhaupt nicht so. Bei uns steht eigentlich nur drin, wer wann den Müll rausstellt und dass man nachts Rücksicht nehmen soll. Über das Grillen auf dem Balkon hat sich bei uns noch nie jemand beschwert.\n\nNummer fünf (Wohnungssuche, w):\nAm Dienstag waren wir zu dritt in der Wohnung, und im Hausflur standen noch einmal zwanzig Leute und warteten. Jeder hatte seine Mappe dabei: Gehaltsnachweise, die Bescheinigung vom alten Vermieter, alles fein säuberlich in einer Klarsichthülle. Fünf Minuten pro Partei, dann klingelte schon der Nächste. Nach drei Monaten und siebzehn solchen Terminen haben wir endlich eine Zusage bekommen."
+}

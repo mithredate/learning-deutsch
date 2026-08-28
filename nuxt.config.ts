@@ -67,10 +67,17 @@ export default defineNuxtConfig({
     },
     workbox: {
       // The shell is small; precache all of it so a dead-zone gym still opens the app.
-      globPatterns: ['**/*.{js,css,html,png,svg,ico,webmanifest}'],
+      globPatterns: ['**/*.{js,css,html,png,jpg,svg,ico,webmanifest}'],
       navigateFallback: BASE,
       cleanupOutdatedCaches: true,
       // Audio is large and immutable — cache on first play, never revalidate.
+      //
+      // The base path is written out in full in every matcher below, and must
+      // stay that way: workbox serialises these arrow functions into sw.js as
+      // source text, so the closure around them does not travel. A `${BASE}`
+      // in here becomes an undefined free variable in the worker, the matcher
+      // throws on the first request, and the cache is never created at all
+      // (which is exactly what happened until 2026-08-28).
       runtimeCaching: [
         {
           // Wortschatz cards get their own bucket. Sharing one with the exam
@@ -79,7 +86,7 @@ export default defineNuxtConfig({
           // audio is the expensive thing to lose. Each card filename carries a
           // content hash, so an edited card is a *new* URL — nothing in here
           // ever needs revalidating, only evicting.
-          urlPattern: ({ url }) => url.pathname.startsWith(`${BASE}audio/wort/`),
+          urlPattern: ({ url }) => url.pathname.startsWith('/learning-deutsch/audio/wort/'),
           handler: 'CacheFirst',
           options: {
             cacheName: 'wortschatz-audio',
@@ -88,7 +95,7 @@ export default defineNuxtConfig({
           },
         },
         {
-          urlPattern: ({ url }) => url.pathname.startsWith(`${BASE}audio/`),
+          urlPattern: ({ url }) => url.pathname.startsWith('/learning-deutsch/audio/'),
           handler: 'CacheFirst',
           options: {
             cacheName: 'hoerverstehen-audio',
@@ -98,10 +105,12 @@ export default defineNuxtConfig({
           },
         },
         {
-          // Teil-2 card photos: too heavy to precache (~6 MB total), immutable
-          // once generated — cache on first view so a class evening offline
-          // still shows tonight's cards.
-          urlPattern: ({ url }) => url.pathname.startsWith(`${BASE}bilder/`),
+          // Teil-2 card photos are precached with the shell now (they came to
+          // ~5 MB, not the ~6 MB that once bought them a lazy bucket, and a
+          // photo that only arrives on first view arrives too late in class).
+          // This bucket stays as the net for any /bilder/ file the precache
+          // manifest missed — a hand-dropped photo, a shape not in globPatterns.
+          urlPattern: ({ url }) => url.pathname.startsWith('/learning-deutsch/bilder/'),
           handler: 'CacheFirst',
           options: {
             cacheName: 'thema-bilder',

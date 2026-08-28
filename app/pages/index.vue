@@ -2,6 +2,7 @@
 import { usePlan, deckFor, formatDay, daysUntilExam } from '~/composables/usePlan'
 import { groupByKind } from '~/data/cards'
 import { studyDays } from '~/data/days'
+import { EPISODES } from '~/data/hoeren'
 import { themaKarten, WERKZEUG } from '~/data/themen'
 import { useProgress } from '~/composables/useProgress'
 import { useEnglish } from '~/composables/useEnglish'
@@ -71,7 +72,12 @@ function go(delta: number) {
   <div class="mx-auto flex max-w-lg flex-col gap-5 px-4">
     <ClientOnly>
       <template #fallback>
-        <div class="flex h-64 items-center justify-center text-ink-3">…</div>
+        <!-- This fallback *is* the prerendered start page — everything real
+             below it waits for the client. A bare „…" made a page that never
+             hydrates look exactly like one that is merely slow. -->
+        <div class="flex h-64 items-center justify-center px-6 text-center text-[0.86rem] leading-relaxed text-ink-3">
+          Lädt … Wenn das hier stehen bleibt: einmal online öffnen, dann geht es offline.
+        </div>
       </template>
 
       <header v-if="mounted" class="flex flex-col gap-3.5 pt-6">
@@ -150,7 +156,7 @@ function go(delta: number) {
           <span class="text-[0.9rem] font-semibold" :class="day.kind === 'class' ? 'text-ink' : 'text-accent'">
             Hören
           </span>
-          <span class="font-mono text-[0.68rem] text-ink-3">3 Teile · mit Auswertung</span>
+          <span class="font-mono text-[0.68rem] text-ink-3">{{ EPISODES.length }} Übungen · mit Auswertung</span>
         </NuxtLink>
 
         <NuxtLink

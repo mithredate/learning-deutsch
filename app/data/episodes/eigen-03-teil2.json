@@ -1,0 +1,82 @@
+{
+  "id": "eigen-03-teil2",
+  "title": "Unverpackt einkaufen",
+  "teil": "Übungstest E3 · Hörverstehen Teil 2",
+  "file": "eigen-03-teil2.mp3",
+  "seconds": 712,
+  "once": false,
+  "instructions": "Sie hören ein Gespräch, zweimal. Entscheiden Sie, ob die Aussage richtig oder falsch ist.",
+  "items": [
+    {
+      "n": 6,
+      "text": "Wer nur eine kleine Menge braucht, muss in dem Laden trotzdem nicht mehr kaufen.",
+      "solution": "+",
+      "trap": "paraphrase",
+      "why": "Frau Ritter sagt es mit anderen Wörtern: „Wer für ein Rezept nur eine Handvoll Reis braucht, der nimmt eben nur eine Handvoll“ und „nicht jeder Haushalt braucht gleich ein ganzes Kilo“."
+    },
+    {
+      "n": 7,
+      "text": "Ohne eigenes Gefäß kann man in dem Laden nichts einkaufen.",
+      "solution": "−",
+      "trap": "inferenz",
+      "why": "Der Satz wird nie direkt verneint. Man muss aus dem Korb mit Pfandgläsern am Eingang und aus „es muss also niemand unverrichteter Dinge wieder nach Hause gehen“ schließen."
+    },
+    {
+      "n": 8,
+      "text": "Alle Waren sind in dem Laden teurer als im Supermarkt.",
+      "solution": "−",
+      "trap": "absolutizer",
+      "why": "Sie gibt nur für Nudeln und Reis „ein paar Cent über dem Supermarkt“ zu und stellt dagegen: „Die Gewürze sind bei uns deutlich billiger … bei manchen Sachen sparen Sie sogar.“ „Alle“ macht die Aussage falsch."
+    },
+    {
+      "n": 9,
+      "text": "Den Laden gibt es seit sechs Jahren.",
+      "solution": "+",
+      "trap": "detail",
+      "why": "Die Angabe fällt genau einmal: „Wir haben im März zweitausendzwanzig aufgemacht, also seit sechs Jahren gibt es uns jetzt.“ Die anderen Jahreszahlen im Gespräch gehören zum Umzug und zum Kind der Schwester."
+    },
+    {
+      "n": 10,
+      "text": "Von Anfang an hatte der Laden über dreihundert Sorten im Regal.",
+      "solution": "−",
+      "trap": "wortgleichheit",
+      "why": "„Über dreihundert Sorten“ hört man wörtlich, aber Frau Ritter korrigiert sich sofort selbst: die dreihundert gibt es erst seit dem Umzug im letzten Jahr. Angefangen haben sie mit ungefähr achtzig Produkten."
+    },
+    {
+      "n": 11,
+      "text": "Frau Ritter führt den Laden bis heute gemeinsam mit ihrer Schwester.",
+      "solution": "−",
+      "trap": "negation",
+      "why": "Die Verneinung entscheidet: „Meine Schwester ist übrigens nicht mehr dabei.“ Sie arbeitet wieder als Erzieherin und telefoniert nur noch jede Woche."
+    },
+    {
+      "n": 12,
+      "text": "Frau Ritter hatte vor der Eröffnung mit einer anderen Kundschaft gerechnet.",
+      "solution": "+",
+      "trap": "inferenz",
+      "why": "Auf die Vermutung „vor allem junge Leute“ antwortet sie: „Das dachte ich am Anfang auch. Aber nein, so ist es gar nicht gekommen.“ Daraus folgt, dass ihre Erwartung eine andere war – gesagt wird das nie."
+    },
+    {
+      "n": 13,
+      "text": "Seit einiger Zeit kommen weniger Kundinnen und Kunden in den Laden.",
+      "solution": "−",
+      "trap": "wortgleichheit",
+      "why": "„Weniger“ steht im Text, gilt aber dem Warenkorb: „Es kommen genauso viele Leute wie vor zwei Jahren … aber der einzelne Einkauf ist kleiner geworden“ – zwanzig Euro früher, zwölf Euro heute."
+    },
+    {
+      "n": 14,
+      "text": "Welches Obst und Gemüse es dort gibt, hängt von der Jahreszeit ab.",
+      "solution": "+",
+      "trap": "paraphrase",
+      "why": "Das Wort „Jahreszeit“ fällt nie. Sie sagt: „nur das, was hier bei uns gerade wächst“ und „im Januar finden Sie bei uns keine Erdbeeren, da liegen dann Äpfel und Kohl im Regal“."
+    },
+    {
+      "n": 15,
+      "text": "Frau Ritter rät Neukunden, mit wenigen Produkten anzufangen.",
+      "solution": "+",
+      "trap": "paraphrase",
+      "why": "„Fangen Sie klein an. Nehmen Sie zwei oder drei Sachen, die Sie sowieso jede Woche brauchen.“ Wer den ganzen Haushalt sofort umstellen will, gibt nach ihrer Erfahrung nach vier Wochen auf."
+    }
+  ],
+  "transcript": "Moderator: Guten Tag, liebe Hörerinnen und Hörer, hier ist wieder Ihr Nachmittag auf Radio Nordhessen. Bei mir im Studio sitzt heute Marlene Ritter. Ihr Geschäft in Kassel heißt Die Kelle, und dort finden Sie fast nichts, was in einer Verpackung steckt. Frau Ritter, erklären Sie unseren Hörerinnen und Hörern doch bitte einmal: Wie läuft so ein Einkauf bei Ihnen ab?\nMarlene Ritter: Ja, gern. Bei uns stehen die Waren in großen Glasbehältern an der Wand. Nudeln, Reis, Haferflocken, Waschmittel, Shampoo. Sie kommen mit Ihrem eigenen Glas oder einer Dose, wir stellen das leere Gefäß einmal auf die Waage, und dann füllen Sie sich genau so viel ab, wie Sie brauchen. Wer für ein Rezept nur eine Handvoll Reis braucht, der nimmt eben nur eine Handvoll. Das ist für mich der eigentliche Punkt: Nicht jeder Haushalt braucht gleich ein ganzes Kilo.\nModerator: Und wenn ich nun mein Glas zu Hause auf dem Küchentisch vergessen habe, stehe ich dann vor dem Regal und schaue traurig?\nMarlene Ritter: Ach nein, das ist überhaupt kein Drama. Gleich am Eingang steht ein Korb mit gebrauchten Gläsern, die bringen uns die Nachbarn vorbei. Ein Glas kostet einen Euro Pfand, und den Euro bekommen Sie zurück, sobald Sie das Glas wieder mitbringen. Es muss also niemand unverrichteter Dinge wieder nach Hause gehen.\nModerator: Nun sagen ja viele Leute: Unverpackt einkaufen, das ist etwas für Menschen mit einem dicken Geldbeutel. Was antworten Sie denen?\nMarlene Ritter: Das höre ich wirklich ständig, und ehrlich gesagt ärgert es mich ein bisschen. Bei den Nudeln und beim Reis liegen wir tatsächlich ein paar Cent über dem Supermarkt, das gebe ich zu. Aber die Gewürze sind bei uns deutlich billiger, weil Sie eben zehn Gramm Pfeffer nehmen und nicht ein ganzes Glas kaufen müssen. Wir sind also nicht überall teurer. Bei manchen Sachen sparen Sie bei uns sogar.\nModerator: Verraten Sie uns doch bitte: Seit wann gibt es Ihren Laden eigentlich schon?\nMarlene Ritter: Wir haben im März zweitausendzwanzig aufgemacht, also seit sechs Jahren gibt es uns jetzt. Angefangen haben wir zu zweit, meine Schwester und ich, in einem winzigen Raum mit ungefähr achtzig Produkten. Heute sind es über dreihundert Sorten. Ach, warten Sie, da muss ich mich korrigieren: Die dreihundert haben wir erst, seit wir letztes Jahr in die größeren Räume umgezogen sind. Davor waren es knapp zweihundert.\nModerator: Und wie viele Leute arbeiten heute in dem Geschäft mit Ihnen zusammen?\nMarlene Ritter: Fest angestellt sind vier, dazu kommen zwei Studentinnen, die samstags aushelfen. Meine Schwester ist übrigens nicht mehr dabei. Sie hat vor zwei Jahren ein Kind bekommen und arbeitet inzwischen wieder in ihrem alten Beruf, als Erzieherin. Wir telefonieren aber jede Woche, und sie fragt jedes Mal nach den Zahlen.\nModerator: Wann kann man denn bei Ihnen einkaufen, wenn man nach der Arbeit vorbeikommen möchte?\nMarlene Ritter: Von Dienstag bis Freitag haben wir von zehn bis achtzehn Uhr geöffnet, samstags von neun bis vierzehn Uhr. Montags bleibt der Laden zu, da räumen wir ein und schreiben die Bestellungen. Und passen Sie auf: Am Samstagnachmittag stehen wir manchmal noch auf dem Wochenmarkt am Königsplatz, aber der Laden selbst ist dann längst geschlossen.\nModerator: Wer kommt eigentlich zu Ihnen? Ich stelle mir da vor allem junge Leute mit Stoffbeutel und Fahrrad vor.\nMarlene Ritter: Das dachte ich am Anfang auch. Aber nein, so ist es gar nicht gekommen. Unsere treuesten Kundinnen sind Frauen über sechzig. Die kennen das noch von früher, mit der Milchkanne zum Bauern. Die Studenten kommen eher mal schnell vorbei, wenn ihnen für ein Rezept etwas fehlt.\nModerator: Merken Sie eigentlich, dass die Leute im Moment mehr auf ihr Geld schauen als früher?\nMarlene Ritter: Ja, sehr deutlich sogar. Es kommen genauso viele Leute wie vor zwei Jahren, daran hat sich nichts geändert. Aber der einzelne Einkauf ist kleiner geworden. Früher hat jemand für zwanzig Euro eingekauft, heute für zwölf. Die Leute nehmen also weniger mit, sie bleiben uns aber treu.\nModerator: Gibt es denn auch Dinge, die Sie in Ihrem Laden gar nicht anbieten können?\nMarlene Ritter: Fleisch und Fisch, das geht bei uns nicht. Dafür bräuchten wir eine ganz andere Kühlung und eine eigene Genehmigung vom Amt. Die Milch holen wir vom Hof, die gibt es in Pfandflaschen. Und Obst und Gemüse haben wir natürlich, aber eben nur das, was hier bei uns gerade wächst. Im Januar finden Sie bei uns keine Erdbeeren, da liegen dann Äpfel und Kohl im Regal.\nModerator: Und was raten Sie jemandem, der zum ersten Mal bei Ihnen durch die Tür kommt?\nMarlene Ritter: Fangen Sie klein an. Nehmen Sie zwei oder drei Sachen, die Sie sowieso jede Woche brauchen, also Nudeln, Kaffee, Waschmittel. Wer am ersten Tag den ganzen Haushalt umstellen will, der gibt nach vier Wochen wieder auf. Das habe ich in sechs Jahren oft genug gesehen.\nModerator: Ein schöner Schlusssatz. Frau Ritter, vielen Dank, dass Sie heute bei uns im Studio waren.\nMarlene Ritter: Ich danke Ihnen. Und kommen Sie doch mal vorbei, am besten mit einem leeren Glas."
+}

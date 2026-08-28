@@ -8,15 +8,27 @@ const { hydrate, history, best } = useUebung()
 onMounted(hydrate)
 
 const totalItems = EPISODES.reduce((n, e) => n + e.items.length, 0)
+
+/**
+ * Unheard first. Nine exercises no longer fit on one thumb-scroll, and the one
+ * never played is always the one worth playing — so fewest attempts to the top,
+ * original order inside a tier. The attempts only exist after `hydrate` on the
+ * client, so the prerendered page shows the base order and re-sorts on mount.
+ */
+const listed = computed(() =>
+  EPISODES.map((e, i) => ({ e, i }))
+    .sort((a, b) => history(a.e.id).length - history(b.e.id).length || a.i - b.i)
+    .map(x => x.e),
+)
 </script>
 
 <template>
   <div class="mx-auto flex max-w-lg flex-col gap-5 px-4">
     <header class="flex flex-col gap-3 pt-6">
-      <span class="eyebrow">Übungstest E1 · eigenes Material</span>
+      <span class="eyebrow">Übungstests E1–E3 · eigenes Material</span>
       <h1 class="text-[clamp(1.6rem,5.5vw,2.1rem)] leading-tight">Hörverstehen</h1>
       <p class="text-[0.93rem] leading-relaxed text-ink-2">
-        {{ EPISODES.length }} Teile, {{ totalItems }} Aufgaben. Selbst geschrieben und vertont —
+        {{ EPISODES.length }} Übungen, {{ totalItems }} Aufgaben. Selbst geschrieben und vertont —
         und die Distraktoren sind gezielt auf deine Fehlertypen gebaut, nicht auf die
         eines beliebigen Verlagstests.
       </p>
@@ -27,7 +39,7 @@ const totalItems = EPISODES.reduce((n, e) => n + e.items.length, 0)
     </header>
 
     <NuxtLink
-      v-for="ep in EPISODES"
+      v-for="ep in listed"
       :key="ep.id"
       :to="`/hoeren/${ep.id}`"
       class="flex flex-col gap-2 rounded-2xl border border-line bg-surface px-4 py-4 no-underline"

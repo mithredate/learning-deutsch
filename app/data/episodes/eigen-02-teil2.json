@@ -1,0 +1,82 @@
+{
+  "id": "eigen-02-teil2",
+  "title": "Sportverein & Gesundheitskurse",
+  "teil": "Übungstest E2 · Hörverstehen Teil 2",
+  "file": "eigen-02-teil2.mp3",
+  "seconds": 705,
+  "once": false,
+  "instructions": "Sie hören ein Gespräch, zweimal. Entscheiden Sie, ob die Aussage richtig oder falsch ist.",
+  "items": [
+    {
+      "n": 6,
+      "text": "Heute treiben im Verein mehr Menschen Gesundheitssport als Fußball.",
+      "solution": "+",
+      "trap": "paraphrase",
+      "why": "Kein Wort der Aussage steht so im Text. Herr Kowalski sagt, Fußball sei „längst nicht mehr unsere größte Abteilung“, die größte sei die Gesundheitsabteilung, und dort bewegten sich „mehr Leute als auf allen unseren Fußballplätzen zusammen“."
+    },
+    {
+      "n": 7,
+      "text": "Als Herr Kowalski in den Vorstand kam, hatte der Verein etwa vierhundert Mitglieder.",
+      "solution": "+",
+      "trap": "detail",
+      "why": "Man muss zwei Zahlen auseinanderhalten: heute rund 1400 Mitglieder, aber 1998, als er in den Vorstand kam, „knapp vierhundert“. Wer nur die erste Zahl behält, tickt falsch."
+    },
+    {
+      "n": 8,
+      "text": "In die Gesundheitskurse des Vereins kommen fast nur ältere Menschen.",
+      "solution": "−",
+      "trap": "negation",
+      "why": "Die Moderatorin äußert genau diese Vermutung, und er verneint sie ausdrücklich: „Nein, das denken viele, aber das stimmt so nicht.“ Durchschnittsalter im Rückenkurs knapp fünfzig, die jüngste Teilnehmerin neunzehn. Nur die Herzsportgruppe ist über sechzig."
+    },
+    {
+      "n": 9,
+      "text": "Alle Kurse sind im Mitgliedsbeitrag enthalten.",
+      "solution": "−",
+      "trap": "absolutizer",
+      "why": "„Die Kurse kosten nichts extra“ hört man, aber mit einer Ausnahme: „bis auf die Wassergymnastik“, dort kommen acht Euro im Monat dazu. „Alle“ macht die Aussage falsch."
+    },
+    {
+      "n": 10,
+      "text": "Wer den Rückenkurs nur zweimal besucht, bekommt das Geld trotzdem von der Krankenkasse zurück.",
+      "solution": "−",
+      "trap": "wortgleichheit",
+      "why": "„Die Krankenkassen erstatten den Rückenkurs“ hört man fast wörtlich, aber die Bedingung dreht die Richtung um: „nur, wenn man mindestens achtmal da war. Wer zweimal kommt und dann aufhört, bekommt keinen Cent zurück.“"
+    },
+    {
+      "n": 11,
+      "text": "Um den Antrag an die Krankenkasse muss man sich nicht selbst kümmern.",
+      "solution": "+",
+      "trap": "paraphrase",
+      "why": "Das Wort „Antrag“ fällt nie. Er sagt: „Den ganzen Papierkram dafür erledigen wir übrigens in der Geschäftsstelle. Unsere Mitglieder müssen selbst gar nichts ausfüllen.“"
+    },
+    {
+      "n": 12,
+      "text": "Die Sporthalle des Vereins ist an jedem Tag der Woche geöffnet.",
+      "solution": "−",
+      "trap": "detail",
+      "why": "Er sagt zuerst „sieben Tage in der Woche offen“, korrigiert sich aber viel später selbst: „eines muss ich noch richtigstellen … Seit Januar stimmt das nicht mehr. Sonntags bleibt sie inzwischen zu.“ Die Auflösung kommt erst am Ende des Gesprächs."
+    },
+    {
+      "n": 13,
+      "text": "Die meisten Übungsleiter machen die Kurse neben einem anderen Beruf.",
+      "solution": "+",
+      "trap": "inferenz",
+      "why": "Weder „Nebenjob“ noch „Hauptberuf“ fällt. Man muss schließen: „nur eine kleine Aufwandsentschädigung, davon kann keiner leben“, „die anderen stehen bei uns nach Feierabend in der Halle“, „manche kommen direkt von der Arbeit“."
+    },
+    {
+      "n": 14,
+      "text": "Wer beim Lauftreff mitmachen will, muss sich auf eine Warteliste setzen lassen.",
+      "solution": "−",
+      "trap": "wortgleichheit",
+      "why": "„Warteliste“ und „warten“ kommen vor, gelten aber dem Rückenkurs am Mittwoch. Beim Lauftreff ist es „genau umgekehrt“: „anmelden muss sich niemand, und Platz ist sowieso immer“."
+    },
+    {
+      "n": 15,
+      "text": "Der Verein sucht vor allem Menschen, die Aufgaben in der Organisation übernehmen.",
+      "solution": "+",
+      "trap": "paraphrase",
+      "why": "„Organisation“ sagt er nicht. Er sagt: „Zum Sport kommen genug Menschen, daran liegt es überhaupt nicht. Aber wenn jemand die Kasse führen oder die Anmeldungen bearbeiten soll, dann melden sich immer wieder dieselben drei.“"
+    }
+  ],
+  "transcript": "Moderatorin: Guten Morgen, liebe Hörerinnen und Hörer. Bei uns im Studio sitzt heute Bernd Kowalski. Er ist der Vorsitzende des Sportvereins Grün-Weiß Lohbrügge, hier bei uns im Osten der Stadt. Herr Kowalski, schön, dass Sie da sind. Erzählen Sie unseren Hörerinnen und Hörern doch bitte einmal, was bei Ihnen im Verein eigentlich alles passiert.\nBernd Kowalski: Guten Morgen. Ja, also, wir sind eigentlich ein alter Fußballverein. Neunzehnhundertvierundfünfzig gegründet, von ein paar Arbeitern aus der Werft. Fußball spielen wir natürlich immer noch. Aber das ist längst nicht mehr unsere größte Abteilung. Die größte ist heute die Gesundheitsabteilung: Rückenkurse, eine Herzsportgruppe, Wassergymnastik. Die haben wir erst zweitausendelf aufgemacht, und inzwischen bewegen sich dort mehr Leute als auf allen unseren Fußballplätzen zusammen.\nModeratorin: Das ist ja eine ziemliche Verschiebung für einen Fußballverein. Wie viele Mitglieder sind Sie denn heute insgesamt?\nBernd Kowalski: Wir haben zurzeit rund eintausendvierhundert Mitglieder. Als ich neunzehnhundertachtundneunzig in den Vorstand gekommen bin, waren es knapp vierhundert. Der große Sprung kam aber nicht durch den Fußball, sondern wirklich durch die Kurse. Ohne die wären wir heute ein kleiner Verein am Stadtrand, mehr nicht.\nModeratorin: Und wer kommt zu diesen Kursen? Ich vermute jetzt einfach mal: vor allem ältere Leute, die etwas für ihre Gesundheit tun sollen.\nBernd Kowalski: Nein, das denken viele, aber das stimmt so nicht. Unser Durchschnittsalter im Rückenkurs liegt bei knapp fünfzig, und die jüngste Teilnehmerin ist neunzehn. Das sind ganz oft Leute, die den ganzen Tag am Schreibtisch sitzen. Was allerdings stimmt: In der Herzsportgruppe sind fast alle über sechzig. Das ist aber auch eine Gruppe für Menschen nach einer Herzoperation, da ist das ja klar.\nModeratorin: Ich stelle mir das schwierig vor mit den Zeiten. Wann kann man bei Ihnen denn überhaupt trainieren?\nBernd Kowalski: Praktisch immer. Unsere Halle ist sieben Tage in der Woche offen, morgens ab sieben und abends bis zweiundzwanzig Uhr. Wer im Schichtdienst arbeitet, findet bei uns eigentlich immer eine Lücke. Das war uns von Anfang an wichtig.\nModeratorin: Reden wir einmal über das Geld. Was kostet mich die Mitgliedschaft bei Ihnen im Monat?\nBernd Kowalski: Der Beitrag liegt bei zwölf Euro im Monat, für ganze Familien bei achtzehn. Die Kurse selbst kosten dann nichts extra – bis auf die Wassergymnastik. Da müssen wir das Schwimmbad mitbezahlen, deshalb kommen dort noch einmal acht Euro im Monat dazu. Das sagen wir den Leuten aber gleich am Anfang, damit sich hinterher niemand ärgert.\nModeratorin: Beteiligen sich die Krankenkassen eigentlich an so einem Rückenkurs? Das hört man ja immer wieder.\nBernd Kowalski: Ja, diese Frage bekommen wir jede Woche. Die Krankenkassen erstatten den Rückenkurs, allerdings nur, wenn man mindestens achtmal da war. Wer zweimal kommt und dann aufhört, bekommt keinen Cent zurück. Den ganzen Papierkram dafür erledigen wir übrigens in der Geschäftsstelle. Unsere Mitglieder müssen selbst gar nichts ausfüllen.\nModeratorin: Und wenn ich mich morgen anmelden möchte – muss ich dann lange warten, bis ich einen Platz bekomme?\nBernd Kowalski: Für den Rückenkurs am Mittwoch leider ja. Da haben wir eine Warteliste, und zurzeit warten die Leute ungefähr drei Monate. Beim Lauftreff ist das genau umgekehrt: Da kann jeder einfach am Deich erscheinen, anmelden muss sich niemand, und Platz ist sowieso immer.\nModeratorin: Wer leitet die Kurse denn bei Ihnen? Sind das ausgebildete Fachleute oder erfahrene Mitglieder?\nBernd Kowalski: Alle unsere Übungsleiter haben eine Lizenz, das schreibt uns der Landessportbund vor. Bezahlt werden sie aber nur mit einer kleinen Aufwandsentschädigung, davon kann keiner leben. Zwei von ihnen sind Physiotherapeuten, die anderen stehen bei uns nach Feierabend in der Halle. Manche kommen direkt von der Arbeit, noch mit der Brotdose in der Tasche.\nModeratorin: Und wenn sich jetzt jemand für einen Ihrer Kurse interessiert, an wen wendet man sich da am besten?\nBernd Kowalski: Am besten erkundigen Sie sich direkt in unserer Geschäftsstelle. Unsere Ansprechpartnerin heißt Frau Yildiz, sie ist unter unserer Vereinsnummer erreichbar, und zwar dienstags und donnerstags von neun bis zwölf. Ach, und eines muss ich noch richtigstellen: Vorhin habe ich gesagt, die Halle sei sieben Tage in der Woche offen. Seit Januar stimmt das nicht mehr. Sonntags bleibt sie inzwischen zu, da mussten wir bei der Reinigung sparen.\nModeratorin: Danke für die Korrektur, das ist ja eine wichtige Information. Herr Kowalski, was wünschen Sie sich denn für die nächsten Jahre?\nBernd Kowalski: Ein zweiter Raum wäre schön, dann könnten wir die Warteliste endlich auflösen. Und ehrlich gesagt suchen wir dringend Leute für den Vorstand. Zum Sport kommen genug Menschen, daran liegt es überhaupt nicht. Aber wenn jemand die Kasse führen oder die Anmeldungen bearbeiten soll, dann melden sich immer wieder dieselben drei.\nModeratorin: Das ist ein guter Schlusssatz und vielleicht auch ein Aufruf. Herr Kowalski, vielen Dank, dass Sie heute Morgen bei uns waren.\nBernd Kowalski: Ich danke Ihnen. Und schauen Sie doch einfach mal donnerstags beim Lauftreff vorbei, Sportschuhe reichen völlig."
+}

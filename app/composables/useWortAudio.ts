@@ -2,6 +2,7 @@ import { onScopeDispose, readonly, ref } from 'vue'
 import type { Card } from '~/types'
 import { cardKey, linesFor } from '~/utils/speakable'
 import { WORT_AUDIO } from '~/data/wortAudio'
+import { TAG_NAMES } from '~/data/cards'
 import { useSpeech } from '~/composables/useSpeech'
 
 /**
@@ -30,6 +31,16 @@ export function useWortAudio() {
 
   const fileFor = (card: Card): string | undefined => WORT_AUDIO[cardKey(card)]
   const isBaked = (card: Card) => !!fileFor(card)
+
+  /**
+   * The beat between two cards — 0.7 s of real, playing silence rather than a
+   * `setTimeout`. A timer is the one thing iOS is guaranteed to freeze: the
+   * moment the last card stops sounding, a backgrounded page has no audio
+   * holding it awake, the callback never fires and the deck dies at card 1 in
+   * your pocket. Silence that *plays* keeps the audio session alive, so the gap
+   * costs the run nothing.
+   */
+  const PAUSE = '_pause.mp3'
 
   let el: HTMLAudioElement | null = null
   function element() {
@@ -71,17 +82,28 @@ export function useWortAudio() {
   }
   onScopeDispose(stop)
 
-  /** Play one card to completion. Resolves when it ends, or immediately if superseded. */
-  function playOne(card: Card, mine: number) {
-    const file = fileFor(card)
-    currentKey.value = cardKey(card)
+  /**
+   * The lock screen is where a deck run actually happens — pocket, screen off.
+   * Untold, iOS shows the site name and the headphone buttons do nothing; told,
+   * the card you are hearing has a name and ⏮ / ⏭ walk the deck without the
+   * phone coming out. Same functions the on-screen buttons call.
+   */
+  function announce(card: Card) {
+    if (typeof navigator === 'undefined' || !('mediaSession' in navigator)) return
+    navigator.mediaSession.metadata = new MediaMetadata({
+      title: card.cue.replace(/<[^>]+>/g, ''),
+      artist: 'Deutsch B1 · Wortschatz',
+      album: TAG_NAMES[card.tag] ?? '',
+    })
+    navigator.mediaSession.setActionHandler('play', () => void element()?.play())
+    navigator.mediaSession.setActionHandler('pause', () => element()?.pause())
+    navigator.mediaSession.setActionHandler('nexttrack', () => skip(1))
+    navigator.mediaSession.setActionHandler('previoustrack', () => skip(-1))
+    navigator.mediaSession.setActionHandler('stop', () => stop())
+  }
 
-    // No recording yet — let the phone read it rather than skip the card.
-    if (!file) {
-      interrupt = () => speech.stop()
-      return speech.speak(linesFor(card))
-    }
-
+  /** Play one file to completion. Resolves when it ends, or immediately if superseded. */
+  function playFile(file: string, mine: number) {
     const a = element()
     if (!a) return Promise.resolve()
     return new Promise<void>((resolve) => {
@@ -100,6 +122,20 @@ export function useWortAudio() {
     })
   }
 
+  /** Play one card: its recording, or the phone's own voice if none is baked. */
+  function playOne(card: Card, mine: number) {
+    const file = fileFor(card)
+    currentKey.value = cardKey(card)
+    announce(card)
+
+    // No recording yet — let the phone read it rather than skip the card.
+    if (!file) {
+      interrupt = () => speech.stop()
+      return speech.speak(linesFor(card))
+    }
+    return playFile(file, mine)
+  }
+
   async function play(cards: Card[], onCard?: (card: Card, index: number) => void) {
     if (!cards.length) return
     stop()
@@ -112,18 +148,19 @@ export function useWortAudio() {
       if (token !== mine) return
       onCard?.(cards[index]!, index)
       await playOne(cards[index]!, mine)
+
+      // The beat between cards — silence that plays, not a timer (see PAUSE).
+      // A queued skip jumps it: ⏭ has to land on the next card now, not after
+      // three quarters of a second of nothing.
+      if (token === mine && pending === null) await playFile(PAUSE, mine)
       if (token !== mine) return
 
-      // A skip lands here: go straight to the chosen card, no beat, no advance.
+      // A skip lands here: go straight to the chosen card, no advance.
       if (pending !== null) {
         index = pending
         pending = null
         continue
       }
-      // A beat between cards, or the deck arrives as one undifferentiated block.
-      await new Promise(r => setTimeout(r, 700))
-      if (token !== mine) return
-      if (pending !== null) { index = pending; pending = null; continue }
       index++
     }
 
@@ -163,6 +200,7 @@ export function useWortAudio() {
    */
   function warm(cards: Card[]) {
     if (typeof navigator === 'undefined' || navigator.onLine === false) return
+    fetch(src(PAUSE)).catch(() => {})   // the between-card silence is part of the deck
     for (const card of cards) {
       const file = fileFor(card)
       if (file) fetch(src(file)).catch(() => {})

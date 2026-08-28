@@ -19,10 +19,14 @@ const memory = usePlaybackMemory()
  * Filenames survive AirDrop badly — „telc-ut1-hv.mp3" comes back as
  * „telc-ut1-hv 2.mp3" on a second send, and iOS likes to re-case things. Match
  * on the squashed stem so the block still recognises its own audio.
+ *
+ * Equality, not `startsWith`: a prefix match makes „…-schule-1-hv" happily play
+ * „…-schule-1-hv-teil2", so a typo in the day plan silently handed the block the
+ * wrong recording instead of saying the file is missing (found 2026-08-28).
  */
 const stem = (name: string) => name.toLowerCase().replace(/\.[a-z0-9]+$/, '').replace(/[^a-z0-9]/g, '')
 const wanted = computed(() =>
-  props.want ? tracks.value.find(t => stem(t.name).startsWith(stem(props.want!))) : undefined,
+  props.want ? tracks.value.find(t => stem(t.name) === stem(props.want!)) : undefined,
 )
 const others = computed(() => tracks.value.filter(t => t.url !== wanted.value?.url))
 
@@ -118,6 +122,13 @@ const mb = (bytes: number) => `${(bytes / 1_048_576).toFixed(1)} MB`
     <p v-else-if="want" class="text-[0.82rem] leading-relaxed text-ink-2">
       Dieser Block braucht <b class="font-mono text-[0.78rem]">{{ want }}</b>.
       Einmal vom Rechner aufs Handy schicken und unten hinzufügen — danach steht sie hier offline bereit.
+    </p>
+
+    <!-- The list below is „whatever else is on the phone", and next to a block
+         that wanted a particular file it reads like the answer. Name the miss
+         out loud, so a wrong filename in the day plan is visible immediately. -->
+    <p v-if="want && !wanted && others.length" class="text-[0.78rem] text-ink-3">
+      Gesucht: <b class="font-mono text-[0.74rem]">{{ want }}</b> — nicht auf dem Handy.
     </p>
 
     <div

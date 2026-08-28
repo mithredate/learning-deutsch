@@ -247,8 +247,8 @@ export const DAYS: Day[] = [
       punkte: ['Wo suchen?', 'Wie groß?', 'Miete', 'Besichtigungstermine', 'Umzug wann?', '…'],
     },
     slots: [
-      { place: 'gym', minutes: 15, datei: 'telc-b1-schule-1-hoerverstehen.mp3', what: 'Teil 2 noch einmal, ohne die Aussagen.', en: 'Teil 2 once more, without the statements.' },
-      { place: 'sofa', minutes: 35, datei: 'telc-b1-schule-1-hoerverstehen.mp3', karten: ['koll'], what: 'Wiederholung am Bildschirm, dann Kollokationen aus dem Ledger.', en: 'Repeat on screen, then collocations from the ledger.' },
+      { place: 'gym', minutes: 15, datei: 'telc-b1-schule-uebungstest-1-hoerverstehen.mp3', what: 'Teil 2 noch einmal, ohne die Aussagen.', en: 'Teil 2 once more, without the statements.' },
+      { place: 'sofa', minutes: 35, datei: 'telc-b1-schule-uebungstest-1-hoerverstehen.mp3', karten: ['koll'], what: 'Wiederholung am Bildschirm, dann Kollokationen aus dem Ledger.', en: 'Repeat on screen, then collocations from the ledger.' },
       { place: 'bed', minutes: 10, what: '🗣 <b>KI-Runde, 10 Minuten</b> — Teil 3 mit der Sprach-KI. Prompt und Regeln stehen unter <i>Sprechen</i>. Danach drei Sätze aufschreiben, die dir im Gespräch gefehlt haben.', en: 'Speaking round, 10 minutes — Teil 3 with the voice AI. The prompt and the rules are on the Sprechen page. Afterwards write down three sentences you were missing.', note: 'Baue <i>sich erkundigen nach</i>, <i>mitteilen</i> und <i>stattfinden</i> ins Gespräch ein — dieselben drei, jetzt gesprochen.' },
     ],
     deck: ['koll'],
@@ -277,7 +277,7 @@ export const DAYS: Day[] = [
     tagline: 'Zum ersten Mal Lesen und Hören in einer Sitzung.',
     needs: ['Test', 'Audio', 'Laptop'],
     slots: [
-      { place: 'sofa', minutes: 150, datei: 'telc-b1-uebungstest-4-hoerverstehen.mp3', what: 'Vier Teile hintereinander, mit Uhr.', en: 'Four Teile back to back, on the clock.' },
+      { place: 'sofa', minutes: 150, hoeren: ['eigen-02-teil2'], what: 'Vier Teile hintereinander, mit Uhr. Das <b>HV Teil 2</b> ist das neue Sportverein-Gespräch hier in der App (läuft zweimal), LV 1, LV 3 und SB 2 wie gehabt aus dem Test.', en: 'Four Teile back to back, on the clock. HV Teil 2 is the new sports-club conversation here in the app (it plays twice); LV 1, LV 3 and SB 2 come from the test as before.' },
       { place: 'bed', minutes: 5, what: 'Drei Sätze: welcher Teil hat am meisten Kraft gekostet?', en: 'Three sentences: which Teil cost you the most energy?' },
     ],
     deck: ['v-arbeit', 'v-buero'],
@@ -288,7 +288,7 @@ export const DAYS: Day[] = [
     tagline: 'Einträge mit zwei sauberen Treffern werden gestrichen.',
     needs: ['deine Antworten'],
     slots: [
-      { place: 'gym', minutes: 10, karten: true, what: 'Kartenrunde, gemischt.', en: 'Card round, mixed.' },
+      { place: 'gym', minutes: 10, hoeren: ['eigen-02-teil1'], what: 'Kopfhörer auf: <b>E2 Teil 1 — Wohnen &amp; Nachbarn</b>. Fünf Aussagen lesen, dann läuft jeder Text <b>nur einmal</b>.', en: 'Headphones on: E2 Teil 1 — housing and neighbours. Read the five statements, then each text plays only once.', note: 'Neues Material, kalt. Ankreuzen und abschicken — die Versuchsliste merkt sich die Zahl.' },
       { place: 'sofa', minutes: 40, what: 'Analyse → Ledger. <b>15 und 19 stehen kurz vor dem Streichen.</b> Test für nächste Woche nennen.', en: 'Analysis → ledger. Items 15 and 19 are close to being struck off. Name next week\'s test.' },
       { place: 'bed', minutes: 5, what: 'Drei Sätze.', en: 'Three sentences.' },
     ],
@@ -326,8 +326,8 @@ export const DAYS: Day[] = [
       punkte: ['Wer besucht wann?', 'Einkaufen', 'Kochen', 'Arzttermine', 'Wer bezahlt was?', '…'],
     },
     slots: [
-      { place: 'gym', minutes: 10, karten: true, what: 'Nur Karten.', en: 'Cards only.' },
-      { place: 'sofa', minutes: 35, datei: 'telc-b1-schule-1-hoerverstehen.mp3', what: 'Beide Teile mit Uhr → Antworten an mich.', en: 'Both Teile on the clock → answers to me.' },
+      { place: 'gym', minutes: 12, hoeren: ['eigen-02-teil3'], what: '<b>E2 Teil 3 — fünf Durchsagen</b>. Jede läuft zweimal, die Datei macht das von selbst.', en: 'E2 Teil 3 — five announcements. Each plays twice; the file does that by itself.', note: 'Das Register der Durchsagen ist höflich und unpersönlich — genau dort sitzen die Fallen.' },
+      { place: 'sofa', minutes: 35, datei: 'telc-b1-schule-uebungstest-1-hoerverstehen.mp3', what: 'Beide Teile mit Uhr → Antworten an mich.', en: 'Both Teile on the clock → answers to me.' },
       { place: 'bed', minutes: 10, what: '🗣 <b>KI-Runde, 10 Minuten</b> — Teil 3 mit der Sprach-KI. Prompt und Regeln stehen unter <i>Sprechen</i>. Danach drei Sätze aufschreiben, die dir im Gespräch gefehlt haben.', en: 'Speaking round, 10 minutes — Teil 3 with the voice AI. The prompt and the rules are on the Sprechen page. Afterwards write down three sentences you were missing.', note: 'Wortfeld <b>Gesundheit</b>. Am Ende laut zusammenfassen, worauf ihr euch geeinigt habt.' },
     ],
     deck: ['v-ansage'],
@@ -403,7 +403,7 @@ export const DAYS: Day[] = [
     tagline: 'Gate: HV ≥ 65 %, Schreiben ≥ 30/45.',
     needs: ['deine Antworten'],
     slots: [
-      { place: 'gym', minutes: 10, karten: true, what: 'Kartenrunde.', en: 'Card round.' },
+      { place: 'gym', minutes: 10, hoeren: ['eigen-03-teil1'], what: '<b>E3 Teil 1 — Reisen &amp; Verkehr</b>. Fünf kurze Texte, jeder <b>nur einmal</b>.', en: 'E3 Teil 1 — travel and transport. Five short texts, each only once.', note: 'Kalt. Erst die fünf Aussagen lesen — 30 Sekunden reichen — dann starten.' },
       { place: 'sofa', minutes: 45, what: 'Große Analyse. <b>Verfehlt heißt: Woche 5 streicht die Lesen-Pflege komplett.</b> Test für die Generalprobe festlegen.', en: 'Big analysis. Missing the gate means week 5 drops reading maintenance completely. Fix the test for the dress rehearsal.' },
       { place: 'bed', minutes: 5, what: 'Drei Sätze.', en: 'Three sentences.' },
     ],
@@ -433,7 +433,7 @@ export const DAYS: Day[] = [
     date: '2026-09-08', kind: 'day',
     headline: 'HV Teil 2, kalt — der letzte vor der Probe',
     tagline: 'Letzter Einzelteil.',
-    needs: ['Audio'],
+    needs: ['Prüfungstraining MT2 auf dem Handy'],
     aufgabe: {
       situation: 'Sie und Ihr Gesprächspartner/Ihre Gesprächspartnerin müssen beide zum Bürgeramt und wollen deshalb zusammen hingehen. Sie haben die Aufgabe, diesen Termin gemeinsam zu planen. Sie haben sich schon diese Liste gemacht:',
       en: 'You and your partner both have to go to the citizens office, so you want to go together. Plan the appointment.',
@@ -441,8 +441,8 @@ export const DAYS: Day[] = [
       punkte: ['Welcher Tag?', 'Termin online buchen', 'Welche Unterlagen?', 'Wie hinkommen?', 'Frei nehmen?', '…'],
     },
     slots: [
-      { place: 'gym', minutes: 10, karten: true, what: 'Nur Karten.', en: 'Cards only.' },
-      { place: 'sofa', minutes: 35, dateien: true, what: 'Teil 2 mit Uhr → Antworten an mich.', en: 'Teil 2 on the clock → answers to me.' },
+      { place: 'gym', minutes: 12, hoeren: ['eigen-03-teil3'], what: '<b>E3 Teil 3 — fünf Durchsagen unterwegs</b>. Jede zweimal, ohne Pause dazwischen.', en: 'E3 Teil 3 — five announcements on the move. Each twice, no break in between.', note: 'Bahnhof, Flughafen, Baustelle. Zahlen, Gleise und Uhrzeiten sind hier die halbe Miete.' },
+      { place: 'sofa', minutes: 35, datei: 'pruefungstraining-b1-modelltest-2-hoerverstehen.mp3', what: 'Das <b>Hörverstehen Teil 2</b> aus <b>Prüfungstraining Modelltest 2</b>, mit Uhr → Antworten an mich.', en: 'Hörverstehen Teil 2 from Prüfungstraining Modelltest 2, on the clock → answers to me.', note: 'Frisches Papier — die Datei muss vorher vom Laptop aufs Handy.' },
       { place: 'bed', minutes: 10, what: '🗣 <b>KI-Runde, 10 Minuten</b> — Teil 3 mit der Sprach-KI. Prompt und Regeln stehen unter <i>Sprechen</i>. Danach drei Sätze aufschreiben, die dir im Gespräch gefehlt haben.', en: 'Speaking round, 10 minutes — Teil 3 with the voice AI. The prompt and the rules are on the Sprechen page. Afterwards write down three sentences you were missing.', note: 'Wortfeld <b>Behörden</b>: der Antrag, der Termin, die Unterlagen, die Gebühr.' },
     ],
     deck: ['falle'],
@@ -477,7 +477,7 @@ export const DAYS: Day[] = [
       punkte: ['Nächster Zug?', 'Bus oder Mietwagen?', 'Kosten', 'Wer ruft an?', 'Gepäck', '…'],
     },
     slots: [
-      { place: 'gym', minutes: 15, hoeren: ['eigen-01-teil2'], what: 'Genau diesen Teil hören.', en: 'Listen to exactly that Teil.', note: 'Falls es ein E1-Teil war: die Versuchsliste zeigt dir, welcher der schwächste ist.' },
+      { place: 'gym', minutes: 15, hoeren: ['eigen-03-teil2'], what: '<b>E3 Teil 2 — unverpackt einkaufen</b>. Zehn Aussagen, das Gespräch läuft zweimal.', en: 'E3 Teil 2 — shopping unpackaged. Ten statements, the conversation plays twice.', note: 'Der letzte frische Teil 2 vor der Generalprobe. Der schwächste alte Teil kommt am Sofa dran — die Versuchsliste zeigt dir, welcher.' },
       { place: 'sofa', minutes: 35, dateien: true, karten: true, what: 'Am Bildschirm, dann Wortschatz-Rettung für alles, was daran gescheitert ist.', en: 'On screen, then a vocabulary rescue for everything it failed on.' },
       { place: 'bed', minutes: 10, what: '🗣 <b>KI-Runde, 10 Minuten</b> — Teil 3 mit der Sprach-KI. Prompt und Regeln stehen unter <i>Sprechen</i>. Danach drei Sätze aufschreiben, die dir im Gespräch gefehlt haben.', en: 'Speaking round, 10 minutes — Teil 3 with the voice AI. The prompt and the rules are on the Sprechen page. Afterwards write down three sentences you were missing.', note: 'Unter Druck planen — genau die Situation, in der dir sonst die Wörter wegbrechen.' },
     ],
@@ -507,7 +507,7 @@ export const DAYS: Day[] = [
     tagline: 'LV+SB 90 min · Hören · Schreiben 30 min. Keine Pause, kein Nachschlagen.',
     needs: ['ganzer Test', 'Audio', 'Laptop + deutsche Tastatur', 'Uhr'],
     slots: [
-      { place: 'sofa', minutes: 210, datei: 'telc-b1-uebungstest-1-hoerverstehen.mp3', what: 'Dreieinhalb Stunden unter echten Bedingungen: am Rechner, deutsche Tastatur, Brief getippt. Handy weg.', en: 'Three and a half hours under real conditions: on the computer, German keyboard, letter typed. Phone away.', note: 'Ziel: alle Teile ≥ 60 %, Hören ≥ 70 %.' },
+      { place: 'sofa', minutes: 210, what: 'Dreieinhalb Stunden unter echten Bedingungen — der ganze Test läuft am Laptop in <code>mock/klett-mt1.html</code>: deutsche Tastatur, Brief getippt, Handy weg.', en: 'Three and a half hours under real conditions — the whole test runs on the laptop in mock/klett-mt1.html: German keyboard, letter typed, phone away.', note: 'Klett Modelltest 1, frisches Papier; das Hörverstehen (20:51) liegt dort schon fertig. Die App erinnert heute nur. Ziel: alle Teile ≥ 60 %, Hören ≥ 70 %.' },
       { place: 'bed', minutes: 0, what: 'Nichts. Ausruhen.', en: 'Nothing. Rest.' },
     ],
     // The rehearsal drills no words — only the six cards about operating the
@@ -532,7 +532,7 @@ export const DAYS: Day[] = [
     date: '2026-09-22', kind: 'day',
     headline: 'Nur Hörverstehen — Rost abschütteln',
     tagline: 'Zurück aus den Alpen. Sanft anfangen.',
-    needs: ['letzter unbenutzter Test'],
+    needs: ['Klett MT2 auf dem Handy'],
     aufgabe: {
       situation: 'Sie sind gerade aus den Alpen zurück und haben Lust auf mehr. Am nächsten Wochenende möchten Sie deshalb mit Ihrem Gesprächspartner/Ihrer Gesprächspartnerin einen kurzen Ausflug machen. Sie haben die Aufgabe, diesen Ausflug gemeinsam zu planen. Sie haben sich schon diese Liste gemacht:',
       en: 'You are just back from the Alps and want more. Next weekend you want to make a short trip with your partner. Plan it together.',
@@ -540,8 +540,8 @@ export const DAYS: Day[] = [
       punkte: ['Wohin?', 'Samstag oder Sonntag?', 'Wie hinkommen?', 'Was mitnehmen?', 'Kosten', '…'],
     },
     slots: [
-      { place: 'gym', minutes: 15, karten: true, what: 'Kartenrunde vom Alpen-Zettel.', en: 'Card round from the Alps sheet.' },
-      { place: 'sofa', minutes: 40, datei: 'goethe-b1-modellsatz-hoeren.mp3', what: 'Ein Hörverstehen komplett, aus dem letzten unbenutzten Test. Danach Zettel durchgehen.', en: 'One complete listening paper, from the last unused test. Then go through the sheet.' },
+      { place: 'gym', minutes: 15, hoeren: ['eigen-02-teil1', 'eigen-03-teil1'], what: 'Zweites Hören: <b>Teil 1 aus E2 und E3</b> hintereinander. Beide kennst du — heute zählt nur, ob die Zahl steigt.', en: 'Second listen: Teil 1 from E2 and E3, back to back. You know both — today only the score matters.', note: 'Bewusst die zweite und letzte Runde für diese beiden Teile.' },
+      { place: 'sofa', minutes: 40, datei: 'klett-mit-erfolg-b1-modelltest-2-hoerverstehen.mp3', what: 'Das Hörverstehen aus <b>Klett Modelltest 2</b> komplett, am Stück. Danach Zettel durchgehen.', en: 'The complete listening paper from Klett Modelltest 2, in one go. Then go through the sheet.', note: 'Frisches Papier — die Datei muss vorher vom Laptop aufs Handy.' },
       { place: 'bed', minutes: 10, what: '🗣 <b>KI-Runde, 10 Minuten</b> — Teil 3 mit der Sprach-KI. Prompt und Regeln stehen unter <i>Sprechen</i>. Danach drei Sätze aufschreiben, die dir im Gespräch gefehlt haben.', en: 'Speaking round, 10 minutes — Teil 3 with the voice AI. The prompt and the rules are on the Sprechen page. Afterwards write down three sentences you were missing.', note: 'Nach acht Tagen Sprechen ist das kein Test, sondern der Beweis. Locker halten.' },
     ],
     deck: ['falle', 'v-ansage'],
@@ -560,7 +560,7 @@ export const DAYS: Day[] = [
     },
     slots: [
       { place: 'gym', minutes: 10, karten: true, what: 'Kartenrunde <b>Brief</b>.', en: 'Card round: letter.' },
-      { place: 'sofa', minutes: 35, hoeren: ['eigen-01-teil1', 'eigen-01-teil3'], what: 'Brief auf Zeit, dann ein Hörteil, den du schon zweimal gehört hast.', en: 'Timed letter, then a listening Teil you have already heard twice.', note: 'Bewusst ein alter Teil: die Versuchsliste soll heute nach oben zeigen.' },
+      { place: 'sofa', minutes: 35, hoeren: ['eigen-02-teil3', 'eigen-03-teil3'], what: 'Brief auf Zeit, dann die <b>Durchsagen aus E2 und E3</b> — beide kennst du schon.', en: 'Timed letter, then the announcements from E2 and E3 — you already know both.', note: 'Bewusst bekannte Teile: die Versuchsliste soll heute nach oben zeigen.' },
       { place: 'bed', minutes: 5, what: 'Drei Sätze.', en: 'Three sentences.' },
     ],
     deck: ['brief', 'digital'],

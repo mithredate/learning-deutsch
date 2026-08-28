@@ -1,0 +1,47 @@
+{
+  "id": "eigen-02-teil3",
+  "title": "Fünf Durchsagen",
+  "teil": "Übungstest E2 · Hörverstehen Teil 3",
+  "file": "eigen-02-teil3.mp3",
+  "seconds": 414,
+  "once": false,
+  "instructions": "Sie hören fünf Durchsagen, jede zweimal. Entscheiden Sie, ob die Aussage richtig oder falsch ist.",
+  "items": [
+    {
+      "n": 16,
+      "text": "Wer heute nach Kiel fahren will, kommt nicht ohne Umsteigen ans Ziel.",
+      "solution": "+",
+      "trap": "inferenz",
+      "why": "Das Wort „umsteigen“ fällt nie. Man muss es aus zwei Sätzen schließen: Der Zug nach Kiel fällt aus, man fährt „mit der Regionalbahn nach Neumünster“, und „in Neumünster steht auf dem Nachbargleis die Bahn in Richtung Kiel bereit“."
+    },
+    {
+      "n": 17,
+      "text": "Heute bekommt man im ganzen Markt zwanzig Prozent Rabatt.",
+      "solution": "−",
+      "trap": "absolutizer",
+      "why": "Der Rabatt gilt doppelt eingeschränkt: nur „auf frisches Obst und Gemüse“ und nur „bis achtzehn Uhr“; für Fleisch, Käse und Getränke gilt die Aktion ausdrücklich nicht. „Im ganzen Markt“ macht die Aussage falsch."
+    },
+    {
+      "n": 18,
+      "text": "Am Donnerstagnachmittag muss man mit Regen rechnen.",
+      "solution": "+",
+      "trap": "detail",
+      "why": "Die Tageszeit entscheidet: „Am Vormittag bleibt es zunächst trocken, im Laufe des Nachmittags ziehen dann von Westen her kräftige Schauer auf.“ Wer nur „trocken“ behält, tickt falsch."
+    },
+    {
+      "n": 19,
+      "text": "In dringenden Fällen soll man den ärztlichen Notdienst anrufen.",
+      "solution": "−",
+      "trap": "negation",
+      "why": "Die Verneinung entscheidet: „wenden Sie sich bitte nicht an den ärztlichen Notdienst, sondern an unsere Vertretung, die Praxis Doktor Ahrens“."
+    },
+    {
+      "n": 20,
+      "text": "Für den Computerkurs kann man sich noch bis Freitag anmelden.",
+      "solution": "−",
+      "trap": "wortgleichheit",
+      "why": "„Bis Freitag im Sekretariat anmelden“ hört man wörtlich, das gilt aber dem Anfängerkurs Spanisch. Zum Computerkurs wird nur gesagt, dass er heute später beginnt, weil der Dozent im Stau steht."
+    }
+  ],
+  "transcript": "16 · Bahnhof, Gleisansage\nAchtung, eine Information für die Reisenden an Gleis sieben: Der Regional-Express nach Kiel, planmäßige Abfahrt zwölf Uhr sechs, fällt heute wegen einer Störung im Betriebsablauf aus. Reisende nach Kiel fahren bitte mit der Regionalbahn nach Neumünster, Abfahrt zwölf Uhr neunzehn von Gleis drei. In Neumünster steht auf dem Nachbargleis die Bahn in Richtung Kiel für Sie bereit. Ihre Fahrkarten behalten selbstverständlich ihre Gültigkeit.\n\n17 · Supermarkt\nLiebe Kundinnen und Kunden, herzlich willkommen in Ihrem Markt am Rathausplatz. Heute ist bei uns Aktionstag: Auf frisches Obst und Gemüse erhalten Sie zwanzig Prozent Rabatt, allerdings nur bis achtzehn Uhr. Für Fleisch, Käse und Getränke gilt die Aktion nicht. Und noch ein Hinweis für den späten Abend: Ab zwanzig Uhr ist nur noch die Kasse eins für Sie geöffnet. Wir wünschen Ihnen einen angenehmen Einkauf.\n\n18 · Radio, Wetterbericht\nUnd zum Schluss noch das Wetter für morgen, Donnerstag. Am Vormittag bleibt es im ganzen Norden zunächst trocken, im Laufe des Nachmittags ziehen dann von Westen her kräftige Schauer auf. Die Höchstwerte liegen bei achtzehn bis einundzwanzig Grad. In der Nacht zum Freitag kühlt es auf neun Grad ab, dazu kommt frischer Wind von der See. Am Freitag selbst wird es dann wieder freundlich und deutlich wärmer.\n\n19 · Anrufbeantworter einer Arztpraxis\nGuten Tag, Sie haben die Gemeinschaftspraxis Doktor Sommer und Doktor Weiß erreicht. Unsere Praxis bleibt in dieser Woche wegen Urlaubs geschlossen. Ab Montag, dem einundzwanzigsten, sind wir wieder für Sie da. In dringenden Fällen wenden Sie sich bitte nicht an den ärztlichen Notdienst, sondern an unsere Vertretung, die Praxis Doktor Ahrens in der Bahnhofstraße vierzehn. Rezepte können Sie in dieser Zeit leider nicht bei uns abholen.\n\n20 · Volkshochschule\nLiebe Teilnehmerinnen und Teilnehmer, eine Durchsage der Volkshochschule. Der Computerkurs am Abend beginnt heute erst um neunzehn Uhr dreißig, weil unser Dozent auf der Autobahn im Stau steht. Bitte warten Sie so lange im Café im Erdgeschoss. Für den Anfängerkurs Spanisch gibt es dagegen noch freie Plätze; dafür können Sie sich bis Freitag im Sekretariat anmelden. Der Kurs kostet für Berufstätige achtzig Euro, für Studierende und Rentner die Hälfte."
+}
