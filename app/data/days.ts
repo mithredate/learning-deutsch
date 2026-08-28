@@ -23,7 +23,12 @@ export const DAYS: Day[] = [
     tagline: 'Zweiter Durchgang. Ziel 20 von 25 — beim ersten Mal waren es 14.',
     needs: ['MP3 auf dem Handy', 'ÜT4 PDF am Bildschirm'],
     thema: { title: 'Reise', cards: ['Stefanie Berger, 24, Studentin', 'Klaus Schmidt, 31, Kundenberater'] },
-    aufgabe: 'Ihr Kurs macht am Samstag einen Ausflug in die Berge. Planen Sie ihn gemeinsam.', aufgabeEn: 'Your class is going on a trip to the mountains on Saturday. Plan it together.',
+    aufgabe: {
+      situation: 'Ihr Deutschkurs möchte am Samstag zusammen einen Ausflug in die Berge machen. Sie haben die Aufgabe, diesen Ausflug zusammen mit Ihrem Gesprächspartner/Ihrer Gesprächspartnerin zu planen. Überlegen Sie sich, was alles zu tun ist und wer welche Aufgaben übernimmt. Sie haben sich schon diese Liste gemacht:',
+      en: 'Your German class wants to go to the mountains together on Saturday. Plan the trip with your partner: what has to be done, and who does what.',
+      titel: 'Ausflug in die Berge',
+      punkte: ['Wann losfahren?', 'Wie hinkommen?', 'Was mitnehmen?', 'Wer organisiert was?', 'Kosten', '…'],
+    },
     slots: [
       { place: 'gym', minutes: 15, datei: 'telc-b1-uebungstest-4-hoerverstehen.mp3', what: 'Kopfhörer auf, ÜT4 <b>Teil 1</b> (die ersten 8 Minuten) einmal laufen lassen. Nichts ankreuzen — nur hören.', en: 'Headphones on, ÜT4 Teil 1 (first 8 minutes), play it once. Tick nothing — just listen.', note: 'Du kennst den Text schon. Achte diesmal nur auf <b>immer / nur / alle</b>.' },
       { place: 'sofa', minutes: 35, datei: 'telc-b1-uebungstest-4-hoerverstehen.mp3', what: 'Das ganze Hörverstehen, <b>22 Minuten am Stück</b>, mit den Aufgaben am Bildschirm. Nicht pausieren, nicht zurückspulen.', en: 'The whole listening paper, 22 minutes straight, with the answer sheet. No pausing, no rewinding.', note: 'Danach mit dem Lösungsschlüssel vergleichen und nur die Zahl notieren — die Analyse machen wir zusammen.' },
@@ -67,7 +72,12 @@ export const DAYS: Day[] = [
     headline: 'Wortschatz: Arbeit & Beruf',
     tagline: 'Die Wörter, an denen Teil 1 gescheitert ist.',
     thema: { title: 'Arbeiten in der Gastronomie', cards: ['Alexander, 29, Hotelrestaurant', 'Angelika, 46, Tochter in der Ausbildung'] },
-    aufgabe: 'Sie wollen zusammen ein Abendessen für vier Gäste kochen. Planen Sie Einkauf, Rezept, Kosten und wer was macht.', aufgabeEn: 'You want to cook dinner for four guests together. Plan the shopping, the recipe, the cost and who does what.',
+    aufgabe: {
+      situation: 'Sie und Ihr Gesprächspartner/Ihre Gesprächspartnerin wollen am Wochenende zusammen für vier Gäste kochen. Sie haben die Aufgabe, diesen Abend gemeinsam zu planen. Überlegen Sie sich, was alles zu tun ist und wer welche Aufgaben übernimmt. Sie haben sich schon diese Liste gemacht:',
+      en: 'You and your partner want to cook for four guests at the weekend. Plan the evening together: what has to be done, and who does what.',
+      titel: 'Abendessen für vier Gäste',
+      punkte: ['Wann?', 'Was kochen?', 'Einkauf', 'Getränke', 'Wer bezahlt wofür?', '…'],
+    },
     slots: [
       { place: 'gym', minutes: 15, karten: ['v-buero'], what: 'Kartenrunde <b>Büro &amp; Telefon</b> — alle 6 Karten, zweimal durch.', en: 'Card round: office & telephone — all 6 cards, twice through.', note: 'Genau dafür ist die Zeit zwischen den Sätzen da. Die 20 Arbeitswörter kommen abends.' },
       { place: 'sofa', minutes: 35, karten: ['v-arbeit'], what: 'Das Themenfeld <b>Arbeit &amp; Beruf</b> — <b>erst der Kern (12 Karten)</b>, der Rest bleibt zu, bis der Kern sitzt. Danach schreib mir: ich drille sie hart, mit Sätzen statt Übersetzungen.', en: 'The word field work & career — the core 12 cards first; the rest stays locked until the core sits. Then message me: I drill them hard, in sentences rather than translations.', note: 'Niemand behält 25 neue Wörter aus einem Abend. Kern heute, Ausbau, wenn er sitzt.' },
@@ -80,7 +90,12 @@ export const DAYS: Day[] = [
     headline: 'Brief #1 — 30 Minuten, getippt',
     tagline: 'Neu ab 16.08.: Schreiben ist der Engpass (Mock: Brief 21/45, HV 80 %).',
     needs: ['Laptop + deutsche QWERTZ-Tastatur'],
-    aufgabe: 'Die Firma plant eine Weihnachtsfeier. Planen Sie mit einer Kollegin Termin, Ort, Essen und Budget.', aufgabeEn: 'The company is planning a Christmas party. With a colleague, plan the date, the place, the food and the budget.',
+    aufgabe: {
+      situation: 'In Ihrer Firma soll es im Dezember eine Weihnachtsfeier geben. Ihr Chef hat Sie und eine Kollegin gebeten, die Feier zu organisieren. Sie haben die Aufgabe, alles gemeinsam zu planen. Sie haben sich schon diese Liste gemacht:',
+      en: 'Your company is having a Christmas party in December. The boss has asked you and a colleague to organise it. Plan it together.',
+      titel: 'Weihnachtsfeier',
+      punkte: ['Wann?', 'Wo?', 'Essen und Getränke', 'Programm', 'Budget', '…'],
+    },
     slots: [
       { place: 'gym', minutes: 10, karten: true, what: 'Kartenrunde <b>Brief-Mechanik</b>.', en: 'Card round: letter mechanics.' },
       { place: 'sofa', minutes: 35, what: '✍️ <b>Brief #1 — Thema „Kino", 30 Minuten, getippt, mit Uhr</b> (QWERTZ, Rechtschreibprüfung aus). Aufgabe: <i>Sie waren im Kino und haben einen Film gesehen. Ihr Freund war auf der Reise und konnte nicht kommen. Schreiben Sie: Wie war der Film? · Was hat Ihnen (nicht) gefallen? · Machen Sie einen Termin — Sie möchten den Film noch mal sehen.</i> Vorher die Leitpunkte als Checkliste antippen; <b>Liebe/r nach Genus</b>. Danach den Text an mich.', en: 'Letter #1 — topic “cinema”, 30 minutes, typed, on the clock (QWERTZ, spellcheck off). Task: you saw a film, your friend was travelling and missed it. Cover: how was the film · what you liked (or not) · propose a date to see it again. Tap the guide points as a checklist first; Liebe/r by gender. Then send me the text.', note: 'Das Skelett steht in reference/brief-themen-lehrerin.md — die 12 Lehrerin-Themen sind EIN Brief mit 12 Kostümen. WPM notieren — Baseline ist 10.' },
@@ -93,7 +108,12 @@ export const DAYS: Day[] = [
     headline: 'Präp + Kasus — die Wiederholungstäter-Familie',
     tagline: 'Vier Mock-Fehler, eine Regel: das Verb nennt die Präposition, die Präposition den Kasus.',
     thema: { title: 'Stress', cards: ['Claudia Gärtner, 42, Sekretärin', 'Andreas Elbert, 35, Verkaufsleiter'] },
-    aufgabe: 'Sie organisieren einen gemeinsamen Lernnachmittag vor der Prüfung. Einigen Sie sich auf Termin, Ort, Dauer und Pausen.', aufgabeEn: 'You are organising a joint study afternoon before the exam. Agree on date, place, length and breaks.',
+    aufgabe: {
+      situation: 'In vier Wochen ist die B1-Prüfung, und Sie möchten sich nicht allein darauf vorbereiten. Sie haben die Aufgabe, zusammen mit Ihrem Gesprächspartner/Ihrer Gesprächspartnerin einen gemeinsamen Lernnachmittag zu planen. Sie haben sich schon diese Liste gemacht:',
+      en: 'The B1 exam is in four weeks and you do not want to prepare alone. Plan a joint study afternoon with your partner.',
+      titel: 'Lernnachmittag',
+      punkte: ['Wann?', 'Wo?', 'Was wiederholen?', 'Wie lange?', 'Pausen', '…'],
+    },
     slots: [
       { place: 'gym', minutes: 12, karten: true, what: 'Kartenrunde <b>Grammatik</b>.', en: 'Card round: grammar.' },
       { place: 'sofa', minutes: 35, what: '⚙️ <b>Präp+Kasus-Familie im Chat</b>: <i>sauer auf + Akk · teilnehmen an + Dat · sich freuen auf · helfen + Dat (→ denen)</i> — 20 Lücken, dann Briefsätze von gestern reparieren.', en: 'The preposition+case family in chat: 20 gaps, then repair yesterday\'s letter sentences.', note: 'Vier Mock-Fehler kamen aus genau dieser Familie (Ledger 39, 43) — SB 23/34 und zweimal im Brief.' },
@@ -105,7 +125,12 @@ export const DAYS: Day[] = [
     date: '2026-08-20', kind: 'day',
     headline: 'Paraphrasen-Drill — gegen den Falsch-Negativ-Bias',
     tagline: 'Mock-Befund: 3 von 4 HV-Fehlern waren richtige Aussagen, als falsch markiert.',
-    aufgabe: 'Nächste Woche fängt ein neuer Kollege an. Planen Sie gemeinsam seinen ersten Arbeitstag.', aufgabeEn: 'A new colleague starts next week. Plan their first day at work together.',
+    aufgabe: {
+      situation: 'Nächste Woche fängt in Ihrer Abteilung ein neuer Kollege an. Ihre Chefin hat Sie und Ihren Gesprächspartner/Ihre Gesprächspartnerin gebeten, seinen ersten Arbeitstag vorzubereiten. Überlegen Sie sich, was alles zu tun ist und wer welche Aufgaben übernimmt. Sie haben sich schon diese Liste gemacht:',
+      en: 'A new colleague joins your department next week. Your boss has asked you and your partner to prepare his first day at work.',
+      titel: 'Erster Arbeitstag',
+      punkte: ['Wer holt ihn ab?', 'Arbeitsplatz vorbereiten', 'Kollegen vorstellen', 'Mittagessen', 'Wer erklärt was?', '…'],
+    },
     slots: [
       { place: 'gym', minutes: 15, hoeren: ['eigen-01-teil2'], what: 'Teil 2 noch einmal hören — ohne die Aussagen zu sehen, nur zuhören.', en: 'Listen to Teil 2 again — without looking at the statements, just listen.', note: 'Beim zweiten Hören ohne Papier hörst du plötzlich Sätze, die vorher nicht da waren.' },
       { place: 'sofa', minutes: 35, hoeren: ['eigen-01-teil2'], what: 'Transkript mitlesen: <b>jede Aussage ihrer Paraphrase im Text zuordnen</b> — laut („aufhören heißt: nicht mehr zusammen spielen"). Danach 10 neue ✓/✗-Aussagen im Chat.', en: 'Read along with the transcript: match every statement to its paraphrase in the text, out loud. Then 10 new true/false statements in chat.', note: 'Die Regel aus dem Mock: Wortgleichheit gefunden → Falle vermuten. Keine Wortgleichheit → Paraphrase suchen, nicht automatisch „falsch" tippen.' },
@@ -119,7 +144,12 @@ export const DAYS: Day[] = [
     tagline: 'telc ist digital. Deutsche Tastatur, Autokorrektur aus, Uhr läuft.',
     needs: ['Laptop + deutsche Tastatur'],
     thema: { title: 'Zukunftspläne', cards: ['Jana, 16, Schülerin', 'Max, 17, Schüler'] },
-    aufgabe: 'Sie möchten nach B1 zusammen weiterlernen. Wählen Sie gemeinsam einen Kurs aus und planen Sie die Anmeldung.', aufgabeEn: 'You want to carry on learning together after B1. Choose a course together and plan how to enrol.',
+    aufgabe: {
+      situation: 'Sie und Ihr Gesprächspartner/Ihre Gesprächspartnerin möchten nach der B1-Prüfung zusammen weiterlernen. Sie haben die Aufgabe, einen passenden Kurs auszusuchen und die Anmeldung zu planen. Sie haben sich schon diese Liste gemacht:',
+      en: 'After the B1 exam you and your partner want to keep learning together. Choose a suitable course and plan how to enrol.',
+      titel: 'Kurs nach B1',
+      punkte: ['Welcher Kurs?', 'Wo?', 'Wie oft?', 'Kosten', 'Anmeldung bis wann?', '…'],
+    },
     slots: [
       { place: 'gym', minutes: 12, karten: true, what: 'Kartenrunde <b>Brief-Mechanik</b> + Grammatik.', en: 'Card round: letter mechanics + grammar.' },
       { place: 'sofa', minutes: 35, what: '✍️ <b>Brief #2 — Aufgabe 3 „Jennifer", 30 Minuten, getippt, mit Uhr.</b> Am Laptop: <code>~/projects/learning/german/mock/brief.html</code> öffnen, unter <i>telc-Format</i> Nr. 3 wählen. Jennifer schreibt, dass ihre Schwester im Oktober heiratet. Vier Punkte: <i>Reaktion auf die Neuigkeit · Übernachtungsmöglichkeit · Sie möchten zur Hochzeit kommen · Hochzeitsgeschenk.</i> Danach den Bericht kopieren und mir schicken.', en: 'Letter #2 — task 3 “Jennifer”, 30 minutes, typed, on the clock. Open ~/projects/learning/german/mock/brief.html on the laptop and pick no. 3 under telc-Format. Jennifer writes that her sister is getting married in October. Four points: react to the news · where you could stay · you want to come · the wedding present. Then copy the report and send it to me.', note: '⚠️ <b>Neues Format.</b> Die zwölf Themen der Lehrerin sind Goethe-Aufgaben (3 Punkte, keine Vorlage). telc gibt dir einen <b>Brief zum Lesen</b>, <b>vier</b> Punkte und verlangt einen <b>Betreff</b>. Ziel heute: alle vier Punkte sichtbar + null Mechanikfehler (Anrede nach Genus, Schluss mit Frage).' },
@@ -156,7 +186,12 @@ export const DAYS: Day[] = [
     headline: 'Wortschatz: Wohnen & Nachbarschaft',
     tagline: 'Neues Themenfeld, gleiche Methode.',
     thema: { title: 'Nachbarn', cards: ['Streif, 24, Büroangestellte', 'Horst Gebhardt, 21, Büroangestellter'] },
-    aufgabe: 'Sie planen ein Grillfest im Hof für die Nachbarn. Klären Sie Termin, Einladung, Essen und Unkostenbeitrag.', aufgabeEn: 'You are planning a barbecue in the courtyard for the neighbours. Settle the date, the invitation, the food and the contribution to costs.',
+    aufgabe: {
+      situation: 'In Ihrem Haus wohnen viele neue Nachbarn, die sich noch nicht kennen. Deshalb möchten Sie im Hof ein Grillfest organisieren. Sie haben die Aufgabe, dieses Fest zusammen mit Ihrem Gesprächspartner/Ihrer Gesprächspartnerin zu planen. Sie haben sich schon diese Liste gemacht:',
+      en: 'Many new neighbours in your building do not know each other yet, so you want to organise a barbecue in the courtyard. Plan it with your partner.',
+      titel: 'Grillfest im Hof',
+      punkte: ['Wann?', 'Einladung', 'Essen und Getränke', 'Tische und Stühle', 'Wer bezahlt wofür?', '…'],
+    },
     slots: [
       { place: 'gym', minutes: 15, karten: true, what: 'Kartenrunde <b>Durchsagen &amp; Kollokationen</b>.', en: 'Card round: announcements & collocations.' },
       { place: 'sofa', minutes: 35, karten: ['v-wohnen'], what: 'Das Themenfeld <b>Wohnen &amp; Nachbarn</b> — erst der Kern (10 Karten): Miete, Nebenkosten, Hausordnung, Ruhezeit. Danach im Chat abfragen lassen.', en: 'The word field living & neighbours — the core 10 cards first: rent, utilities, house rules, quiet hours. Then let me test you in chat.' },
@@ -169,7 +204,12 @@ export const DAYS: Day[] = [
     headline: 'HV Teil 2, kalt (neuer Test)',
     tagline: 'Zweiter Anlauf am teuersten Teil.',
     needs: ['Audio'],
-    aufgabe: 'Das Treppenhaus in Ihrem Haus soll gestrichen werden. Planen Sie mit Ihrem Nachbarn Termin, Material und wer was macht.', aufgabeEn: 'The stairwell in your building needs painting. With your neighbour, plan the date, the materials and who does what.',
+    aufgabe: {
+      situation: 'Das Treppenhaus in Ihrem Haus sieht schlecht aus und soll gestrichen werden. Der Vermieter bezahlt das Material, die Arbeit machen die Mieter selbst. Sie haben die Aufgabe, das zusammen mit Ihrem Nachbarn/Ihrer Nachbarin zu planen. Sie haben sich schon diese Liste gemacht:',
+      en: 'The stairwell in your building looks bad and needs painting. The landlord pays for the materials, the tenants do the work themselves. Plan it with your neighbour.',
+      titel: 'Treppenhaus streichen',
+      punkte: ['Wann?', 'Welche Farbe?', 'Material besorgen', 'Wer hilft mit?', 'Wie lange?', '…'],
+    },
     slots: [
       { place: 'gym', minutes: 10, karten: true, what: 'Nur Karten.', en: 'Cards only.' },
       { place: 'sofa', minutes: 35, what: 'Teil 2 kalt, mit Uhr → Antworten an mich. <i>Quelle wird am 23.08. bestätigt (Ersatzbank: Klett MT2 / Prüfungstraining MT2) — Schule-ÜT1 ist seit dem Mock verbraucht.</i>', en: 'Teil 2 cold, on the clock → answers to me. Source confirmed on 23.08 from the reserve bank — Schule ÜT1 was used up by the mock.' },
@@ -182,7 +222,12 @@ export const DAYS: Day[] = [
     headline: 'Absolutizer-Radar',
     tagline: 'immer · ganz · nur · alle · nie — zwei Fehler allein daran.',
     thema: { title: 'Ausziehen und alleine wohnen', cards: ['Carsten Daubner, 18, Auszubildender', 'Jenny Groh, 21, Studentin'] },
-    aufgabe: 'Ein Freund zieht um und braucht Hilfe. Planen Sie Termin, Transporter, Helfer und Verpflegung.', aufgabeEn: 'A friend is moving house and needs help. Plan the date, the van, the helpers and the food.',
+    aufgabe: {
+      situation: 'Ein Freund von Ihnen zieht am nächsten Wochenende in eine andere Wohnung um und hat Sie beide um Hilfe gebeten. Sie haben die Aufgabe, diesen Umzugstag gemeinsam zu planen. Überlegen Sie sich, was alles zu tun ist und wer welche Aufgaben übernimmt. Sie haben sich schon diese Liste gemacht:',
+      en: 'A friend is moving to another flat next weekend and has asked you both for help. Plan the moving day: what has to be done, and who does what.',
+      titel: 'Umzug am Samstag',
+      punkte: ['Wann anfangen?', 'Transporter mieten', 'Wer hilft noch?', 'Kartons', 'Essen und Getränke', '…'],
+    },
     slots: [
       { place: 'gym', minutes: 12, karten: true, what: 'Kartenrunde <b>Fallen</b>, bis alle sitzen.', en: 'Card round: traps, until every one of them sits.' },
       { place: 'sofa', minutes: 35, what: '20 Aussagen im Chat: ✓ oder ✗, jedes Mal mit Begründung.', en: '20 statements in chat: ✓ or ✗, with a reason every time.' },
@@ -195,7 +240,12 @@ export const DAYS: Day[] = [
     headline: 'Wiederholung + SB-Kollokationen',
     tagline: 'Die Sprachbausteine-Lücken sind Wortschatz, keine Grammatik.',
     needs: ['Audio von Dienstag'],
-    aufgabe: 'Sie suchen zusammen eine größere Wohnung. Planen Sie Suche, Besichtigung und Umzug.', aufgabeEn: 'The two of you are looking for a bigger flat. Plan the search, the viewing and the move.',
+    aufgabe: {
+      situation: 'Sie und Ihr Gesprächspartner/Ihre Gesprächspartnerin wohnen zusammen in einer WG. Die Wohnung ist zu klein geworden, deshalb suchen Sie eine größere. Sie haben die Aufgabe, die Suche und den Umzug gemeinsam zu planen. Sie haben sich schon diese Liste gemacht:',
+      en: 'You and your partner share a flat that has become too small, so you are looking for a bigger one. Plan the search and the move together.',
+      titel: 'Wohnungssuche',
+      punkte: ['Wo suchen?', 'Wie groß?', 'Miete', 'Besichtigungstermine', 'Umzug wann?', '…'],
+    },
     slots: [
       { place: 'gym', minutes: 15, datei: 'telc-b1-schule-1-hoerverstehen.mp3', what: 'Teil 2 noch einmal, ohne die Aussagen.', en: 'Teil 2 once more, without the statements.' },
       { place: 'sofa', minutes: 35, datei: 'telc-b1-schule-1-hoerverstehen.mp3', karten: ['koll'], what: 'Wiederholung am Bildschirm, dann Kollokationen aus dem Ledger.', en: 'Repeat on screen, then collocations from the ledger.' },
@@ -209,7 +259,12 @@ export const DAYS: Day[] = [
     tagline: 'Letzte 15 Minuten: die drei Sprechen-Teile.',
     needs: ['Papier'],
     thema: { title: 'Schöner Wohnen', cards: ['Stefan Heeg, 38, Lehrer', 'Mara Weiß, 39, Teamleiterin'] },
-    aufgabe: 'Sie richten gemeinsam ein Zimmer neu ein. Einigen Sie sich auf Möbel, Budget und wer was besorgt.', aufgabeEn: 'You are furnishing a room together. Agree on furniture, budget and who gets what.',
+    aufgabe: {
+      situation: 'In Ihrer WG ist ein Zimmer frei geworden, und Sie möchten es neu einrichten und als Gemeinschaftsraum nutzen. Sie haben die Aufgabe, das zusammen mit Ihrem Gesprächspartner/Ihrer Gesprächspartnerin zu planen. Sie haben sich schon diese Liste gemacht:',
+      en: 'A room in your shared flat is free and you want to refurnish it as a common room. Plan this with your partner.',
+      titel: 'Zimmer einrichten',
+      punkte: ['Welche Möbel?', 'Neu oder gebraucht?', 'Farben', 'Budget', 'Wer besorgt was?', '…'],
+    },
     slots: [
       { place: 'gym', minutes: 10, karten: true, what: 'Kartenrunde <b>Brief</b>.', en: 'Card round: letter.' },
       { place: 'sofa', minutes: 40, what: 'Brief auf Zeit, getippt auf QWERTZ. Danach zeige ich dir den Aufbau der mündlichen Prüfung — geübt wird sie im Kurs.', en: 'Timed letter, typed on QWERTZ. Then I show you the shape of the oral exam — you practise it in class.' },
@@ -246,7 +301,12 @@ export const DAYS: Day[] = [
     headline: 'Wortschatz: Gesundheit + Briefbausteine',
     tagline: 'Woche 4 gehört dem Schreiben — 10 billige Punkte.',
     thema: { title: 'Gesundheit', cards: ['Silke Bauer, 21, Studentin', 'Karsten Martens, 23, Angestellter'] },
-    aufgabe: 'Sie wollen zusammen mit Sport anfangen. Planen Sie Fitnessstudio oder Verein, Termine in der Woche und Kosten.', aufgabeEn: 'You want to take up sport together. Plan gym or club, which days of the week, and the cost.',
+    aufgabe: {
+      situation: 'Sie und Ihr Gesprächspartner/Ihre Gesprächspartnerin sitzen im Beruf den ganzen Tag und möchten endlich mit Sport anfangen. Sie haben die Aufgabe, das gemeinsam zu planen. Sie haben sich schon diese Liste gemacht:',
+      en: 'You and your partner sit all day at work and finally want to take up sport. Plan it together.',
+      titel: 'Zusammen Sport machen',
+      punkte: ['Welcher Sport?', 'Fitnessstudio oder Verein?', 'Wie oft?', 'An welchen Tagen?', 'Kosten', '…'],
+    },
     slots: [
       { place: 'gym', minutes: 15, karten: true, what: 'Kartenrunde <b>Brief + Grammatik</b>.', en: 'Card round: letter + grammar.' },
       { place: 'sofa', minutes: 35, karten: ['v-gesund'], what: 'Das Themenfeld <b>Gesundheit</b> — erst der Kern (10 Karten): Beschwerden, Rezept, Überweisung, Krankenkasse. Dann eine Phrasenbank für den halbformellen Ton.', en: 'The word field health — the core 10 cards first: symptoms, prescription, referral, health insurance. Then a phrase bank for the semi-formal tone.', note: '„Rezept" und „Überweisung" haben je zwei Bedeutungen — genau daraus baut telc Fallen.' },
@@ -259,7 +319,12 @@ export const DAYS: Day[] = [
     headline: 'HV Teil 1 + Teil 3, kalt',
     tagline: 'Die kurzen Teile, frisch getestet.',
     needs: ['Audio'],
-    aufgabe: 'Ihr Freund hat sich das Bein gebrochen. Planen Sie gemeinsam, wie Sie ihm die nächsten zwei Wochen helfen.', aufgabeEn: 'Your friend has broken their leg. Plan together how you will help them over the next two weeks.',
+    aufgabe: {
+      situation: 'Ein guter Freund hat sich das Bein gebrochen und kann zwei Wochen lang nicht einkaufen und nicht kochen. Sie haben die Aufgabe, zusammen mit Ihrem Gesprächspartner/Ihrer Gesprächspartnerin zu planen, wie Sie ihm helfen. Überlegen Sie sich, wer welche Aufgaben übernimmt. Sie haben sich schon diese Liste gemacht:',
+      en: 'A good friend has broken his leg and cannot shop or cook for two weeks. Plan with your partner how you will help him, and who does what.',
+      titel: 'Hilfe für einen Freund',
+      punkte: ['Wer besucht wann?', 'Einkaufen', 'Kochen', 'Arzttermine', 'Wer bezahlt was?', '…'],
+    },
     slots: [
       { place: 'gym', minutes: 10, karten: true, what: 'Nur Karten.', en: 'Cards only.' },
       { place: 'sofa', minutes: 35, datei: 'telc-b1-schule-1-hoerverstehen.mp3', what: 'Beide Teile mit Uhr → Antworten an mich.', en: 'Both Teile on the clock → answers to me.' },
@@ -272,7 +337,12 @@ export const DAYS: Day[] = [
     headline: 'Sprachbausteine Teil 1 — Grammatik',
     tagline: 'Futur I · geteiltes Hilfsverb · Artikel vs. Pronomen.',
     thema: { title: 'Einkäufe', cards: ['Paul Krügel, 27', 'Juliane Teubert, 18'] },
-    aufgabe: 'Sie kaufen zu zweit für eine Party ein. Planen Sie Einkaufsliste, Geschäft, Budget und Transport.', aufgabeEn: 'The two of you are shopping for a party. Plan the list, the shop, the budget and the transport.',
+    aufgabe: {
+      situation: 'Am Samstag feiern Sie mit Freunden eine Party, und Sie beide sollen den Einkauf übernehmen. Sie haben die Aufgabe, diesen Einkauf gemeinsam zu planen. Sie haben sich schon diese Liste gemacht:',
+      en: 'On Saturday you are having a party with friends and the two of you are doing the shopping. Plan the shopping together.',
+      titel: 'Einkauf für die Party',
+      punkte: ['Wann einkaufen?', 'In welchem Geschäft?', 'Was auf die Liste?', 'Budget', 'Wie transportieren?', '…'],
+    },
     slots: [
       { place: 'gym', minutes: 15, karten: true, what: 'Kartenrunde <b>Grammatik</b>, alle 11.', en: 'Card round: grammar, all 11.' },
       { place: 'sofa', minutes: 35, what: 'Die drei Ledger-Punkte 10–12, dann 20 Lückensätze im Chat.', en: 'The three ledger points 10–12, then 20 gap sentences in chat.' },
@@ -285,7 +355,12 @@ export const DAYS: Day[] = [
     headline: 'Brief #3 auf Zeit',
     tagline: 'Bewertung nach telc-Kriterien I / II / III.',
     needs: ['Papier'],
-    aufgabe: 'Sie wollen sich zusammen gesünder ernähren. Planen Sie Einkauf, Kochabende und ein Ziel für vier Wochen.', aufgabeEn: 'You want to eat more healthily together. Plan the shopping, the cooking evenings and a goal for four weeks.',
+    aufgabe: {
+      situation: 'Sie und Ihr Gesprächspartner/Ihre Gesprächspartnerin essen unter der Woche fast immer schnell und ungesund. Das wollen Sie in den nächsten vier Wochen zusammen ändern. Sie haben die Aufgabe, das gemeinsam zu planen. Sie haben sich schon diese Liste gemacht:',
+      en: 'During the week you and your partner almost always eat fast and unhealthy food. You want to change that together over the next four weeks. Plan how.',
+      titel: 'Gesünder essen',
+      punkte: ['Was ändern?', 'Wo einkaufen?', 'Wann kochen?', 'Wer kocht wann?', 'Ziel nach vier Wochen', '…'],
+    },
     slots: [
       { place: 'gym', minutes: 10, karten: true, what: 'Kartenrunde <b>Brief</b>.', en: 'Card round: letter.' },
       { place: 'sofa', minutes: 35, what: '✍️ <b>Brief #3 — Aufgabe 14 „Sophie"</b> in <code>mock/brief.html</code>. 30 Minuten, getippt, Autokorrektur aus. Sophie ist neu in Würzburg und kennt niemanden. Vier Punkte: <i>Was es Neues bei Ihnen gibt · was Sie in der Freizeit machen · Tipps für Sophie · Reaktion auf den Vorschlag.</i>', en: 'Letter #3 — task 14 “Sophie” in mock/brief.html. 30 minutes, typed, autocorrect off. Sophie is new in Würzburg and knows nobody. Four points: your news · what you do in your free time · tips for Sophie · reaction to her proposal.', note: 'Der Ratschlag-Punkt ist die Lücke aus dem Lernstoff-Extrakt: <i>An deiner Stelle würde ich … · Ich rate dir, … zu … · Du solltest …</i> Mindestens zwei davon einbauen.' },
@@ -299,7 +374,12 @@ export const DAYS: Day[] = [
     tagline: 'Ziel: null Mechanikfehler.',
     needs: ['Papier'],
     thema: { title: 'Online Lebensmittel kaufen', cards: ['Tobias Krämer, 27, Student', 'Irina Kovalcik, 25, Webdesignerin'] },
-    aufgabe: 'Sie suchen zusammen ein Geschenk für Ihre Lehrerin aus und bestellen es online. Einigen Sie sich auf Geschenk, Preis und Lieferung.', aufgabeEn: 'Together you pick a present for your teacher and order it online. Agree on the present, the price and the delivery.',
+    aufgabe: {
+      situation: 'Ihr Deutschkurs endet bald, und Sie möchten sich bei Ihrer Lehrerin mit einem Geschenk bedanken. Sie haben die Aufgabe, zusammen mit Ihrem Gesprächspartner/Ihrer Gesprächspartnerin das Geschenk auszusuchen und online zu bestellen. Sie haben sich schon diese Liste gemacht:',
+      en: 'Your German course ends soon and you want to thank your teacher with a present. Choose it with your partner and order it online.',
+      titel: 'Geschenk für die Lehrerin',
+      punkte: ['Welches Geschenk?', 'Wo bestellen?', 'Wie teuer?', 'Wer sammelt das Geld?', 'Lieferung bis wann?', '…'],
+    },
     slots: [
       { place: 'gym', minutes: 12, karten: true, what: 'Kartenrunde <b>Grammatik</b>.', en: 'Card round: grammar.' },
       { place: 'sofa', minutes: 40, what: 'Erst den schwächsten Absatz von #3 neu schreiben, dann frisch: <b>Aufgabe 15 „Vera"</b> in <code>mock/brief.html</code>. Vera hat eine neue Stelle und ein Verkehrsproblem. Vier Punkte: <i>Was es bei Ihnen Neues gibt · wie Sie zur Arbeit kommen · was Sie über Veras Stelle wissen wollen · Vorschlag für eine Unternehmung.</i>', en: 'First rewrite the weakest paragraph of #3, then fresh: task 15 “Vera” in mock/brief.html. Vera has a new job and a commuting problem. Four points: your news · how you get to work · what you want to know about her job · a proposal for doing something together.', note: 'Punkt 3 verlangt eine <b>indirekte Frage</b>: „Kannst du mir sagen, <b>ob</b> …?" / „Ich würde gern wissen, <b>wie viel</b> …" — Verb ans Ende.' },
@@ -336,7 +416,12 @@ export const DAYS: Day[] = [
     headline: 'Wortschatz: Reisen, Verkehr & Behörden',
     tagline: 'Doppelt nützlich — das ist auch dein Alpen-Wortschatz.',
     thema: { title: 'Verkehrsmittel', cards: ['Bernd Kleinefeld, 45, Elektrotechniker', 'Carola Ahrenholz, 25, Sekretärin'] },
-    aufgabe: 'Sie fahren gemeinsam zur Prüfung. Planen Sie Verkehrsmittel, Uhrzeit, Treffpunkt und einen Plan B.', aufgabeEn: 'You are travelling to the exam together. Plan the transport, the time, the meeting point and a plan B.',
+    aufgabe: {
+      situation: 'Am Prüfungstag müssen Sie beide um acht Uhr im Prüfungszentrum sein. Sie wollen zusammen hinfahren, damit niemand zu spät kommt. Sie haben die Aufgabe, die Fahrt gemeinsam zu planen. Sie haben sich schon diese Liste gemacht:',
+      en: 'On exam day you both have to be at the exam centre at eight. You want to travel together so nobody arrives late. Plan the journey.',
+      titel: 'Fahrt zur Prüfung',
+      punkte: ['Welches Verkehrsmittel?', 'Wann losfahren?', 'Treffpunkt', 'Fahrkarten', 'Plan B bei Verspätung', '…'],
+    },
     slots: [
       { place: 'gym', minutes: 15, karten: true, what: 'Kartenrunde <b>Durchsagen</b> — Einfahrt, Kennzeichen, umgehend.', en: 'Card round: announcements — Einfahrt, Kennzeichen, umgehend.' },
       { place: 'sofa', minutes: 35, karten: ['v-reise'], what: 'Das Themenfeld <b>Reisen &amp; Behörden</b> — erst der Kern (10 Karten): Verspätung, Anschluss, Antrag stellen, Gebühr.', en: 'The word field travel & public offices — the core 10 cards first: delay, connection, filing an application, fee.', note: 'Doppelt nützlich: dieselben Wörter brauchst du nächste Woche in den Alpen.' },
@@ -349,7 +434,12 @@ export const DAYS: Day[] = [
     headline: 'HV Teil 2, kalt — der letzte vor der Probe',
     tagline: 'Letzter Einzelteil.',
     needs: ['Audio'],
-    aufgabe: 'Sie müssen beide zum Bürgeramt. Planen Sie Termin, Unterlagen und Anfahrt.', aufgabeEn: 'You both have to go to the citizens’ office. Plan the appointment, the documents and how you get there.',
+    aufgabe: {
+      situation: 'Sie und Ihr Gesprächspartner/Ihre Gesprächspartnerin müssen beide zum Bürgeramt und wollen deshalb zusammen hingehen. Sie haben die Aufgabe, diesen Termin gemeinsam zu planen. Sie haben sich schon diese Liste gemacht:',
+      en: 'You and your partner both have to go to the citizens office, so you want to go together. Plan the appointment.',
+      titel: 'Termin beim Bürgeramt',
+      punkte: ['Welcher Tag?', 'Termin online buchen', 'Welche Unterlagen?', 'Wie hinkommen?', 'Frei nehmen?', '…'],
+    },
     slots: [
       { place: 'gym', minutes: 10, karten: true, what: 'Nur Karten.', en: 'Cards only.' },
       { place: 'sofa', minutes: 35, dateien: true, what: 'Teil 2 mit Uhr → Antworten an mich.', en: 'Teil 2 on the clock → answers to me.' },
@@ -362,7 +452,12 @@ export const DAYS: Day[] = [
     headline: 'Ledger-Sweep',
     tagline: 'Jeder noch offene Eintrag bekommt eine eigene Übung.',
     thema: { title: 'Gruppenreisen', cards: ['Sabine Klostermann, 33, Bürokauffrau', 'Jens Mühle, 39, Physiker'] },
-    aufgabe: 'Sie planen ein Wochenende in einer anderen Stadt. Klären Sie Anreise, Übernachtung, Programm und Kosten.', aufgabeEn: 'You are planning a weekend in another city. Settle the journey, the accommodation, the programme and the cost.',
+    aufgabe: {
+      situation: 'Sie haben ein langes Wochenende frei und möchten zusammen mit Ihrem Gesprächspartner/Ihrer Gesprächspartnerin in eine andere Stadt fahren. Sie haben die Aufgabe, dieses Wochenende gemeinsam zu planen. Sie haben sich schon diese Liste gemacht:',
+      en: 'You have a long weekend off and want to travel to another city with your partner. Plan the weekend together.',
+      titel: 'Wochenende in einer anderen Stadt',
+      punkte: ['Wohin?', 'Anreise', 'Übernachtung', 'Programm', 'Kosten', '…'],
+    },
     slots: [
       { place: 'gym', minutes: 15, karten: true, what: 'Kartenrunde, alles gemischt.', en: 'Card round, everything mixed.' },
       { place: 'sofa', minutes: 35, what: 'Wir gehen das Ledger von oben nach unten durch. Was bleibt, kommt auf den Alpen-Zettel.', en: 'We go through the ledger top to bottom. Whatever is still open goes on the Alps sheet.' },
@@ -375,7 +470,12 @@ export const DAYS: Day[] = [
     headline: 'Der schwächste Hörteil der Kampagne',
     tagline: 'Noch einmal, gezielt.',
     needs: ['altes Audio'],
-    aufgabe: 'Ihr Zug ist ausgefallen. Planen Sie gemeinsam, wie Sie trotzdem rechtzeitig ankommen.', aufgabeEn: 'Your train has been cancelled. Plan together how to get there on time anyway.',
+    aufgabe: {
+      situation: 'Sie beide wollten mit dem Zug zu einer Familienfeier fahren, aber der Zug ist ausgefallen. Die Feier fängt in vier Stunden an. Sie haben die Aufgabe, gemeinsam zu planen, wie Sie trotzdem rechtzeitig ankommen. Sie haben sich schon diese Liste gemacht:',
+      en: 'The two of you wanted to take the train to a family celebration, but the train has been cancelled and the party starts in four hours. Plan how to get there on time anyway.',
+      titel: 'Der Zug ist ausgefallen',
+      punkte: ['Nächster Zug?', 'Bus oder Mietwagen?', 'Kosten', 'Wer ruft an?', 'Gepäck', '…'],
+    },
     slots: [
       { place: 'gym', minutes: 15, hoeren: ['eigen-01-teil2'], what: 'Genau diesen Teil hören.', en: 'Listen to exactly that Teil.', note: 'Falls es ein E1-Teil war: die Versuchsliste zeigt dir, welcher der schwächste ist.' },
       { place: 'sofa', minutes: 35, dateien: true, karten: true, what: 'Am Bildschirm, dann Wortschatz-Rettung für alles, was daran gescheitert ist.', en: 'On screen, then a vocabulary rescue for everything it failed on.' },
@@ -389,7 +489,12 @@ export const DAYS: Day[] = [
     tagline: 'Die Sprechen-Teil-3-Phrasen brauchst du nächste Woche im Bus.',
     needs: ['Papier'],
     thema: { title: 'Urlaub mit Freunden', cards: ['N.N., 29, Ingenieur', 'Tamara Rößner, 31, Lehrerin'] },
-    aufgabe: 'Sie planen die Woche in den Alpen: Route, Stellplatz, Einkauf und Essen. Einigen Sie sich am Ende.', aufgabeEn: 'You are planning the week in the Alps: route, pitch, shopping and food. Agree on it at the end.',
+    aufgabe: {
+      situation: 'Sie und Ihr Gesprächspartner/Ihre Gesprächspartnerin fahren nächste Woche zusammen für sieben Tage in die Alpen und übernachten im Camper. Sie haben die Aufgabe, diese Woche gemeinsam zu planen. Sie haben sich schon diese Liste gemacht:',
+      en: 'You and your partner are going to the Alps together for seven days next week, sleeping in a camper van. Plan the week together.',
+      titel: 'Eine Woche in den Alpen',
+      punkte: ['Route', 'Stellplätze', 'Einkauf', 'Wer kocht?', 'Wanderungen', '…'],
+    },
     slots: [
       { place: 'gym', minutes: 10, karten: true, what: 'Kartenrunde <b>Brief</b>.', en: 'Card round: letter.' },
       { place: 'sofa', minutes: 40, what: 'Brief auf Zeit: <b>Aufgabe 5 „Sonja"</b> in <code>mock/brief.html</code> — Musikfestival, Anreise, Übernachtung, jemanden mitbringen. Danach: Redemittel für <i>gemeinsam planen</i> — Vorschlag, Zustimmung, Einwand, Kompromiss.', en: 'Timed letter: task 5 “Sonja” in mock/brief.html — music festival, travel, overnight stay, bringing someone along. Then: phrases for planning together — proposal, agreement, objection, compromise.', note: 'Bewusst gewählt: derselbe Wortschatz, den du eine Woche später in den Alpen wirklich brauchst.' },
@@ -428,7 +533,12 @@ export const DAYS: Day[] = [
     headline: 'Nur Hörverstehen — Rost abschütteln',
     tagline: 'Zurück aus den Alpen. Sanft anfangen.',
     needs: ['letzter unbenutzter Test'],
-    aufgabe: 'Erzählen Sie von den Alpen und planen Sie gemeinsam einen kurzen Ausflug am nächsten Wochenende.', aufgabeEn: 'Talk about the Alps, then plan a short trip together for next weekend.',
+    aufgabe: {
+      situation: 'Sie sind gerade aus den Alpen zurück und haben Lust auf mehr. Am nächsten Wochenende möchten Sie deshalb mit Ihrem Gesprächspartner/Ihrer Gesprächspartnerin einen kurzen Ausflug machen. Sie haben die Aufgabe, diesen Ausflug gemeinsam zu planen. Sie haben sich schon diese Liste gemacht:',
+      en: 'You are just back from the Alps and want more. Next weekend you want to make a short trip with your partner. Plan it together.',
+      titel: 'Kurzer Ausflug',
+      punkte: ['Wohin?', 'Samstag oder Sonntag?', 'Wie hinkommen?', 'Was mitnehmen?', 'Kosten', '…'],
+    },
     slots: [
       { place: 'gym', minutes: 15, karten: true, what: 'Kartenrunde vom Alpen-Zettel.', en: 'Card round from the Alps sheet.' },
       { place: 'sofa', minutes: 40, datei: 'goethe-b1-modellsatz-hoeren.mp3', what: 'Ein Hörverstehen komplett, aus dem letzten unbenutzten Test. Danach Zettel durchgehen.', en: 'One complete listening paper, from the last unused test. Then go through the sheet.' },
@@ -442,7 +552,12 @@ export const DAYS: Day[] = [
     tagline: 'Bewusst etwas, das du kannst. Selbstvertrauen, keine Herausforderung.',
     needs: ['Papier'],
     thema: { title: 'Familie', cards: ['Anton Majer, 34, Manager', 'Nadja Bergmann, 36, Angestellte'] },
-    aufgabe: 'Sie planen eine kleine Feier nach der Prüfung. Einigen Sie sich auf Tag, Ort, Gäste und Essen.', aufgabeEn: 'You are planning a small celebration after the exam. Agree on the day, the place, the guests and the food.',
+    aufgabe: {
+      situation: 'Übermorgen schreiben Sie die B1-Prüfung, und danach möchten Sie mit Ihrer Familie und Ihrem Kurs feiern. Sie haben die Aufgabe, diese Feier zusammen mit Ihrem Gesprächspartner/Ihrer Gesprächspartnerin zu planen. Überlegen Sie sich, wer welche Aufgaben übernimmt. Sie haben sich schon diese Liste gemacht:',
+      en: 'The day after tomorrow you sit the B1 exam, and afterwards you want to celebrate with your family and your class. Plan the party with your partner, and who does what.',
+      titel: 'Feier nach der Prüfung',
+      punkte: ['Wann?', 'Wo?', 'Wen einladen?', 'Essen und Getränke', 'Wer bezahlt wofür?', '…'],
+    },
     slots: [
       { place: 'gym', minutes: 10, karten: true, what: 'Kartenrunde <b>Brief</b>.', en: 'Card round: letter.' },
       { place: 'sofa', minutes: 35, hoeren: ['eigen-01-teil1', 'eigen-01-teil3'], what: 'Brief auf Zeit, dann ein Hörteil, den du schon zweimal gehört hast.', en: 'Timed letter, then a listening Teil you have already heard twice.', note: 'Bewusst ein alter Teil: die Versuchsliste soll heute nach oben zeigen.' },

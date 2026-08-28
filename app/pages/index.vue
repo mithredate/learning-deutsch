@@ -254,11 +254,7 @@ function go(delta: number) {
              evening the planning task is the whole section. -->
         <div v-if="day.aufgabe" class="flex flex-col gap-1.5" :class="day.thema ? 'border-t border-line-soft pt-3' : ''">
           <span class="font-mono text-[0.68rem] tracking-widest uppercase text-ink-3">Teil 3 · gemeinsam planen</span>
-          <p class="text-[0.88rem] leading-relaxed text-ink-2">{{ day.aufgabe }}</p>
-          <p v-if="english && day.aufgabeEn" class="flex items-start gap-2 border-l-2 border-line pl-2.5 text-[0.84rem] leading-relaxed text-ink-3">
-            <span class="mt-0.5 rounded border border-line px-1 font-mono text-[0.6rem] tracking-wider">EN</span>
-            <span class="flex-1">{{ day.aufgabeEn }}</span>
-          </p>
+          <Planung :planung="day.aufgabe" :english="english" />
           <p class="text-[0.8rem] leading-relaxed text-ink-3">
             <b class="text-ink-2">Vorschlagen, nicht nur zustimmen</b> — einmal höflich widersprechen,
             am Ende laut zusammenfassen.

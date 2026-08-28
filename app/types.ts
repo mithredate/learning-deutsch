@@ -104,6 +104,22 @@ export interface Thema {
   cards: [string, string]
 }
 
+/**
+ * A Teil 3 task exactly as the telc paper prints it: situation, then a
+ * Stichpunkt list. Prose was the wrong shape — the exam never hands you a
+ * finished sentence to plan from, it hands you `Wann?` `Wo?` `Wer bezahlt?`
+ * and expects you to talk every item through and agree at the end.
+ */
+export interface Planung {
+  /** Sie-form, 2–4 sentences, ends „Sie haben sich schon diese Liste gemacht:" */
+  situation: string
+  /** The situation in English (the EN toggle). */
+  en: string
+  titel: string
+  /** Short Stichpunkte; the last one is always '…'. */
+  punkte: string[]
+}
+
 export interface Day {
   /** ISO date, and the identity of the day everywhere in storage. */
   date: string
@@ -116,13 +132,11 @@ export interface Day {
   /** Course evenings only: tonight's Sprechen Teil 2 topic. */
   thema?: Thema
   /**
-   * Course evenings only: tonight's Teil 3 planning task, phrased as the exam
-   * phrases it. Chosen to sit next to the same evening's Teil 2 topic, so one
-   * word field carries both halves of the speaking hour.
+   * Tonight's Teil 3 planning task, in the exam's own shape. Chosen to sit next
+   * to the same evening's Teil 2 topic, so one word field carries both halves
+   * of the speaking hour.
    */
-  aufgabe?: string
-  /** The planning task in English — the exam wording is dense even in German. */
-  aufgabeEn?: string
+  aufgabe?: Planung
   /** Shows the one-time setup banner. */
   setup?: boolean
 }

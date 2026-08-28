@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { TEILE, SURVIVAL, ALLEIN } from '~/data/sprechen'
+import { TEILE, SURVIVAL, ALLEIN, PLANUNG_ANWEISUNG, alleinPrompt } from '~/data/sprechen'
 import { todayIndex } from '~/composables/usePlan'
 import { DAYS } from '~/data/days'
 
@@ -10,9 +10,9 @@ const openBlocks = ref<Record<string, boolean>>({})
 const toggle = (key: string) => (openBlocks.value[key] = !openBlocks.value[key])
 
 /**
- * The solo prompt ends in „Das Thema ist: " — so it carries today's planning
- * task where the calendar has one, and the day's Teil 2 topic otherwise. A
- * prompt you still have to finish by hand is a prompt you don't use.
+ * The solo prompt carries one whole task — today's where the calendar has one,
+ * otherwise the Berg-Ausflug that Teil 3 shows above. A prompt you still have
+ * to finish by hand is a prompt you don't use.
  */
 // `todayIndex()` rather than `usePlan()`: this page has no day navigation, and
 // usePlan's index starts at 0 — which would hand the AI the *first day of the
@@ -21,9 +21,7 @@ const toggle = (key: string) => (openBlocks.value[key] = !openBlocks.value[key])
 const today = ref(DAYS[0]!)
 onMounted(() => (today.value = DAYS[todayIndex()]!))
 
-const prompt = computed(() =>
-  ALLEIN.prompt + (today.value.aufgabe ?? today.value.thema?.title ?? 'Sie planen zusammen ein Wochenende in einer anderen Stadt.'),
-)
+const prompt = computed(() => alleinPrompt(today.value.aufgabe ?? TEILE[2]!.aufgabe!))
 
 const copied = ref(false)
 async function copy() {
@@ -86,6 +84,14 @@ async function copy() {
         <ol v-if="teil.steps" class="flex list-decimal flex-col gap-1.5 pl-5 text-[0.88rem] leading-relaxed text-ink-2">
           <li v-for="s in teil.steps" :key="s">{{ s }}</li>
         </ol>
+
+        <!-- Teil 3 as the paper prints it: the four fixed lines above the task,
+             then the situation and the Stichpunkt list. The Anweisung is the
+             rubric — begründen, reagieren, sich einigen — so it stays visible. -->
+        <template v-if="teil.aufgabe">
+          <p class="text-[0.82rem] leading-relaxed whitespace-pre-line text-ink-3">{{ PLANUNG_ANWEISUNG.join('\n') }}</p>
+          <Planung :planung="teil.aufgabe" :english="false" />
+        </template>
 
         <div class="flex flex-col gap-1.5 rounded-xl px-3.5 py-3" style="background: var(--good-wash)">
           <span class="eyebrow" style="color: var(--good)">Worauf der Prüfer achtet</span>

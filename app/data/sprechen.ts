@@ -8,6 +8,20 @@
  * the specific grammar traps from reference/wortschatz-gaps.md.
  */
 
+import type { Planung } from '~/types'
+
+/**
+ * The four lines the telc paper prints above every Teil-3 task, word for word.
+ * They are the scoring rubric in disguise — begründen, reagieren, sich einigen —
+ * so they belong on the page, not in the examiner's copy only.
+ */
+export const PLANUNG_ANWEISUNG: string[] = [
+  'Entscheiden Sie zuerst, was Sie machen möchten und warum.',
+  'Tragen Sie Ihrem Partner/Ihrer Partnerin Ihre Ideen vor und begründen Sie sie.',
+  'Reagieren Sie auf die Ideen Ihres Partners/Ihrer Partnerin und die Begründungen.',
+  'Einigen Sie sich auf einen gemeinsamen Plan.',
+]
+
 export interface Block {
   label: string
   lines: string[]
@@ -23,6 +37,8 @@ export interface Teil {
   /** Partner cards, where the exam hands each candidate different material. */
   cards?: { label: string; text: string }[]
   steps?: string[]
+  /** Teil 3 only: the situation and the Stichpunkt list, in the exam's shape. */
+  aufgabe?: Planung
   blocks: Block[]
   /** This learner's own recurring errors, from the ledger. */
   traps: string[]
@@ -181,16 +197,21 @@ export const TEILE: Teil[] = [
   },
   {
     n: 3,
-    title: 'Gemeinsam eine Aufgabe lösen',
+    title: 'Gemeinsam etwas planen',
     minutes: '~6 Min',
-    task: 'Ihr Deutschkurs macht am Samstag einen Ausflug in die Berge. Planen Sie den Ausflug gemeinsam. Sie müssen sich am Ende einigen.',
-    steps: [
-      'Wann fahren wir los, und wie lange bleiben wir?',
-      'Wie kommen wir hin — Zug, Bus oder Fahrgemeinschaft?',
-      'Was nehmen wir mit?',
-      'Wer organisiert was?',
-      'Was kostet es? Machen wir einen Unkostenbeitrag?',
-    ],
+    task: 'Sie und Ihr Partner bekommen eine Situation und eine Stichpunktliste und planen die Sache gemeinsam — jeden Punkt besprechen, am Ende einigen.',
+    aufgabe: {
+      situation:
+        'Ihr Deutschkurs möchte am Samstag zusammen einen Ausflug in die Berge machen. '
+        + 'Sie haben die Aufgabe, diesen Ausflug zusammen mit Ihrem Gesprächspartner/Ihrer '
+        + 'Gesprächspartnerin zu planen. Überlegen Sie sich, was alles zu tun ist und wer '
+        + 'welche Aufgaben übernimmt. Sie haben sich schon diese Liste gemacht:',
+      en:
+        'Your German class wants to go on a trip to the mountains together on Saturday. '
+        + 'Your task is to plan the trip with your partner: what has to be done, and who does what.',
+      titel: 'Ausflug in die Berge',
+      punkte: ['Wann?', 'Wie hinkommen?', 'Was mitnehmen?', 'Wer organisiert was?', 'Kosten', '…'],
+    },
     looksFor: [
       'VORSCHLAGEN, nicht nur zustimmen. Wer nur „ja, gut" sagt, verliert Punkte.',
       'Mindestens einmal höflich widersprechen und eine Alternative anbieten.',
@@ -253,20 +274,33 @@ export const TEILE: Teil[] = [
  * sentence as you say it, and the conversation — the thing being examined —
  * never gets going. So: partner first, examiner strictly afterwards.
  */
+
+/**
+ * The solo prompt, built around one task. The task goes in as the paper prints
+ * it — situation *and* Stichpunkte — because a machine handed one prose line
+ * plans one thing and stops; handed the list it works through every point, which
+ * is the six minutes the exam actually asks for.
+ */
+export function alleinPrompt(p: Planung): string {
+  return (
+    'Wir üben die mündliche telc-B1-Prüfung, Teil 3 (gemeinsam etwas planen). '
+    + 'Du bist mein Prüfungspartner, nicht mein Lehrer: sprich nur Deutsch auf B1-Niveau, '
+    + 'antworte kurz, mach eigene Vorschläge, widersprich mir einmal höflich und stell mir am Ende '
+    + 'eine Frage. Wir müssen jeden Punkt der Liste besprechen und uns am Ende einigen. '
+    + 'Korrigiere mich NICHT während des Gesprächs. '
+    + 'Erst wenn ich „Feedback" sage, wirst du Prüfer und sagst mir: was war gut, welche Fehler in '
+    + 'Kasus, Wortstellung und Wortschatz, und wie hätte ich es sagen sollen. '
+    + 'Danach gibst du mir das vollständige Transkript, nur auf Deutsch. Die Aufgabe: '
+    + p.situation + ' ' + p.titel + ': ' + p.punkte.join(' · ')
+  )
+}
+
 export const ALLEIN = {
   label: 'Allein üben — die KI als Partner',
   intro:
     'Kein Kurs heute? Sprechen geht trotzdem. Öffne eine Sprach-KI (Gemini Live, ChatGPT Voice, '
     + 'Claude), gib ihr den Text unten und sprich zehn Minuten. Danach lässt du dir das Transkript '
     + 'geben und schickst es mir.',
-  prompt:
-    'Wir üben die mündliche telc-B1-Prüfung, Teil 3 (gemeinsam etwas planen). '
-    + 'Du bist mein Prüfungspartner, nicht mein Lehrer: sprich nur Deutsch auf B1-Niveau, '
-    + 'antworte kurz, mach eigene Vorschläge, widersprich mir einmal höflich und stell mir am Ende '
-    + 'eine Frage. Korrigiere mich NICHT während des Gesprächs. '
-    + 'Erst wenn ich „Feedback" sage, wirst du Prüfer und sagst mir: was war gut, welche Fehler in '
-    + 'Kasus, Wortstellung und Wortschatz, und wie hätte ich es sagen sollen. '
-    + 'Danach gibst du mir das vollständige Transkript, nur auf Deutsch. Das Thema ist: ',
   rules: [
     '<b>Pausen sind erlaubt.</b> Kurz nachdenken kostet keine Punkte — losreden und mittendrin steckenbleiben schon.',
     '<b>Korrigier dich einmal, dann weiter.</b> Fällt dir der Fehler sofort auf („für du" → „für dich"), sag die richtige Form und sprich weiter. Zweimal zurückgehen zerstört den Redefluss, und der zählt mehr.',
